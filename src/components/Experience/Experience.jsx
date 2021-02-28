@@ -44,14 +44,7 @@ const Projects = () => {
 
             return (
               <Row key={id} className="experience-wrapper__box">
-                <Col
-                  lg={6}
-                  sm={12}
-                  className="w-100"
-                  // className={`d-flex align-items-center px-0 ${
-                  //   i % 2 === 1 ? "justify-content-start" : "justify-content-end"
-                  // }`}
-                >
+                <Col lg={6} sm={12} className="w-100 experience-wrapper__middle">
                   <Fade
                     left={isDesktop && i % 2 === 1}
                     right={isDesktop && i % 2 === 0}
@@ -66,7 +59,6 @@ const Projects = () => {
                           ? "experience-wrapper__content_left"
                           : "experience-wrapper__content_right"
                       }`}
-                      // style={{ textAlign: isMobile ? "left" : i % 2 === 1 ? "left" : "right" }}
                     >
                       <h2 className="experience-wrapper__text-title">{title}</h2>
                       <h2>{company}</h2>
