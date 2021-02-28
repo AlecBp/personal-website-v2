@@ -24,19 +24,43 @@
       }
     }
 
-    // &__box {
-    //   border-width: 2px;
-    //   border-style: solid;
-    //   border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-    //   border-image-slice: 1;
-    // }
+    &__box {
+      @include respond(tab-port) {
+        padding: 2rem;
+        border-width: 2px;
+        border-style: solid;
+        border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+        border-image-slice: 1;
+      }
+    }
 
     &__content_left {
       padding-left: 2.5rem;
+      text-align: left;
+      @include respond(tab-port) {
+        text-align: left;
+        padding-left: 0rem;
+      }
+
+      // border-width: 0px 0px 0px 2px;
+      // border-style: solid;
+      // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+      // border-image-slice: 1;
+      // padding-left: 2.5rem;
     }
 
     &__content_right {
       padding-right: 2.5rem;
+      text-align: right;
+      @include respond(tab-port) {
+        text-align: left;
+        padding-right: 0rem;
+      }
+      // border-width: 0px 2px 0px 0px;
+      // border-style: solid;
+      // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+      // border-image-slice: 1;
+      // padding-right: 2.5rem;
     }
 
     &__border_left {
@@ -45,20 +69,32 @@
       border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
       border-image-slice: 1;
       padding-left: 2.5rem;
+      text-align: left;
+
+      @include respond(tab-port) {
+        text-align: left;
+        border: none;
+      }
       // margin-left: 0;
     }
 
     &__border_right {
+      text-align: right;
       border-width: 0px 2px 0px 0px;
       border-style: solid;
       border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
       border-image-slice: 1;
       padding-right: 2.5rem;
+
+      @include respond(tab-port) {
+        text-align: left;
+        border: none;
+      }
       // margin-right: 0;
     }
 
     &__text {
-      text-align: left;
+      // text-align: inherit;
 
       @include respond(phone) {
         margin-bottom: 2.5rem !important;

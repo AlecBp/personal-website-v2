@@ -20,6 +20,8 @@ const Projects = () => {
     }
   }, []);
 
+  console.log(isMobile);
+
   return (
     <section id="experience">
       <Container>
@@ -45,9 +47,10 @@ const Projects = () => {
                 <Col
                   lg={6}
                   sm={12}
-                  className={`d-flex align-items-center ${
-                    i % 2 === 1 ? "justify-content-start" : "justify-content-end"
-                  }`}
+                  className="w-100"
+                  // className={`d-flex align-items-center px-0 ${
+                  //   i % 2 === 1 ? "justify-content-start" : "justify-content-end"
+                  // }`}
                 >
                   <Fade
                     left={isDesktop && i % 2 === 1}
@@ -63,7 +66,7 @@ const Projects = () => {
                           ? "experience-wrapper__content_left"
                           : "experience-wrapper__content_right"
                       }`}
-                      style={{ textAlign: i % 2 === 1 ? "left" : "right" }}
+                      // style={{ textAlign: isMobile ? "left" : i % 2 === 1 ? "left" : "right" }}
                     >
                       <h2 className="experience-wrapper__text-title">{title}</h2>
                       <h2>{company}</h2>
