@@ -19,6 +19,10 @@
     .row {
       margin-bottom: 8rem;
 
+      @include respond(tab-port) {
+        margin-bottom: 6rem;
+      }
+
       @include respond(phone) {
         margin-bottom: 4rem;
       }
@@ -26,7 +30,7 @@
 
     &__box {
       @include respond(tab-port) {
-        padding: 2rem;
+        padding: 2rem 1.5rem 2rem 1.5rem;
         border-width: 2px;
         border-style: solid;
         border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
@@ -34,33 +38,84 @@
       }
     }
 
-    &__content_left {
-      padding-left: 2.5rem;
-      text-align: left;
-      @include respond(tab-port) {
-        text-align: left;
-        padding-left: 0rem;
-      }
+    &__content {
 
-      // border-width: 0px 0px 0px 2px;
-      // border-style: solid;
-      // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-      // border-image-slice: 1;
-      // padding-left: 2.5rem;
+      &_left {
+        @include respond(tab-port) {
+          margin-bottom: 2.5rem !important;
+        }
+  
+        @include respond(tab-land) {
+          margin-bottom: 4.8rem;
+        }
+        padding-left: 2.5rem;
+        text-align: left;
+        @include respond(tab-port) {
+          text-align: left;
+          padding-left: 0rem;
+          padding-right: 0rem;
+        }
+      }
+      &_right {
+        @include respond(tab-port) {
+          margin-bottom: 2.5rem !important;
+        }
+  
+        @include respond(tab-land) {
+          margin-bottom: 4.8rem;
+        }
+        padding-right: 2.5rem;
+        text-align: right;
+        @include respond(tab-port) {
+          text-align: left;
+          padding-left: 0rem;
+          padding-right: 0rem;
+        }
+      }
     }
 
-    &__content_right {
-      padding-right: 2.5rem;
-      text-align: right;
+    // &__content_left {
+    //   padding-left: 2.5rem;
+    //   text-align: left;
+    //   @include respond(tab-port) {
+    //     text-align: left;
+    //     padding-left: 0rem;
+    //   }
+
+    //   // border-width: 0px 0px 0px 2px;
+    //   // border-style: solid;
+    //   // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    //   // border-image-slice: 1;
+    //   // padding-left: 2.5rem;
+    // }
+
+    // &__content_right {
+    //   padding-right: 2.5rem;
+    //   text-align: right;
+    //   @include respond(tab-port) {
+    //     text-align: left;
+    //     padding-right: 0rem;
+    //   }
+    //   // border-width: 0px 2px 0px 0px;
+    //   // border-style: solid;
+    //   // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    //   // border-image-slice: 1;
+    //   // padding-right: 2.5rem;
+    // }
+
+    &__middle {
+      display: flex;
+      align-items: center;
+
       @include respond(tab-port) {
-        text-align: left;
-        padding-right: 0rem;
+        display: block;
       }
-      // border-width: 0px 2px 0px 0px;
-      // border-style: solid;
-      // border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-      // border-image-slice: 1;
-      // padding-right: 2.5rem;
+      // .experience-wrapper__content_left {
+      //   justify-self: flex-start;
+      // }
+      .experience-wrapper__content_right {
+        margin-left: auto;
+      }
     }
 
     &__border_left {
@@ -69,26 +124,30 @@
       border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
       border-image-slice: 1;
       padding-left: 2.5rem;
-      text-align: left;
+      text-align: justify;
 
       @include respond(tab-port) {
         text-align: left;
         border: none;
+        padding-left: 0;
+        padding: 0 1rem;
       }
       // margin-left: 0;
     }
 
     &__border_right {
-      text-align: right;
       border-width: 0px 2px 0px 0px;
       border-style: solid;
       border-image: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
       border-image-slice: 1;
       padding-right: 2.5rem;
+      text-align: justify;
 
       @include respond(tab-port) {
         text-align: left;
         border: none;
+        padding-right: 0;
+        padding: 0 1rem;
       }
       // margin-right: 0;
     }
@@ -96,12 +155,12 @@
     &__text {
       // text-align: inherit;
 
-      @include respond(phone) {
-        margin-bottom: 2.5rem !important;
-      }
-      @include respond(tab-land) {
-        margin-bottom: 4.8rem;
-      }
+      // @include respond(phone) {
+      //   margin-bottom: 2.5rem !important;
+      // }
+      // @include respond(tab-land) {
+      //   margin-bottom: 4.8rem;
+      // }
 
       &-title {
         font-weight: bold;
