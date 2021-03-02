@@ -20,8 +20,6 @@ const Projects = () => {
     }
   }, []);
 
-  console.log(isMobile);
-
   return (
     <section id="experience">
       <Container>

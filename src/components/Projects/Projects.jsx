@@ -151,7 +151,7 @@ const Projects = () => {
                                           <div className="thumbnail rounded">
                                             <ProjectImg alt={item.alt} filename={item.img} />
                                           </div>
-                                          <div className="py-5 px-1">
+                                          <div className="mb-sm-5 mb-5 pb-0 pb-sm-5 px-1">
                                             {item.caption && <p>{item.caption}</p>}
                                           </div>
                                         </div>
