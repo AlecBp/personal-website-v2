@@ -118,6 +118,9 @@ const Projects = () => {
                           onHide={handleClose}
                         >
                           <div className="projects-modal">
+                            <button className="projects-modal-close-modal" onClick={handleClose}>
+                              &#x2715;
+                            </button>
                             <div
                               className="project-modal-wrapper__text"
                               style={{ textAlign: "left" }}
@@ -180,6 +183,17 @@ const Projects = () => {
                                     </div>
                                   </Col> */}
                                 </Row>
+                              </div>
+                              <div className="d-flex mt-5">
+                                <button
+                                  style={{ fontSize: "1.3rem" }}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="cta-btn cta-btn--hero mx-auto"
+                                  onClick={handleClose}
+                                >
+                                  Back
+                                </button>
                               </div>
                             </div>
                           </div>
