@@ -197,11 +197,20 @@ const Projects = () => {
                     distance="30px"
                   >
                     <div className="project-wrapper__image">
-                      <a
+                      {/* <a
                         href={url || "#!"}
                         target="_blank"
                         aria-label="Project Link"
                         rel="noopener noreferrer"
+                      > */}
+                      <div
+                        onClick={() => {
+                          if (enableSeeMore) {
+                            handleShow();
+                            setModalContentId(id);
+                          }
+                        }}
+                        role="button"
                       >
                         <Tilt
                           options={{
@@ -220,7 +229,8 @@ const Projects = () => {
                             <ProjectImg alt={title} filename={img} />
                           </div>
                         </Tilt>
-                      </a>
+                        {/* </a> */}
+                      </div>
                     </div>
                   </Fade>
                 </Col>
