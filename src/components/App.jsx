@@ -15,7 +15,9 @@ import {
   contactData,
   footerData,
   experienceData,
+  interestsData,
 } from "../mock/data";
+import Interests from "./Interests/Interests";
 
 function App() {
   const [hero, setHero] = useState({});
@@ -24,6 +26,7 @@ function App() {
   const [contact, setContact] = useState({});
   const [footer, setFooter] = useState({});
   const [experience, setExperience] = useState([]);
+  const [interests, setInterests] = useState([]);
 
   useEffect(() => {
     setHero({ ...heroData });
@@ -32,14 +35,16 @@ function App() {
     setContact({ ...contactData });
     setFooter({ ...footerData });
     setExperience([...experienceData]);
+    setInterests([...interestsData]);
   }, []);
 
   return (
-    <PortfolioProvider value={{ hero, about, projects, contact, footer, experience }}>
+    <PortfolioProvider value={{ hero, about, projects, contact, footer, experience, interests }}>
       <Hero />
       <About />
       <Projects />
       <Experience />
+      <Interests />
       <Contact />
       <Footer />
     </PortfolioProvider>
