@@ -45,7 +45,7 @@ export const projectsData = [
       { id: nanoid(), name: "Firebase" },
     ],
     url: "https://messenger.alecpagliarussi.me/",
-    repo: "https://github.com/AlecBp/react-messenger", // if no repo, the button will not show up
+    repo: "https://github.com/AlecBp/react-messenger-public", // if no repo, the button will not show up
   },
   {
     id: nanoid(),
