@@ -106,7 +106,7 @@ const Projects = () => {
                           style={{ fontSize: "1.6rem" }}
                           className="cta-btn text-color-main border-0"
                         >
-                          See more...
+                          See more
                         </button>
                       )}
 

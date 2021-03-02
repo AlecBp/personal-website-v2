@@ -157,6 +157,63 @@ export const projectsData = [
     url: "https://weatherapp.alecpagliarussi.me",
     repo: "https://github.com/AlecBp/weather-react", // if no repo, the button will not show up
   },
+  {
+    id: nanoid(),
+    title: "React Spring CRUD",
+    img: "alec_pagliarussi_react_spring_crud_02.PNG",
+    info: "Simple CRUD application made with Spring Framework and React.",
+    info2: "",
+    techStack: [
+      { id: nanoid(), name: "React" },
+      { id: nanoid(), name: "Spring Boot" },
+      { id: nanoid(), name: "PostgreSQL" },
+      { id: nanoid(), name: "MaterialUI" },
+    ],
+    enableSeeMore: true,
+    modalInfo: ["Simple CRUD application made with Spring Framework and React."],
+    modalImages: [
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_01.PNG",
+        alt: "React Spring CRUD form screen",
+        caption: "",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_02.PNG",
+        alt: "Tutoring Management System Dashboard",
+        caption: "Student registration form made with MaterialUI and Formik",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_03.PNG",
+        alt: "React Spring CRUD form screen",
+        caption:
+          "Validation is performed using the yup validation library alongside Formik to manage the form's state",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_04.PNG",
+        alt: "React Spring CRUD form screen",
+        caption:
+          "Records are displayed in a table made with the react-table library. This allows for a more performant table, with the capability of filtering results per column, with more than one active filter at once.",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_05.PNG",
+        alt: "React Spring CRUD form screen",
+        caption: "Table filter demonstration.",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_react_spring_crud_06.PNG",
+        alt: "React Spring CRUD form screen",
+        caption: "Student profile page.",
+      },
+    ],
+    // url: "https://messenger.alecpagliarussi.me/",
+    repo: "https://github.com/AlecBp/react-spring-simple-crud", // if no repo, the button will not show up
+  },
 ];
 
 // EXPERIENCE DATA
