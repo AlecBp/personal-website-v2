@@ -33,21 +33,68 @@ export const aboutData = {
 export const projectsData = [
   {
     id: nanoid(),
-    img: "alec_pagliarussi_react_messenger.jpg",
     title: "React-Messenger",
+    img: "alec_pagliarussi_react_messenger_01.jpg",
     info:
       "A messaging app inspired by Slack made with React, Redux and SemanticUI deployed with Firebase",
     info2: "",
+    techStack: [
+      { id: nanoid(), name: "React" },
+      { id: nanoid(), name: "Redux" },
+      { id: nanoid(), name: "SemanticUI" },
+      { id: nanoid(), name: "Firebase" },
+    ],
     url: "https://messenger.alecpagliarussi.me/",
     repo: "https://github.com/AlecBp/react-messenger", // if no repo, the button will not show up
   },
   {
     id: nanoid(),
-    img: "alec_pagliarussi_react_weather_app.jpg",
+    title: "Tutoring Management System",
+    img: "alec_pagliarussi_tutoring_management_system.jpg",
+    info:
+      "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
+    info2:
+      "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
+    techStack: [
+      { id: nanoid(), name: "React" },
+      { id: nanoid(), name: "NodeJs" },
+      { id: nanoid(), name: "GraphQL" },
+      { id: nanoid(), name: "PostgreSQL" },
+      { id: nanoid(), name: "TypeORM" },
+      { id: nanoid(), name: "MaterialUI" },
+    ],
+    enableSeeMore: true,
+    modalInfo: [
+      "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
+      "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
+    ],
+    modalImages: [
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_tutoring_management_system.jpg",
+        alt: "Tutoring Management System Dashboard",
+        caption:
+          "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
+      },
+      {
+        id: nanoid(),
+        img: "alec_pagliarussi_tutoring_management_system.jpg",
+        alt: "Tutoring Management System Dashboard",
+        caption:
+          "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
+      },
+    ],
+    // url: "https://messenger.alecpagliarussi.me/",
+    // repo: "https://github.com/AlecBp/react-messenger", // if no repo, the button will not show up
+  },
+  {
+    id: nanoid(),
     title: "Weather Forecast App",
+    img: "alec_pagliarussi_react_weather_app.jpg",
     info:
       "A React app that utilizes the OpenWeather API to fetch weather forecast data of any city.",
     info2: "",
+    techStack: [{ id: nanoid(), name: "React" }],
     url: "https://weatherapp.alecpagliarussi.me",
     repo: "https://github.com/AlecBp/weather-react", // if no repo, the button will not show up
   },
@@ -136,11 +183,6 @@ export const contactData = {
 export const interestsData = [
   {
     id: nanoid(),
-    main: "Competitive programming",
-    more: "Placed 10th in Canada in the IEEEXtreme 2020.",
-  },
-  {
-    id: nanoid(),
     main: "Robotics",
     more:
       "Took part in a quite a few competitions during High School, got a few gold medals on the way.",
@@ -150,6 +192,16 @@ export const interestsData = [
     main: "3D Printing",
     more:
       "This probably ties back to the Robotics topic, perfect match... I own a 3D printer and it is always awesome to play around with some designs.",
+  },
+  {
+    id: nanoid(),
+    main: "Competitive programming",
+    more: "Placed 10th in Canada in the IEEEXtreme 2020.",
+  },
+  {
+    id: nanoid(),
+    main: "Gaming",
+    more: "I am a big fan of First Person Shooters and RPGs.",
   },
 ];
 
