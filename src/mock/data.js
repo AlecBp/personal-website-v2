@@ -57,19 +57,19 @@ export const projectsData = [
 export const experienceData = [
   {
     id: nanoid(),
-    title: "Tutor and Teacher Assistant",
-    company: "George Brown College",
-    type: "Part-time",
+    title: "Software Engineer",
+    type: "Contract",
+    company: "Developing a system for Working Women Community Center",
     location: "Toronto, Ontario, Canada",
-    from: "February 2021",
+    from: "April 2020",
     to: "Present",
     info: "",
     info2: "",
     info3: "",
     bullets: [
-      "Totalized more than 850 hours of work, helping students to succeed in their program by providing one-to-one tutoring sessions on the following topics: HTML, CSS, Javascript, C#, Python, Java, C++, PHP, MySQL, Math, CCNA, Data Structures and Algorithms.",
-      "Assist lab instructors during their classes.",
-      "Plan and run in-class tutoring sessions as additional classes that students can attend to reinforce their understanding of the weekly content.",
+      "Project in partnership with the Working Women Community Center’s to develop a web application capable of managing their tutoring program.",
+      "The project scope consists of a complex and large data collection process, scheduling, reports/statistics, among other tools tailored specifically for the client’s needs.",
+      "Tech stack: Typescript, React, NodeJs, GraphQL and PostgreSQL.",
     ],
   },
   {
@@ -78,7 +78,7 @@ export const experienceData = [
     company: "George Brown College",
     type: "Part-time",
     location: "Toronto, Ontario, Canada",
-    from: "February 2021",
+    from: "January 2019 to August 2020 and February 2021",
     to: "Present",
     info: "",
     info2: "",
@@ -91,34 +91,36 @@ export const experienceData = [
   },
   {
     id: nanoid(),
-    title: "Tutor and Teacher Assistant",
-    type: "Part-time",
+    title: "Software Engineer",
+    company: "George Brown College",
+    type: "Contract",
     location: "Toronto, Ontario, Canada",
-    from: "February 2021",
-    to: "Present",
+    from: "August 2020",
+    to: "February 2021",
     info: "",
     info2: "",
     info3: "",
     bullets: [
-      "Totalized more than 850 hours of work, helping students to succeed in their program by providing one-to-one tutoring sessions on the following topics: HTML, CSS, Javascript, C#, Python, Java, C++, PHP, MySQL, Math, CCNA, Data Structures and Algorithms.",
-      "Assist lab instructors during their classes.",
-      "Plan and run in-class tutoring sessions as additional classes that students can attend to reinforce their understanding of the weekly content.",
+      "Engineered and developed a web application that enabled seniors, who are part of home care homes across the US and Canada, to meet online and access a curated library of content served during weekly sessions as a way to combat isolation, a phenomenon that was aggravated by the COVID-19 situation.",
+      "The application scope included CRUD operations for many entities, system scheduled tasks, real-time communication through web sockets, authentication and detailed and customizable authorization levels.",
+      "Tech stack: ReactJS, NodeJS, GraphQL, MongoDB, Redis and Twilio API.",
+      "Deployed on AWS using best practices to achieve elasticity and scalability.",
     ],
   },
   {
     id: nanoid(),
-    title: "Tutor and Teacher Assistant",
-    type: "Part-time",
-    location: "Toronto, Ontario, Canada",
-    from: "February 2021",
-    to: "Present",
+    title: "Extracurrilar Robotics Teacher",
+    company: "Colegio Jean Piaget",
+    type: "Full-time",
+    location: "Santos, Sao Paulo, Brazil",
+    from: "January 2015",
+    to: "January 2018",
     info: "",
     info2: "",
     info3: "",
     bullets: [
-      "Totalized more than 850 hours of work, helping students to succeed in their program by providing one-to-one tutoring sessions on the following topics: HTML, CSS, Javascript, C#, Python, Java, C++, PHP, MySQL, Math, CCNA, Data Structures and Algorithms.",
-      "Assist lab instructors during their classes.",
-      "Plan and run in-class tutoring sessions as additional classes that students can attend to reinforce their understanding of the weekly content.",
+      "Taught and trained students to participate in many Robotics competitions, achieving outstanding results.",
+      "Close involvement in teaching students from Kindergarten to High School to introduce logical thinking to algorithm basics and a soft introduction to programming.",
     ],
   },
 ];
@@ -129,6 +131,27 @@ export const contactData = {
   btn: "",
   email: "alec.paglia@gmail.com",
 };
+
+// OTHER INTERESTS DATA
+export const interestsData = [
+  {
+    id: nanoid(),
+    main: "Competitive programming",
+    more: "Placed 10th in Canada in the IEEEXtreme 2020.",
+  },
+  {
+    id: nanoid(),
+    main: "Robotics",
+    more:
+      "Took part in a quite a few competitions during High School, got a few gold medals on the way.",
+  },
+  {
+    id: nanoid(),
+    main: "3D Printing",
+    more:
+      "This probably ties back to the Robotics topic, perfect match... I own a 3D printer and it is always awesome to play around with some designs.",
+  },
+];
 
 // FOOTER DATA
 export const footerData = {
