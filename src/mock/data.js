@@ -23,9 +23,9 @@ export const aboutData = {
   paragraphOne:
     "Currently taking the last semester of the Computer Programmer Analyst program at George Brown College and looking for a position as Software Developer after graduation.",
   paragraphTwo:
-    "I am a challenge driven person, with strong teamwork and cooperation, I have a passion for learning and teaching.",
+    "I am a challenge driven person, with strong teamwork and cooperation skills, I have a passion for learning and teaching.",
   paragraphThree:
-    "I started programming during High School and since then I had the opportunity to work with a wide variety of technologies and things, ranging from robots, microprocessors and 3D printers to designing and developing software.",
+    "I started programming during High School and since then I had the opportunity to work with a wide variety of technologies, ranging from robots, microprocessors and 3D printers to designing and developing software.",
   resume: "https://drive.google.com/file/d/1Vdz3n-8ApZKz2loayOa7JwVbN3b3JcYg/view?usp=sharing", // if no resume, the button will not show up
 };
 
@@ -134,14 +134,7 @@ export const projectsData = [
         alt: "Tutoring Management System Dashboard",
         caption:
           "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
-      },
-      {
-        id: nanoid(),
-        img: "alec_pagliarussi_tutoring_management_system.jpg",
-        alt: "Tutoring Management System Dashboard",
-        caption:
-          "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
-      },
+      }
     ],
     // url: "https://messenger.alecpagliarussi.me/",
     // repo: "https://github.com/AlecBp/react-messenger", // if no repo, the button will not show up
