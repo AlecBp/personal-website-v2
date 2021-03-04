@@ -4,14 +4,14 @@ import { nanoid } from "nanoid";
 export const headData = {
   title: "Alec Pagliarussi", // e.g: 'Name | Developer'
   lang: "en", // e.g: en, es, fr, jp
-  description: "Alec Pagliarussi - Software Developer based in Toronto, ON", // e.g: Welcome to my website
+  description: "Alec Pagliarussi - Software Engineer based in Toronto, ON", // e.g: Welcome to my website
 };
 
 // HERO DATA
 export const heroData = {
   title: "I am",
   name: "Alec Pagliarussi",
-  subtitle: "Software Developer based in Toronto",
+  subtitle: "Software Engineer based in Toronto",
   // "I solve problems and turn ideas into reality"
   // I can turn your ideas into reality!
   cta: "",
