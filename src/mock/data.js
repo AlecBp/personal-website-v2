@@ -122,10 +122,10 @@ export const projectsData = [
       { id: nanoid(), name: "TypeORM" },
       { id: nanoid(), name: "MaterialUI" },
     ],
-    enableSeeMore: true,
+    enableSeeMore: false,
     modalInfo: [
-      "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
-      "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
+      "Application dedicated to help community centers to manage their free of charge tutoring programs.",
+      "The system includes CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
     ],
     modalImages: [
       {
@@ -305,7 +305,7 @@ export const interestsData = [
   {
     id: nanoid(),
     main: "Competitive programming",
-    more: "Placed 10th in Canada in the IEEEXtreme 2020.",
+    more: "Ranked 11th in Canada and top 12% global in the IEEEXtreme 2020.",
   },
   {
     id: nanoid(),
