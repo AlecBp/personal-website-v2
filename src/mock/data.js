@@ -26,7 +26,7 @@ export const aboutData = {
     "I am a challenge driven person, with strong teamwork and cooperation skills, I have a passion for learning and teaching.",
   paragraphThree:
     "I started programming during High School and since then I had the opportunity to work with a wide variety of technologies, ranging from robots, microprocessors and 3D printers to designing and developing software.",
-  resume: "https://drive.google.com/file/d/1Vdz3n-8ApZKz2loayOa7JwVbN3b3JcYg/view?usp=sharing", // if no resume, the button will not show up
+  resume: "https://drive.google.com/file/d/1S9A2dhzPu2MmsqQKEXzTfzv0PUbt4o06/view?usp=sharing", // if no resume, the button will not show up
 };
 
 // PROJECTS DATA
