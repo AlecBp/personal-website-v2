@@ -29,6 +29,14 @@ module.exports = {
         theme_color: `#02aab0`,
         display: `standalone`,
         icon: "src/images/favicon_new.png",
+        
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: "G-1MF2EF4WS9",
+        head: true,
       },
     },
   ],
