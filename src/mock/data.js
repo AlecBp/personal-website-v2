@@ -4,14 +4,14 @@ import { nanoid } from "nanoid";
 export const headData = {
   title: "Alec Pagliarussi", // e.g: 'Name | Developer'
   lang: "en", // e.g: en, es, fr, jp
-  description: "Alec Pagliarussi - Software Developer based in Toronto, ON", // e.g: Welcome to my website
+  description: "Alec Pagliarussi - Software Engineer based in Toronto, ON", // e.g: Welcome to my website
 };
 
 // HERO DATA
 export const heroData = {
   title: "I am",
   name: "Alec Pagliarussi",
-  subtitle: "Software Developer based in Toronto",
+  subtitle: "Software Engineer based in Toronto",
   // "I solve problems and turn ideas into reality"
   // I can turn your ideas into reality!
   cta: "",
@@ -23,10 +23,10 @@ export const aboutData = {
   paragraphOne:
     "Currently taking the last semester of the Computer Programmer Analyst program at George Brown College and looking for a position as Software Developer after graduation.",
   paragraphTwo:
-    "I am a challenge driven person, with strong teamwork and cooperation, I have a passion for learning and teaching.",
+    "I am a challenge driven person, with strong teamwork and cooperation skills, I have a passion for learning and teaching.",
   paragraphThree:
-    "I started programming during High School and since then I had the opportunity to work with a wide variety of technologies and things, ranging from robots, microprocessors and 3D printers to designing and developing software.",
-  resume: "https://drive.google.com/file/d/1Vdz3n-8ApZKz2loayOa7JwVbN3b3JcYg/view?usp=sharing", // if no resume, the button will not show up
+    "I started programming during High School and since then I had the opportunity to work with a wide variety of technologies, ranging from robots, microprocessors and 3D printers to designing and developing software.",
+  resume: "https://drive.google.com/file/d/1S9A2dhzPu2MmsqQKEXzTfzv0PUbt4o06/view?usp=sharing", // if no resume, the button will not show up
 };
 
 // PROJECTS DATA
@@ -122,10 +122,10 @@ export const projectsData = [
       { id: nanoid(), name: "TypeORM" },
       { id: nanoid(), name: "MaterialUI" },
     ],
-    enableSeeMore: true,
+    enableSeeMore: false,
     modalInfo: [
-      "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
-      "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
+      "Application dedicated to help community centers to manage their free of charge tutoring programs.",
+      "The system includes CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
     ],
     modalImages: [
       {
@@ -134,14 +134,7 @@ export const projectsData = [
         alt: "Tutoring Management System Dashboard",
         caption:
           "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
-      },
-      {
-        id: nanoid(),
-        img: "alec_pagliarussi_tutoring_management_system.jpg",
-        alt: "Tutoring Management System Dashboard",
-        caption:
-          "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality.",
-      },
+      }
     ],
     // url: "https://messenger.alecpagliarussi.me/",
     // repo: "https://github.com/AlecBp/react-messenger", // if no repo, the button will not show up
@@ -312,7 +305,7 @@ export const interestsData = [
   {
     id: nanoid(),
     main: "Competitive programming",
-    more: "Placed 10th in Canada in the IEEEXtreme 2020.",
+    more: "Ranked 11th in Canada and top 12% global in the IEEEXtreme 2020.",
   },
   {
     id: nanoid(),
