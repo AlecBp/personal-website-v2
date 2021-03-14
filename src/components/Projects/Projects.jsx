@@ -46,6 +46,8 @@ const Projects = () => {
               enableSeeMore,
               modalInfo,
               modalImages,
+              modalInfoExperimental,
+              useExperimental,
             } = project;
 
             return (
@@ -127,12 +129,68 @@ const Projects = () => {
                             >
                               <h3 className="project-modal-wrapper__text-title">{title}</h3>
                               <div>
-                                {modalInfo.map((info, i) => (
-                                  <p className="project-modal-wrapper__text-p" key={i}>
-                                    {info}
-                                  </p>
-                                ))}
+                                {!useExperimental &&
+                                  modalInfo.map((info, i) => (
+                                    <p className="project-modal-wrapper__text-p" key={i}>
+                                      {info}
+                                    </p>
+                                  ))}
 
+                                {useExperimental &&
+                                  modalInfoExperimental.map((item, i) => {
+                                    if (item.type === "p")
+                                      return (
+                                        <p className="project-modal-wrapper__text-p" key={i}>
+                                          {item.data}
+                                        </p>
+                                      );
+
+                                    if (item.type === "h2")
+                                      return (
+                                        <p className="h1 mt-5 mb-3" key={i}>
+                                          {item.data}
+                                        </p>
+                                      );
+
+                                    if (item.type === "list")
+                                      return (
+                                        <div key={i}>
+                                          <p className="mb-3 mt-5">{item.listTitle}</p>
+                                          <ul className="mb-3">
+                                            {item.data.map((listItem, j) => {
+                                              return (
+                                                <li style={{ fontSize: "1.5rem" }} key={j}>
+                                                  {listItem}
+                                                </li>
+                                              );
+                                            })}
+                                          </ul>
+                                        </div>
+                                      );
+
+                                    if (item.type === "image")
+                                      return (
+                                        <div key={i} className="project-modal-wrapper__modal-images-container">
+                                          <Col key={id} xs={12}>
+                                            <div className="project-modal-wrapper__image">
+                                              <div className="mt-sm-4 mt-4 mb-4 pb-0 pt-sm-4 px-1">
+                                                {item.caption && <p>{item.caption}</p>}
+                                              </div>
+                                              <div
+                                                className={`thumbnail rounded ${
+                                                  item.isSlimImage ? "slim" : ""
+                                                }`}
+                                              >
+                                                <ProjectImg alt={item.alt} filename={item.img} />
+                                              </div>
+                                              {/* <div className="mb-sm-5 mb-5 pb-0 pb-sm-5 px-1">
+                                                {item.caption && <p>{item.caption}</p>}
+                                              </div> */}
+                                            </div>
+                                          </Col>
+                                        </div>
+                                      );
+                                  })}
                                 <div className="project-modal-wrapper__tech mt-5">
                                   <h4 className="project-modal-wrapper__tech-title">Tech stack:</h4>
                                   <div className="project-modal-wrapper__tech-container">
@@ -140,26 +198,27 @@ const Projects = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="project-modal-wrapper__modal-images-container">
-                                <h3 className="project-modal-wrapper__modal-images-container-title">
-                                  Images:
-                                </h3>
-                                <Row>
-                                  {modalImages.map((item) => {
-                                    return (
-                                      <Col key={id} xs={12}>
-                                        <div className="project-modal-wrapper__image">
-                                          <div className="thumbnail rounded">
-                                            <ProjectImg alt={item.alt} filename={item.img} />
+                              {!useExperimental && (
+                                <div className="project-modal-wrapper__modal-images-container">
+                                  <h3 className="project-modal-wrapper__modal-images-container-title">
+                                    Images:
+                                  </h3>
+                                  <Row>
+                                    {modalImages.map((item) => {
+                                      return (
+                                        <Col key={id} xs={12}>
+                                          <div className="project-modal-wrapper__image">
+                                            <div className="thumbnail rounded">
+                                              <ProjectImg alt={item.alt} filename={item.img} />
+                                            </div>
+                                            <div className="mb-sm-5 mb-5 pb-0 pb-sm-5 px-1">
+                                              {item.caption && <p>{item.caption}</p>}
+                                            </div>
                                           </div>
-                                          <div className="mb-sm-5 mb-5 pb-0 pb-sm-5 px-1">
-                                            {item.caption && <p>{item.caption}</p>}
-                                          </div>
-                                        </div>
-                                      </Col>
-                                    );
-                                  })}
-                                  {/* <Col xs={12}>
+                                        </Col>
+                                      );
+                                    })}
+                                    {/* <Col xs={12}>
                                     <div className="project-modal-wrapper__image">
                                       <div className="thumbnail rounded">
                                         <ProjectImg alt={title} filename={img} />
@@ -180,8 +239,9 @@ const Projects = () => {
                                       </div>
                                     </div>
                                   </Col> */}
-                                </Row>
-                              </div>
+                                  </Row>
+                                </div>
+                              )}
                               <div className="d-flex mt-5">
                                 <button
                                   style={{ fontSize: "1.3rem" }}

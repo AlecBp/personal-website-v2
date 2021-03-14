@@ -6,7 +6,16 @@ import AboutImg from "../Image/AboutImg";
 import aboutData from "./../../data/aboutData.json";
 
 const About = () => {
-  const { img, paragraphOne, paragraphTwo, paragraphThree, resume, coverLetter } = aboutData;
+  const {
+    img,
+    paragraphOne,
+    paragraphTwo,
+    paragraphThree,
+    resume,
+    coverLetter,
+    philosophy,
+    paragraphs,
+  } = aboutData;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -25,20 +34,30 @@ const About = () => {
     <section id="about">
       <Container>
         <Title title="About Me" />
-        <Row className="about-wrapper">
+        <Row style={{paddingBottom: "7rem"}} className="about-wrapper">
+          <Col sm={12}>
+            <Fade bottom={true} duration={1000} delay={1000} distance="30px">
+              <h2 className="h1 mt-3 mb-5 pb-3">
+                {philosophy.replace(`'`, `"`).replace(`'`, `"`)}
+              </h2>
+            </Fade>
+          </Col>
           <Col md={6} sm={12}>
             <Fade bottom duration={1000} delay={600} distance="30px">
               <div className="about-wrapper__image">
-                <AboutImg alt="profile picture" filename={img} />
+                <AboutImg alt="Alec Pagliarussi profile picture" filename={img} />
               </div>
             </Fade>
           </Col>
           <Col md={6} sm={12}>
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
               <div className="about-wrapper__info">
-                <p className="about-wrapper__info-text">{paragraphOne}</p>
+                {paragraphs.map((p, i) => (
+                  <p className="about-wrapper__info-text">{p}</p>
+                ))}
+                {/* <p className="about-wrapper__info-text">{paragraphOne}</p>
                 <p className="about-wrapper__info-text">{paragraphTwo}</p>
-                <p className="about-wrapper__info-text">{paragraphThree}</p>
+                <p className="about-wrapper__info-text">{paragraphThree}</p> */}
                 <div className="d-flex flex-sm-col flex-md-row justify-content-center mt-5">
                   {coverLetter && (
                     <span className="d-flex mr-5">
