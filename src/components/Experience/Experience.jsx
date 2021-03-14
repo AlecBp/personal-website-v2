@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import Fade from "react-reveal/Fade";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import PortfolioContext from "../../context/context";
+import Fade from "react-reveal/Fade";
 import Title from "../Title/Title";
+import experienceData from "./../../data/experienceData.json";
 
 const Projects = () => {
-  const { experience } = useContext(PortfolioContext);
+  const { experience } = experienceData;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

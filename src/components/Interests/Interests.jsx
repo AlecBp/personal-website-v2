@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import Fade from "react-reveal/Fade";
-import Tilt from "react-tilt";
-import { Container, Row, Col } from "react-bootstrap";
-import PortfolioContext from "../../context/context";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import Title from "../Title/Title";
-import ProjectImg from "../Image/ProjectImg";
+import interestData from "./../../data/interestData.json";
 
 const Interests = () => {
-  const { interests } = useContext(PortfolioContext);
+  const { interests } = interestData;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

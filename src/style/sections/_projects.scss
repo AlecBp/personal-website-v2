@@ -206,12 +206,23 @@
     &__image {
       width: 95%;
       margin: 0 auto;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
 
       @include respond(tab-land) {
         width: 100%;
         margin: 0;
         margin-bottom: 3rem;
+      }
+
+      & .slim {
+        width: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        @include respond(tab-land) {
+          width: 100%;
+          margin: 0;
+          margin-bottom: 3rem;
+        }
       }
 
       & .thumbnail {
