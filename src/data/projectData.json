@@ -81,20 +81,14 @@
         { "id": 5, "name": "TypeORM" },
         { "id": 6, "name": "MaterialUI" }
       ],
-      "enableSeeMore": true,
+      "enableSeeMore": false,
       "modalInfo": [
-        "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
-        "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs."
+        "Application dedicated to help community centers to manage their free of charge tutoring programs.",
+        "The system includes CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs."
       ],
       "modalImages": [
         {
           "id": 1,
-          "img": "alec_pagliarussi_tutoring_management_system.jpg",
-          "alt": "Tutoring Management System Dashboard",
-          "caption": "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality."
-        },
-        {
-          "id": 2,
           "img": "alec_pagliarussi_tutoring_management_system.jpg",
           "alt": "Tutoring Management System Dashboard",
           "caption": "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality."
