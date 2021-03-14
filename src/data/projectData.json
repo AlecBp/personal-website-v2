@@ -1,0 +1,170 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "React-Messenger",
+      "img": "alec_pagliarussi_react_messenger_01.jpg",
+      "info": "A messaging app inspired by Slack made with React, Redux and SemanticUI deployed with Firebase",
+      "info2": "",
+      "techStack": [
+        { "id": 1, "name": "React" },
+        { "id": 2, "name": "Redux" },
+        { "id": 3, "name": "SemanticUI" },
+        { "id": 4, "name": "Firebase" }
+      ],
+      "url": "https://messenger.alecpagliarussi.me/",
+      "repo": "https://github.com/AlecBp/react-messenger-public"
+    },
+    {
+      "id": 2,
+      "title": "Dog Breed Classifier",
+      "img": "alec_pagliarussi_dog_breed_01.JPG",
+      "info": "Dog Breed Classifier is a web app capable of classifying a dog's breed through a single picture.",
+      "info2": "The front end of the application is made primarily with React and the backend is a simple Flask server that utilizes a Convolutional Neural Network developed with Tensorflow 2 to classify any incoming picture, outputting the probability of a given picture to belong to one of the more than 120 different dog breeds.",
+      "techStack": [
+        { "id": 1, "name": "Tensorflow 2" },
+        { "id": 2, "name": "React" },
+        { "id": 3, "name": "Flask" },
+        { "id": 4, "name": "AWS EC2 and Application Load Balancer" }
+      ],
+      "enableSeeMore": true,
+      "modalInfo": [
+        "Dog Breed Classifier is a web app capable of classifying a dog's breed through a single picture.",
+        "The front end of the application is made primarily with React and the backend is a simple Flask server that utilizes a Convolutional Neural Network developed with Tensorflow 2 to classify any incoming picture, outputting the probability of a given picture to belong to one of the more than 120 different dog breeds.",
+        "The web app also includes a section explaining many different aspects and challenges of developing and training a Neural Network model to accomplish such a task."
+      ],
+      "modalImages": [
+        {
+          "id": 1,
+          "img": "alec_pagliarussi_dog_breed_01.JPG",
+          "alt": "Dog Breed Classifier home page",
+          "caption": "Dog Breed Classifier home page."
+        },
+        {
+          "id": 2,
+          "img": "alec_pagliarussi_dog_breed_03.JPG",
+          "alt": "Dog Breed Classifier classify an image page",
+          "caption": "In this page the user can choose to upload an image or simply use the camera to capture a new image to classify."
+        },
+        {
+          "id": 3,
+          "img": "alec_pagliarussi_dog_breed_04.JPG",
+          "alt": "Tutoring Management System Dashboard",
+          "caption": "This page shows the results of the classified image, breaking down the confidence level for each one of the possible labels."
+        },
+        {
+          "id": 4,
+          "img": "alec_pagliarussi_dog_breed_05.JPG",
+          "alt": "Tutoring Management System Dashboard",
+          "caption": "The same data output data is also displayed in the form of a chart for better visualization."
+        },
+        {
+          "id": 5,
+          "img": "alec_pagliarussi_dog_breed_02.JPG",
+          "alt": "Dog Breed Classifier documentation page",
+          "caption": "The application also includes a documentation section, in which many of the technical aspects and challenges of developing a Convolutional Neural Network model to solve the dog breed classification are detailed and explained."
+        }
+      ],
+      "url": "https://www.dogbreed.alecpagliarussi.me/"
+    },
+    {
+      "id": 3,
+      "title": "Tutoring Management System",
+      "img": "alec_pagliarussi_tutoring_management_system.jpg",
+      "info": "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
+      "info2": "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs.",
+      "techStack": [
+        { "id": 1, "name": "React" },
+        { "id": 2, "name": "NodeJs" },
+        { "id": 3, "name": "GraphQL" },
+        { "id": 4, "name": "PostgreSQL" },
+        { "id": 5, "name": "TypeORM" },
+        { "id": 6, "name": "MaterialUI" }
+      ],
+      "enableSeeMore": true,
+      "modalInfo": [
+        "Application dedicated to help community centers to manage their free of charge tutoring programs. Still under development.",
+        "The system include CRUD operations, complex scheduling algorithm, reporting functionalities, student progress tracking tools, among other tools custom tailored to the community center's needs."
+      ],
+      "modalImages": [
+        {
+          "id": 1,
+          "img": "alec_pagliarussi_tutoring_management_system.jpg",
+          "alt": "Tutoring Management System Dashboard",
+          "caption": "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality."
+        },
+        {
+          "id": 2,
+          "img": "alec_pagliarussi_tutoring_management_system.jpg",
+          "alt": "Tutoring Management System Dashboard",
+          "caption": "Screenshot of the system's dashboard, where it is possible to visualize some stats and access any system functionality."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Weather Forecast App",
+      "img": "alec_pagliarussi_react_weather_app.jpg",
+      "info": "A React app that utilizes the OpenWeather API to fetch weather forecast data of any city.",
+      "info2": "",
+      "techStack": [{ "id": 1, "name": "React" }],
+      "url": "https://weatherapp.alecpagliarussi.me",
+      "repo": "https://github.com/AlecBp/weather-react"
+    },
+    {
+      "id": 5,
+      "title": "React Spring CRUD",
+      "img": "alec_pagliarussi_react_spring_crud_02.PNG",
+      "info": "Simple CRUD application made with Spring Framework and React.",
+      "info2": "",
+      "techStack": [
+        { "id": 1, "name": "React" },
+        { "id": 2, "name": "Spring Boot" },
+        { "id": 3, "name": "PostgreSQL" },
+        { "id": 4, "name": "MaterialUI" }
+      ],
+      "enableSeeMore": true,
+      "modalInfo": ["Simple CRUD application made with Spring Framework and React."],
+      "modalImages": [
+        {
+          "id": 1,
+          "img": "alec_pagliarussi_react_spring_crud_01.PNG",
+          "alt": "React Spring CRUD form screen",
+          "caption": ""
+        },
+        {
+          "id": 2,
+          "img": "alec_pagliarussi_react_spring_crud_02.PNG",
+          "alt": "Tutoring Management System Dashboard",
+          "caption": "Student registration form made with MaterialUI and Formik"
+        },
+        {
+          "id": 3,
+          "img": "alec_pagliarussi_react_spring_crud_03.PNG",
+          "alt": "React Spring CRUD form screen",
+          "caption": "Validation is performed using the yup validation library alongside Formik to manage the form's state"
+        },
+        {
+          "id": 4,
+          "img": "alec_pagliarussi_react_spring_crud_04.PNG",
+          "alt": "React Spring CRUD form screen",
+          "caption": "Records are displayed in a table made with the react-table library. This allows for a more performant table, with the capability of filtering results per column, with more than one active filter at once."
+        },
+        {
+          "id": 5,
+          "img": "alec_pagliarussi_react_spring_crud_05.PNG",
+          "alt": "React Spring CRUD form screen",
+          "caption": "Table filter demonstration."
+        },
+        {
+          "id": 6,
+          "img": "alec_pagliarussi_react_spring_crud_06.PNG",
+          "alt": "React Spring CRUD form screen",
+          "caption": "Student profile page."
+        }
+      ],
+
+      "repo": "https://github.com/AlecBp/react-spring-simple-crud"
+    }
+  ]
+}

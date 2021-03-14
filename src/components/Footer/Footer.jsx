@@ -1,15 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-scroll";
-import PortfolioContext from "../../context/context";
-import GithubButtons from "../GithubButtons/GithubButtons";
-
-import { githubButtons } from "../../mock/data";
+import footerData from "./../../data/footerData.json";
 
 const Footer = () => {
-  const { footer } = useContext(PortfolioContext);
-  const { networks } = footer;
-  const { isEnabled } = githubButtons;
+  const { networks } = footerData;
 
   return (
     <footer className="footer navbar-static-bottom">
@@ -44,7 +39,7 @@ const Footer = () => {
           </a>
         </p>
 
-        {isEnabled && <GithubButtons />}
+        {/* <GithubButtons /> */}
       </Container>
     </footer>
   );

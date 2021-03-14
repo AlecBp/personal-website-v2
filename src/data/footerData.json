@@ -1,0 +1,14 @@
+{
+  "networks": [
+    {
+      "id": 1,
+      "name": "linkedin",
+      "url": "https://www.linkedin.com/in/alecbp/"
+    },
+    {
+      "id": 2,
+      "name": "github",
+      "url": "https://github.com/AlecBp"
+    }
+  ]
+}

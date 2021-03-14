@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Fade from "react-reveal/Fade";
 import Tilt from "react-tilt";
 import { Container, Row, Col, Modal } from "react-bootstrap";
-import PortfolioContext from "../../context/context";
 import Title from "../Title/Title";
 import ProjectImg from "../Image/ProjectImg";
+import projectData from "./../../data/projectData.json";
 
 const Projects = () => {
-  const { projects } = useContext(PortfolioContext);
+  const { projects } = projectData;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -59,10 +59,10 @@ const Projects = () => {
                     distance="30px"
                   >
                     <div className="project-wrapper__text">
-                      <h3 className="project-wrapper__text-title">{title || "Project Title"}</h3>
+                      <h3 className="project-wrapper__text-title">{title}</h3>
                       <div>
-                        <p>{info || ""}</p>
-                        <p className="mb-5">{info2 || ""}</p>
+                        {info && <p>{info}</p>}
+                        {info2 && <p className="mb-5">{info2}</p>}
                         <div className="project-wrapper__tech">
                           <h4 className="project-wrapper__tech-title">Tech stack:</h4>
                           <div className="project-wrapper__tech-container">
@@ -80,7 +80,7 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="cta-btn cta-btn--hero"
-                          href={url || "#!"}
+                          href={url}
                         >
                           See Live
                         </a>
@@ -125,9 +125,7 @@ const Projects = () => {
                               className="project-modal-wrapper__text"
                               style={{ textAlign: "left" }}
                             >
-                              <h3 className="project-modal-wrapper__text-title">
-                                {title || "Project Title"}
-                              </h3>
+                              <h3 className="project-modal-wrapper__text-title">{title}</h3>
                               <div>
                                 {modalInfo.map((info, i) => (
                                   <p className="project-modal-wrapper__text-p" key={i}>

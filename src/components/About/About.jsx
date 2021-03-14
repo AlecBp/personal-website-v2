@@ -1,13 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import Fade from 'react-reveal/Fade';
-import { Container, Row, Col } from 'react-bootstrap';
-import Title from '../Title/Title';
-import AboutImg from '../Image/AboutImg';
-import PortfolioContext from '../../context/context';
+import React, { useState, useEffect } from "react";
+import Fade from "react-reveal/Fade";
+import { Container, Row, Col } from "react-bootstrap";
+import Title from "../Title/Title";
+import AboutImg from "../Image/AboutImg";
+import aboutData from "./../../data/aboutData.json";
 
 const About = () => {
-  const { about } = useContext(PortfolioContext);
-  const { img, paragraphOne, paragraphTwo, paragraphThree, resume } = about;
+  const { img, paragraphOne, paragraphTwo, paragraphThree, resume, coverLetter } = aboutData;
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -37,29 +36,35 @@ const About = () => {
           <Col md={6} sm={12}>
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
               <div className="about-wrapper__info">
-                <p className="about-wrapper__info-text">
-                  {paragraphOne ||
-                    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
-                </p>
-                <p className="about-wrapper__info-text">
-                  {paragraphTwo ||
-                    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
-                </p>
-                <p className="about-wrapper__info-text">
-                  {paragraphThree || 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'}
-                </p>
-                {resume && (
-                  <span className="d-flex mt-3">
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cta-btn cta-btn--resume"
-                      href={resume}
-                    >
-                      Resume
-                    </a>
-                  </span>
-                )}
+                <p className="about-wrapper__info-text">{paragraphOne}</p>
+                <p className="about-wrapper__info-text">{paragraphTwo}</p>
+                <p className="about-wrapper__info-text">{paragraphThree}</p>
+                <div className="d-flex flex-sm-col flex-md-row justify-content-center mt-5">
+                  {coverLetter && (
+                    <span className="d-flex mr-5">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cta-btn cta-btn--resume"
+                        href={coverLetter}
+                      >
+                        Get my Cover Letter
+                      </a>
+                    </span>
+                  )}
+                  {resume && (
+                    <span className="d-flex">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cta-btn cta-btn--resume"
+                        href={resume}
+                      >
+                        Get my Resume
+                      </a>
+                    </span>
+                  )}
+                </div>
               </div>
             </Fade>
           </Col>

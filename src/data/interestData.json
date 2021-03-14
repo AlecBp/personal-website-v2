@@ -1,0 +1,24 @@
+{
+  "interests": [
+    {
+      "id": 1,
+      "main": "Robotics",
+      "more": "Took part in a quite a few competitions during High School, got a few gold medals on the way."
+    },
+    {
+      "id": 2,
+      "main": "3D Printing",
+      "more": "This probably ties back to the Robotics topic, perfect match... I own a 3D printer and it is always awesome to play around with some designs."
+    },
+    {
+      "id": 3,
+      "main": "Competitive programming",
+      "more": "Placed 10th in Canada in the IEEEXtreme 2020."
+    },
+    {
+      "id": 4,
+      "main": "Gaming",
+      "more": "I am a big fan of First Person Shooters and RPGs."
+    }
+  ]
+}
