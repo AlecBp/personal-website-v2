@@ -24,6 +24,8 @@ export default () => {
         <html lang={lang} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
+        <meta property="og:image" content={Thumbnail} />
+        <meta property="og:url" content="https://alecpagliarussi.me" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content={socialLinks} />
         <meta name="twitter:site" content={"@AlecPaglia"} />
