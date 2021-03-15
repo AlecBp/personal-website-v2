@@ -26,7 +26,7 @@ const Recommendations = () => {
         <div className="recommendations-wrapper">
           <Title title="References & Recommendations" />
           {recommendations.map((recommendation) => {
-            const { name, quotes, id, more, address } = recommendation;
+            const { name, quotes, id, more, address, link } = recommendation;
 
             return (
               <div className="recommendations-wrapper__text" key={id}>
@@ -70,6 +70,16 @@ const Recommendations = () => {
                       <div>{address}</div>
                     </div>
                   </div>
+                  {link && (
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cta-btn cta-btn--hero"
+                      href={link}
+                    >
+                      Get full recommendation
+                    </a>
+                  )}
                 </Fade>
               </div>
             );

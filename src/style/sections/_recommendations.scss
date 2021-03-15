@@ -37,14 +37,15 @@
         }
         // width: 5%;
         font-weight: bold;
-        font-size: 6rem;
-        line-height: 3rem;
+        font-size: 3rem;
+        line-height: 1rem;
+        padding-top: .5rem;
         & .start {
-          padding-top: 1rem;
+          // padding-top: 1rem;
           margin-right: 1.6rem;
         }
         & .end {
-          padding-top: 5rem;
+          // padding-top: 5rem;
           margin-left: 1.6rem;
         }
       }
