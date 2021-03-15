@@ -18,7 +18,7 @@
     {
       "id": 2,
       "title": "Dog Breed Classifier",
-      "img": "alec_pagliarussi_dog_breed_01.jpg",
+      "img": "alec_pagliarussi_dog_breed_app_01.jpg",
       "info": "Dog Breed Classifier is a web app capable of classifying a dog's breed through a single picture.",
       "info2": "The front end of the application is made primarily with React and the backend is a simple Flask server that utilizes a Convolutional Neural Network developed with Tensorflow 2 to classify any incoming picture, outputting the probability of a given picture to belong to one of the more than 120 different dog breeds.",
       "techStack": [
@@ -37,31 +37,31 @@
       "modalImages": [
         {
           "id": 1,
-          "img": "alec_pagliarussi_dog_breed_01.jpg",
+          "img": "alec_pagliarussi_dog_breed_app_01.jpg",
           "alt": "Dog Breed Classifier home page",
           "caption": "Dog Breed Classifier home page."
         },
         {
           "id": 2,
-          "img": "alec_pagliarussi_dog_breed_03.jpg",
+          "img": "alec_pagliarussi_dog_breed_app_03.jpg",
           "alt": "Dog Breed Classifier classify an image page",
           "caption": "In this page the user can choose to upload an image or simply use the camera to capture a new image to classify."
         },
         {
           "id": 3,
-          "img": "alec_pagliarussi_dog_breed_04.jpg",
+          "img": "alec_pagliarussi_dog_breed_app_04.jpg",
           "alt": "Tutoring Management System Dashboard",
           "caption": "This page shows the results of the classified image, breaking down the confidence level for each one of the possible labels."
         },
         {
           "id": 4,
-          "img": "alec_pagliarussi_dog_breed_05.jpg",
+          "img": "alec_pagliarussi_dog_breed_app_05.jpg",
           "alt": "Tutoring Management System Dashboard",
           "caption": "The same data output data is also displayed in the form of a chart for better visualization."
         },
         {
           "id": 5,
-          "img": "alec_pagliarussi_dog_breed_02.jpg",
+          "img": "alec_pagliarussi_dog_breed_app_02.jpg",
           "alt": "Dog Breed Classifier documentation page",
           "caption": "The application also includes a documentation section, in which many of the technical aspects and challenges of developing a Convolutional Neural Network model to solve the dog breed classification are detailed and explained."
         }
