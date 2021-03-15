@@ -34,7 +34,7 @@ const About = () => {
     <section id="about">
       <Container>
         <Title title="About Me" />
-        <Row style={{paddingBottom: "7rem"}} className="about-wrapper">
+        <Row style={{ paddingBottom: "7rem" }} className="about-wrapper">
           <Col sm={12}>
             <Fade bottom={true} duration={1000} delay={1000} distance="30px">
               <h2 className="h1 mt-3 mb-5 pb-3">
@@ -53,7 +53,9 @@ const About = () => {
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
               <div className="about-wrapper__info">
                 {paragraphs.map((p, i) => (
-                  <p className="about-wrapper__info-text">{p}</p>
+                  <p key={i} className="about-wrapper__info-text">
+                    {p}
+                  </p>
                 ))}
                 {/* <p className="about-wrapper__info-text">{paragraphOne}</p>
                 <p className="about-wrapper__info-text">{paragraphTwo}</p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Title from "../Title/Title";
 import recommendationData from "./../../data/recommendationData.json";
+import Fade from "react-reveal/Fade";
 
 const Recommendations = () => {
   const { recommendations } = recommendationData;
@@ -29,28 +30,47 @@ const Recommendations = () => {
 
             return (
               <div className="recommendations-wrapper__text" key={id}>
-                <div className="mb-5">
-                  {quotes.map((q, j) => {
-                    return (
-                      <div key={j} className="my-3 d-flex justify-content-center align-items-center">
-                        <div className="recommendations-wrapper__text-quote-mark">
-                          <div className="start">&#8220;</div>
+                <Fade
+                  left={isDesktop}
+                  bottom={isMobile}
+                  duration={1000}
+                  delay={500}
+                  distance="30px"
+                >
+                  <div className="mb-5">
+                    {quotes.map((q, j) => {
+                      return (
+                        <div
+                          key={j}
+                          className="my-3 d-flex justify-content-center align-items-center"
+                        >
+                          <div className="recommendations-wrapper__text-quote-mark">
+                            <div className="start">&#8220;</div>
+                          </div>
+                          <p className="recommendations-wrapper__text-quote">{q}</p>
+                          <div className="recommendations-wrapper__text-quote-mark">
+                            <div className="end">&#8221;</div>
+                          </div>
                         </div>
-                        <p className="recommendations-wrapper__text-quote">{q}</p>
-                        <div className="recommendations-wrapper__text-quote-mark">
-                          <div className="end">&#8221;</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  <div className="recommendations-wrapper__text-info">
-                    <div>{name}</div>
-                    <div>{more}</div>
-                    <div>{address}</div>
+                      );
+                    })}
                   </div>
-                </div>
+                </Fade>
+                <Fade
+                  left={isDesktop}
+                  bottom={isMobile}
+                  duration={1000}
+                  delay={500}
+                  distance="30px"
+                >
+                  <div>
+                    <div className="recommendations-wrapper__text-info">
+                      <div>{name}</div>
+                      <div>{more}</div>
+                      <div>{address}</div>
+                    </div>
+                  </div>
+                </Fade>
               </div>
             );
           })}
