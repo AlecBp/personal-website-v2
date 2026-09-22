@@ -13,7 +13,7 @@ links:
   source: https://github.com/AlecBp/personal-website-v2
 earlier: Software engineer (contract) at George Brown College Research & Innovation, 2020–2021 · Volunteer software engineer at Working Women Community Center, 2020–2022 · Tutor and teaching assistant at George Brown College, 2019–2021 · Robotics teacher at Jean Piaget College, Brazil, 2015–2018 · Founder of a 3D-printing shop, 2016–2018
 education: Advanced Diploma, Computer Programmer Analyst — George Brown College, 2018–2021. Computer Technology Departmental Award.
-beyond: Away from work I run a 3D printer and a home lab, do some woodworking, and smoke BBQ low and slow. I still enjoy competitive programming, too — at IEEEXtreme 2020 I placed 11th in Canada and in the top 12% worldwide.
+beyond: Away from work, skiing is the big one. I also run a 3D printer and a home lab, do some woodworking, and smoke BBQ low and slow. I still enjoy competitive programming, too — at IEEEXtreme 2020 I placed 11th in Canada and in the top 12% worldwide.
 contact: Email is the best way to reach me. I’m also on LinkedIn and GitHub.
 ---
 
