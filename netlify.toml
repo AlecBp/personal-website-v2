@@ -1,9 +1,7 @@
+# Node version comes from .nvmrc.
 [build]
   command = "npm run build"
   publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "24"
 
 [[headers]]
   for = "/*"
