@@ -6,9 +6,10 @@ email-link decoder.
 
 ## Run locally
 
-Requires Node.js 22.12 or newer (Netlify builds with Node 24).
+Uses Node.js 24 LTS; the exact version is pinned in `.nvmrc` (`nvm use`), which Netlify also reads.
 
 ```bash
+nvm use
 npm install
 npm run dev       # http://localhost:4321
 npm run build     # astro check + static build into dist/
@@ -31,6 +32,24 @@ Schemas are in `src/content.config.ts`. `npm run build` fails if a field is miss
 
 The resume is served from `public/resume.pdf`. Replace the file to update it.
 
+## Dependencies
+
+- `allowScripts` in `package.json` lists which dependency install scripts npm may run
+  (npm 11.19+ blocks unreviewed ones). Review new prompts with `npm install-scripts ls`.
+- `overrides` pins `fflate` to 0.7.5, the patched release for GHSA-px8p-9vwx-vf98. It comes in through
+  `satori`, which pins 0.7.3. Remove the override once `satori` updates.
+- TypeScript stays on 6.x until `@astrojs/check` supports TypeScript 7.
+
+## Content Security Policy
+
+`security.csp` in `astro.config.mjs` makes Astro emit a per-page CSP `<meta>` with hashes for every
+script and style it processes. `<script is:inline>` blocks are **not** hashed and will be blocked, so
+use normal `<script>` tags. The one exception is the theme bootstrap in `src/scripts/theme-init.js`,
+which has to run synchronously: the layout inlines it and the config hashes the same file. Avoid
+inline `style="…"` attributes too; CSP blocks them.
+
+CSP only takes effect in `npm run build` + `npm run preview`, not in `npm run dev`.
+
 ## Images, Open Graph card and favicons
 
 - The hero photo is `src/assets/profile.jpeg`. Astro generates AVIF, WebP and JPEG variants at build time.
@@ -41,7 +60,7 @@ The resume is served from `public/resume.pdf`. Replace the file to update it.
 ## Deploy
 
 The site is hosted on Netlify, which builds it from this repo. `netlify.toml` sets the build command
-(`npm run build`), the output folder (`dist`), the Node version, cache headers and security headers,
+(`npm run build`), the output folder (`dist`), cache headers and security headers,
 and it takes precedence over the settings in the Netlify dashboard. The custom domain and the
 `www` → apex redirect are configured in the Netlify dashboard, so DNS doesn't change.
 
