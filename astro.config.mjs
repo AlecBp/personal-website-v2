@@ -12,6 +12,7 @@ const themeInitHash = `sha256-${createHash('sha256').update(themeInit).digest('b
 export default defineConfig({
   site: 'https://alecpagliarussi.me',
   trailingSlash: 'ignore',
+  devToolbar: { enabled: false },
   // The whole stylesheet is a few KB, so inlining it removes the only render-blocking request.
   build: { format: 'directory', inlineStylesheets: 'always' },
   // Shiki emits inline styles, which the CSP below would block; Prism uses classes instead.
