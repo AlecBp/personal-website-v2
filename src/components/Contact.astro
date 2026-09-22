@@ -1,0 +1,83 @@
+---
+interface Props {
+  intro: string;
+  email: string;
+  linkedin: string;
+  github: string;
+}
+
+const { intro, email, linkedin, github } = Astro.props;
+
+// The address never appears in the HTML as text; a small script assembles the mailto link.
+const [user, domain] = email.split('@');
+const encoded = { user: btoa(user.split('').reverse().join('')), domain: btoa(domain) };
+const handle = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+---
+
+<p class="intro">{intro}</p>
+<ul class="channels">
+  <li>
+    <span class="eyebrow">Email</span>
+    <a class="value js-email" data-u={encoded.user} data-d={encoded.domain} href="#contact" hidden>
+      Email me
+    </a>
+    <noscript><span class="value">alec.paglia [at] gmail [dot] com</span></noscript>
+  </li>
+  <li>
+    <span class="eyebrow">LinkedIn</span>
+    <a class="value" href={linkedin} rel="me">{handle(linkedin)}</a>
+  </li>
+  <li>
+    <span class="eyebrow">GitHub</span>
+    <a class="value" href={github} rel="me">{handle(github)}</a>
+  </li>
+</ul>
+
+<script is:inline>
+  document.querySelectorAll('.js-email').forEach((link) => {
+    const user = atob(link.dataset.u).split('').reverse().join('');
+    const address = `${user}@${atob(link.dataset.d)}`;
+    link.href = `mailto:${address}`;
+    link.textContent = address;
+    link.hidden = false;
+  });
+</script>
+
+<style>
+  .intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .channels {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+
+  .channels li {
+    display: grid;
+    gap: 0.2rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 36rem) {
+    .channels li {
+      grid-template-columns: 7rem minmax(0, 1fr);
+      align-items: baseline;
+    }
+  }
+
+  .value {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    overflow-wrap: anywhere;
+  }
+
+  .value[hidden] {
+    display: none;
+  }
+</style>

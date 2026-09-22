@@ -1,0 +1,145 @@
+---
+import { Picture } from 'astro:assets';
+import portrait from '../assets/profile.jpeg';
+
+interface Props {
+  name: string;
+  jobTitle: string;
+  employer: string;
+  tagline: string;
+  location: string;
+  resume: string;
+  linkedin: string;
+}
+
+const { name, jobTitle, employer, tagline, location, resume, linkedin } = Astro.props;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap grid">
+    <div class="portrait rise">
+      <Picture
+        src={portrait}
+        alt={`Portrait of ${name}`}
+        width={176}
+        height={176}
+        widths={[112, 176, 224, 352]}
+        sizes="(min-width: 60rem) 176px, 112px"
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={72}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+
+    <div class="intro">
+      <h1 id="hero-title" class="rise" style="--i: 1">{name}</h1>
+      <p class="role rise" style="--i: 2">
+        <span class="accent">{jobTitle}</span> <span class="nowrap">at {employer}</span>
+      </p>
+      <p class="tagline rise" style="--i: 3">{tagline}</p>
+      <p class="meta location rise" style="--i: 4">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path>
+          <circle cx="12" cy="9.5" r="2.5"></circle>
+        </svg>
+        {location}
+      </p>
+      <div class="actions rise" style="--i: 5">
+        <a class="btn btn--primary" href={resume} type="application/pdf">
+          Resume
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"></path>
+            <path d="M14 3v5h5M9 13h6M9 17h6"></path>
+          </svg>
+          <span class="visually-hidden">(PDF)</span>
+        </a>
+        <a class="btn" href={linkedin} rel="me">
+          LinkedIn
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7M9 7h8v8"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(2.5rem, 9vw, 6rem) clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .portrait :global(img) {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--bg-soft);
+  }
+
+  @media (min-width: 60rem) {
+    .portrait {
+      justify-self: end;
+      padding-top: 0.5rem;
+    }
+
+    .portrait :global(img) {
+      width: 176px;
+      height: 176px;
+    }
+  }
+
+  h1 {
+    font-size: var(--step-4);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .role {
+    margin-top: 0.9rem;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .accent {
+    color: var(--accent);
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .tagline {
+    margin-top: 1.5rem;
+    max-width: 34em;
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+  }
+
+  .location svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+</style>

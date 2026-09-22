@@ -1,0 +1,69 @@
+---
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+  quiet?: boolean;
+}
+
+const { id, number, title, quiet = false } = Astro.props;
+const headingId = `${id}-title`;
+---
+
+<section id={id} class:list={['section', { quiet }]} aria-labelledby={headingId}>
+  <div class="wrap grid">
+    <header class="section-head">
+      <span class="num" aria-hidden="true">{number}</span>
+      <h2 id={headingId}>{title}</h2>
+    </header>
+    <div class="section-body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: clamp(3rem, 7vw, 5rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .num {
+    font-family: var(--font-display);
+    font-size: var(--step--1);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+
+  h2 {
+    font-size: var(--step-1);
+  }
+
+  /* On wide screens the label sits in the margin and follows the reader down the section. */
+  @media (min-width: 60rem) {
+    .section-head {
+      flex-direction: column;
+      gap: 0.35rem;
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+      padding-top: 0.2rem;
+    }
+
+    h2 {
+      font-size: 1.0625rem;
+    }
+  }
+
+  .quiet .section-body {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+</style>
