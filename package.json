@@ -1,0 +1,31 @@
+{
+  "name": "alecpagliarussi.me",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Personal site of Alec Pagliarussi, built with Astro",
+  "author": "Alec Pagliarussi <alec.paglia@gmail.com> (https://alecpagliarussi.me)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlecBp/personal-website-v2"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "og": "node scripts/og.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.3",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource/geist-sans": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "satori": "^0.33.5"
+  }
+}
