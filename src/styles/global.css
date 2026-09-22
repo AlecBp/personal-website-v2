@@ -119,7 +119,6 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 ::selection {
@@ -290,4 +289,56 @@ a:hover {
 
 main:focus {
   outline: none;
+}
+
+/* ---------- Print ---------- */
+
+@media print {
+  :root,
+  :root[data-theme] {
+    color-scheme: light;
+  }
+
+  .site-header nav,
+  .theme-toggle,
+  .skip-link,
+  .actions {
+    display: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .rise {
+    animation: none !important;
+  }
+
+  .section {
+    padding-block: 1.5rem;
+  }
+
+  /* Grid containers fragment poorly across pages in Chromium; plain flow prints cleanly. */
+  .grid {
+    display: block;
+  }
+
+  .grid > * + * {
+    margin-top: 1rem;
+  }
+
+  li {
+    break-inside: avoid-page;
+  }
+
+  .section-head {
+    position: static !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
 }
