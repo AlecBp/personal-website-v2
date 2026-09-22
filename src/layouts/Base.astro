@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import themeInit from '../scripts/theme-init.js?raw';
 
 interface Props {
   title?: string;
@@ -43,6 +44,7 @@ const person = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={name} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 
     <meta name="color-scheme" content="light dark" />
@@ -73,21 +75,13 @@ const person = {
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(person)} />
-
-    <!-- Resolve the theme before first paint so there is no flash. -->
-    <script is:inline>
-      (() => {
-        let stored = null;
-        try {
-          stored = localStorage.getItem('theme');
-        } catch {}
-        const system = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme =
-          stored === 'light' || stored === 'dark' ? stored : system;
-      })();
-    </script>
   </head>
   <body>
+    <!--
+      Resolve the theme before anything paints. It must stay synchronous, so it is inlined;
+      astro.config.mjs adds its hash to the CSP. It sits in <body> so the CSP <meta> covers it.
+    -->
+    <script is:inline set:html={themeInit} />
     <a class="skip-link" href="#main">Skip to content</a>
     <Header />
     <main id="main" tabindex="-1">

@@ -25,15 +25,19 @@ const nav = [
   </button>
 </header>
 
-<script is:inline>
-  (() => {
-    const button = document.querySelector('.theme-toggle');
-    if (!button) return;
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  if (button) {
     const root = document.documentElement;
     const media = matchMedia('(prefers-color-scheme: dark)');
     const sync = () => {
       const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       button.setAttribute('aria-label', `Switch to ${next} theme`);
+      // Keep the browser UI colour in step with the chosen theme, not just the system one.
+      const background = getComputedStyle(document.body).backgroundColor;
+      document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+        meta.setAttribute('content', background);
+      });
     };
     button.addEventListener('click', () => {
       root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -53,7 +57,7 @@ const nav = [
     });
     sync();
     button.hidden = false;
-  })();
+  }
 </script>
 
 <style>

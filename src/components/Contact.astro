@@ -33,10 +33,11 @@ const handle = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(
   </li>
 </ul>
 
-<script is:inline>
-  document.querySelectorAll('.js-email').forEach((link) => {
-    const user = atob(link.dataset.u).split('').reverse().join('');
-    const address = `${user}@${atob(link.dataset.d)}`;
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.js-email').forEach((link) => {
+    const { u = '', d = '' } = link.dataset;
+    const user = atob(u).split('').reverse().join('');
+    const address = `${user}@${atob(d)}`;
     link.href = `mailto:${address}`;
     link.textContent = address;
     link.hidden = false;

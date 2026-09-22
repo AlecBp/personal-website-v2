@@ -35,19 +35,19 @@ const { name, jobTitle, employer, tagline, location, resume, linkedin } = Astro.
     </div>
 
     <div class="intro">
-      <h1 id="hero-title" class="rise" style="--i: 1">{name}</h1>
-      <p class="role rise" style="--i: 2">
+      <h1 id="hero-title" class="rise">{name}</h1>
+      <p class="role rise">
         <span class="accent">{jobTitle}</span> <span class="nowrap">at {employer}</span>
       </p>
-      <p class="tagline rise" style="--i: 3">{tagline}</p>
-      <p class="meta location rise" style="--i: 4">
+      <p class="tagline rise">{tagline}</p>
+      <p class="meta location rise">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path>
           <circle cx="12" cy="9.5" r="2.5"></circle>
         </svg>
         {location}
       </p>
-      <div class="actions rise" style="--i: 5">
+      <div class="actions rise">
         <a class="btn btn--primary" href={resume} type="application/pdf">
           Resume
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -68,6 +68,13 @@ const { name, jobTitle, employer, tagline, location, resume, linkedin } = Astro.
 </section>
 
 <style>
+  /* Stagger the entrance; kept in CSS so the page needs no inline style attributes (CSP). */
+  .intro > :nth-child(1) { --i: 1; }
+  .intro > :nth-child(2) { --i: 2; }
+  .intro > :nth-child(3) { --i: 3; }
+  .intro > :nth-child(4) { --i: 4; }
+  .intro > :nth-child(5) { --i: 5; }
+
   .hero {
     padding-block: clamp(2.5rem, 9vw, 6rem) clamp(3rem, 8vw, 5.5rem);
   }
