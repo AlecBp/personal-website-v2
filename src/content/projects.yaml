@@ -1,0 +1,29 @@
+# Student-era side projects. Only list links that are live; check before adding.
+- id: react-messenger
+  order: 1
+  title: React-Messenger
+  summary: A Slack-inspired messaging app.
+  stack: React, Redux, Firebase
+  year: 2020
+  links:
+    - { label: Demo, href: "https://messenger.alecpagliarussi.me/" }
+    - { label: Source, href: "https://github.com/AlecBp/react-messenger-public" }
+
+- id: weather
+  order: 2
+  title: Weather Forecast App
+  summary: City forecasts from the OpenWeather API.
+  stack: React
+  year: 2020
+  links:
+    - { label: Demo, href: "https://weatherapp.alecpagliarussi.me/" }
+    - { label: Source, href: "https://github.com/AlecBp/weather-react" }
+
+- id: react-spring-crud
+  order: 3
+  title: React Spring CRUD
+  summary: A student-records app with validated forms and filterable tables.
+  stack: Spring Boot, React, PostgreSQL
+  year: 2020
+  links:
+    - { label: Source, href: "https://github.com/AlecBp/react-spring-simple-crud" }

@@ -1,0 +1,21 @@
+# Selected work: broad areas of focus, one or two sentences each. Lower `order` shows first.
+# Keep this high level: no internal product, feature or API names and no metrics. The resume has the detail.
+- id: resilience
+  order: 1
+  title: Resilience under dependency failure
+  summary: Caching and graceful-degradation patterns that keep services serving when upstream systems slow down or fail.
+
+- id: foundations
+  order: 2
+  title: Shared platform foundations
+  summary: SDKs and packages for authorization, service clients and integrations, adopted across a multi-squad microservice platform.
+
+- id: migrations
+  order: 3
+  title: Platform migrations and messaging
+  summary: Moving production services onto Kubernetes and scaling event-driven messaging on Kafka.
+
+- id: owners
+  order: 4
+  title: Growing technical owners
+  summary: Design reviews, planning, and helping engineers write the design doc and lead the delivery themselves.

@@ -1,0 +1,12 @@
+# Talks and, later, posts. Add `href` and `date` when there is something to link to.
+- id: microservice-auth-talk
+  order: 1
+  kind: talk
+  title: Microservice authentication patterns
+  venue: Org-wide tech talk, ServiceTitan
+
+- id: ai-tools-demo
+  order: 2
+  kind: talk
+  title: Company-wide AI tools demo
+  venue: Presenter, ServiceTitan
