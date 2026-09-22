@@ -14,6 +14,8 @@ export default defineConfig({
   trailingSlash: 'ignore',
   // The whole stylesheet is a few KB, so inlining it removes the only render-blocking request.
   build: { format: 'directory', inlineStylesheets: 'always' },
+  // Shiki emits inline styles, which the CSP below would block; Prism uses classes instead.
+  markdown: { syntaxHighlight: 'prism' },
   // Astro hashes the scripts and styles it processes into a per-page CSP <meta>.
   security: {
     csp: {
