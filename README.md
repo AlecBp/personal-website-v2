@@ -77,4 +77,4 @@ have aged out.
 
 ## Licence
 
-See `LICENSE.md` for the code. Geist is licensed under the SIL Open Font License (`public/fonts/Geist-OFL.txt`).
+Geist is licensed under the SIL Open Font License (`public/fonts/Geist-OFL.txt`).

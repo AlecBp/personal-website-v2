@@ -2,9 +2,9 @@
 name: Alec Pagliarussi
 jobTitle: Staff Software Engineer
 employer: ServiceTitan
-tagline: "I like building things — software for a living, and electronics, woodworking and 3D prints for the fun of it."
+tagline: "I like building things — software for a living, and woodworking and 3D prints for the fun of it."
 location: Ontario, Canada
-description: "Staff Software Engineer at ServiceTitan who likes building things: backend systems at work, and electronics, woodworking and 3D prints at home."
+description: "Staff Software Engineer at ServiceTitan who likes building things: backend systems at work, and woodworking and 3D prints at home."
 resume: /resume.pdf
 email: alec.paglia@gmail.com
 links:
