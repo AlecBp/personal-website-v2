@@ -2,20 +2,20 @@
 # Keep this high level: no internal product, feature or API names and no metrics. The resume has the detail.
 - id: resilience
   order: 1
-  title: Resilience under dependency failure
-  summary: Caching and graceful-degradation patterns that keep services serving when upstream systems slow down or fail.
+  title: Staying up when dependencies fail
+  summary: Caching and fallback patterns that keep our services responding when something they depend on slows down or goes offline.
 
 - id: foundations
   order: 2
-  title: Shared platform foundations
-  summary: SDKs and packages for authorization, service clients and integrations, adopted across a multi-squad microservice platform.
+  title: Shared building blocks
+  summary: Libraries for authorization, service-to-service calls and integrations, used by services across the platform so teams don’t solve the same problem twice.
 
 - id: migrations
   order: 3
-  title: Platform migrations and messaging
-  summary: Moving production services onto Kubernetes and scaling event-driven messaging on Kafka.
+  title: Migrations and messaging
+  summary: Moving production services onto Kubernetes, and scaling our highest-volume Kafka topics without losing messages.
 
 - id: owners
   order: 4
-  title: Growing technical owners
-  summary: Design reviews, planning, and helping engineers write the design doc and lead the delivery themselves.
+  title: Growing engineers into owners
+  summary: Design reviews and mentoring until engineers are writing the design doc and leading the project themselves. The teacher in me never really left.
