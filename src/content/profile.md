@@ -21,4 +21,4 @@ I'm a Staff Software Engineer at ServiceTitan and the technical lead of a produc
 
 I took the long way here. I spent three years teaching robotics at Jean Piaget College in Brazil and ran a small 3D-printing shop on the side. Then I came to Toronto to study at George Brown College, where I tutored, worked as a TA, and led a small team shipping a real-time web app to production. In 2021 I joined HomeX to work on Schedule Engine, and I've been at ServiceTitan since the 2022 acquisition.
 
-What I care about hasn't changed much since the classroom. I like systems that degrade gracefully instead of falling over. I like turning a one-off fix into something the next team can reuse. Most of all, I like helping the engineers around me become owners of their work, the people who write the design doc and lead the delivery.
+At heart I like building things. I enjoy tinkering with technology, the challenge of learning something new, and the curiosity of figuring out how different things work. That's what got me into robotics and electronics in the first place, and it's the same reason I keep coming back to woodworking and 3D printing.
