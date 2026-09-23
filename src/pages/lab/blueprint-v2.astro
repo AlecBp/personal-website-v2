@@ -19,7 +19,8 @@ const route = [
   { year: '2018', place: 'Toronto', what: 'George Brown College, Computer Programmer Analyst', kind: 'teach' },
   { year: '2021', place: 'Toronto', what: 'HomeX — Schedule Engine', kind: 'build' },
   { year: '2022', place: 'Remote, Ontario', what: 'ServiceTitan, via acquisition', kind: 'build' },
-  { year: '2025', place: 'Remote, Ontario', what: 'Staff Software Engineer', kind: 'build' },
+  { year: '2025', place: 'Remote, Ontario', what: 'Staff Software Engineer', kind: 'build here' },
+  { year: 'Next', place: 'Destination TBD', what: 'Still building…', kind: 'next' },
 ];
 
 const bom = [
@@ -69,16 +70,16 @@ const bom = [
       <h2 class="section-title"><span>01</span> Route</h2>
       <ol class="route">
         {route.map((s, i) => (
-          <li class:list={[s.kind, { here: i === route.length - 1 }]}>
+          <li class={s.kind}>
             <span class="node" aria-hidden="true"></span>
             <p class="stamp">{s.year}</p>
             <p class="what">{s.what}</p>
             <p class="label">{s.place}</p>
+            {s.kind.includes('here') && <p class="pen pen-here" aria-hidden="true">you are here ↑</p>}
           </li>
         ))}
       </ol>
-      <p class="legend label" aria-hidden="true"><span class="dash"></span> Teaching &amp; study <span class="solid"></span> Industry</p>
-      <p class="pen pen-here" aria-hidden="true">you are here ↑</p>
+      <p class="legend label" aria-hidden="true"><span class="key"><span class="dash"></span> Teaching &amp; study</span><span class="key"><span class="solid"></span> Industry</span><span class="key"><span class="dot"></span> Ahead</span></p>
       <div class="prose"><About /></div>
     </section>
 
@@ -299,23 +300,36 @@ const bom = [
   .route li { position: relative; padding-left: 2rem; }
   .route li::before { content: ''; position: absolute; left: 6px; top: 0.9rem; bottom: -1.5rem; border-left: 2px solid var(--ink); }
   .route li.teach::before { border-left-style: dashed; }
-  .route li:last-child::before { display: none; }
+  /* The segment into the future is dotted, and the last one fades out with an arrow: the line keeps going. */
+  .route li.here::before { border-left: 2px dotted var(--accent); }
+  .route li.next::before { border-left: 2px dotted var(--accent); bottom: -2.5rem; mask-image: linear-gradient(to bottom, #000 30%, transparent); }
+  .route li.next::after { content: ''; position: absolute; left: 2px; bottom: -2.6rem; width: 8px; height: 8px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(45deg); opacity: 0.5; }
+  .route li.next { padding-bottom: 2.5rem; margin-bottom: 1.5rem; }
+  .route .next .node { border-style: dashed; border-color: var(--accent); }
+  .route .next .stamp { color: var(--muted); }
+  .route .next .what { font-weight: 500; font-style: italic; color: var(--muted); }
   .route .node { position: absolute; left: 0; top: 0.35rem; width: 14px; height: 14px; border: 2px solid var(--ink); background: var(--paper); border-radius: 50%; }
   .route .here .node { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgb(194 65 12 / 0.18); }
   .route .stamp { font: 500 0.875rem var(--mono); color: var(--accent); }
   .route .what { font-weight: 600; font-stretch: 108%; line-height: 1.3; margin-top: 0.1rem; }
   @media (min-width: 52rem) {
-    .route { grid-template-columns: repeat(6, 1fr); gap: 1rem; padding-top: 0.5rem; }
+    .route { grid-template-columns: repeat(7, 1fr); gap: 1rem; padding-top: 0.5rem; }
     .route li { padding-left: 0; padding-top: 2rem; }
     .route li::before { left: 7px; right: -1rem; top: 6px; bottom: auto; border-left: 0; border-top: 2px solid var(--ink); }
     .route li.teach::before { border-top-style: dashed; }
+    .route li.here::before { border-top: 2px dotted var(--accent); }
+    .route li.next { padding-bottom: 0; margin-bottom: 0; }
+    .route li.next::before { bottom: auto; right: -1.75rem; border-left: 0; border-top: 2px dotted var(--accent); mask-image: linear-gradient(to right, #000 40%, transparent); }
+    .route li.next::after { left: auto; right: -1.75rem; bottom: auto; top: 2px; transform: rotate(-45deg); }
     .route .node { top: 0; }
   }
-  .legend { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; }
+  .legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 1.5rem; }
+  .legend > span { flex: none; }
   .legend .dash, .legend .solid { width: 1.75rem; border-top: 2px dashed var(--ink); }
-  .legend .solid { border-top-style: solid; margin-left: 1rem; }
-  .pen-here { margin: -1.25rem 0 0 auto; width: max-content; }
-  @media (max-width: 52rem) { .pen-here { display: none; } }
+  .legend .key { display: inline-flex; align-items: center; gap: 0.5rem; margin-right: 1rem; white-space: nowrap; }
+  .legend .solid { border-top-style: solid; }
+  .legend .dot { width: 1.75rem; border-top: 2px dotted var(--accent); }
+  .pen-here { margin-top: 0.4rem; white-space: nowrap; }
   .prose { max-width: 40rem; margin-top: 2.5rem; }
   .prose p + p { margin-top: 1em; }
 
