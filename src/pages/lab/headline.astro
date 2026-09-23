@@ -1,0 +1,370 @@
+---
+// Exploration A — "Headline". Wilson Miner's sentence-as-headline + tinted portrait in the grid,
+// Tom Critchlow's quiet route rows, Manuel Moreale's "what next?" contact.
+import { Picture } from 'astro:assets';
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/geist';
+import Lab from '../../lab/Lab.astro';
+import Email from '../../lab/Email.astro';
+import { loadSite, route, next } from '../../lab/data';
+import portrait from '../../assets/profile.jpeg';
+
+const { p, About, experience, work, writing } = await loadSite();
+const year = (d: string) => (d === 'Present' ? 'now' : d.split(' ')[1]);
+---
+
+<Lab title="Headline">
+  <div class="page">
+    <header class="top">
+      <p class="site">alecpagliarussi.me</p>
+      <nav aria-label="Sections">
+        <a href="#route">Route</a>
+        <a href="#work">Work</a>
+        <a href="#outside">Outside work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="headline">Alec Pagliarussi <span>likes building things.</span></h1>
+
+      <div class="intro">
+        <figure class="portrait">
+          <Picture src={portrait} alt={`Portrait of ${p.name}`} width={280} height={280} widths={[280, 560]} sizes="(min-width: 60rem) 16rem, 40vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" />
+        </figure>
+        <div class="about"><About /></div>
+        <aside class="facts">
+          <dl>
+            <dt>Now</dt>
+            <dd>{p.jobTitle}, <strong>{p.employer}</strong></dd>
+            <dt>Where</dt>
+            <dd>{p.location}</dd>
+            <dt>Elsewhere</dt>
+            <dd>
+              <a href={p.resume}>Résumé (PDF)</a><br />
+              <a href={p.links.linkedin} rel="me">LinkedIn</a><br />
+              <a href={p.links.github} rel="me">GitHub</a>
+            </dd>
+          </dl>
+        </aside>
+      </div>
+
+      <section id="route" aria-labelledby="route-h">
+        <h2 id="route-h">The route so far</h2>
+        <ol class="route">
+          {route.map((r) => (
+            <li>
+              <span class="yr">{r.year}</span>
+              <span class="what">{r.title}</span>
+              <span class="where">{r.where}</span>
+            </li>
+          ))}
+          <li class="next">
+            <span class="yr">{next.year} →</span>
+            <span class="what">{next.title}</span>
+            <span class="where">{next.where}</span>
+          </li>
+        </ol>
+      </section>
+
+      <section id="work" aria-labelledby="work-h">
+        <h2 id="work-h">What I work on</h2>
+        <ul class="themes">
+          {work.map((w) => (
+            <li>
+              <h3>{w.title}</h3>
+              <p>{w.summary}</p>
+            </li>
+          ))}
+        </ul>
+
+        <ol class="roles">
+          {experience.map((r) => (
+            <li>
+              <p class="role-head">
+                <strong>{r.company}</strong>
+                <span class="muted">{r.title}</span>
+                <span class="dates">{year(r.start)}–{year(r.end)}</span>
+              </p>
+              <div class="bullets"><r.Content /></div>
+            </li>
+          ))}
+        </ol>
+        <p class="small muted">
+          Talks: {writing.map((w, i) => <>{i > 0 && ' · '}{w.title} ({w.venue})</>)}.
+        </p>
+      </section>
+
+      <section id="outside" aria-labelledby="outside-h">
+        <h2 id="outside-h">Outside work</h2>
+        <p class="big">{p.beyond}</p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h">What next?</h2>
+        <p class="big">
+          Happy to talk shop, BBQ or skiing. <Email email={p.email}>Send me an email</Email>, find me on{' '}
+          <a href={p.links.linkedin} rel="me">LinkedIn</a> or <a href={p.links.github} rel="me">GitHub</a>, or grab the{' '}
+          <a href={p.resume}>résumé</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot small muted">
+      <p>© 2026 {p.name}. Built with Astro, no trackers.</p>
+    </footer>
+  </div>
+</Lab>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    --paper: light-dark(#f4f1e8, #17181c);
+    --ink: light-dark(#23264a, #e9e6dc);
+    --muted: light-dark(#5b5d70, #a6a497);
+    --line: light-dark(#d9d4c4, #33343b);
+    --accent: light-dark(#c2410c, #fb8b4b);
+    --display: 'Archivo Variable', 'Arial Narrow', sans-serif;
+    --text: 'Geist Variable', system-ui, sans-serif;
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    color: var(--accent);
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+
+<style>
+  .page {
+    max-width: 76rem;
+    margin-inline: auto;
+    padding: 1.25rem clamp(1.25rem, 4vw, 3rem) 3rem;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+  .site {
+    margin: 0;
+    font-weight: 600;
+  }
+  nav {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    text-decoration: none;
+  }
+
+  .headline {
+    margin: clamp(3rem, 10vw, 7rem) 0 clamp(2rem, 5vw, 3.5rem);
+    font-family: var(--display);
+    font-stretch: 62%;
+    font-weight: 850;
+    font-size: clamp(3.4rem, 12.5vw, 10.5rem);
+    line-height: 0.84;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .headline span {
+    color: var(--accent);
+  }
+
+  .intro {
+    display: grid;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+  }
+  @media (min-width: 60rem) {
+    .intro {
+      grid-template-columns: 16rem minmax(0, 1fr) 14rem;
+      gap: 3rem;
+    }
+  }
+  .portrait {
+    margin: 0;
+    max-width: 16rem;
+    align-self: start;
+    background: var(--accent);
+  }
+  /* Duotone: greyscale photo multiplied onto the accent (light) / screened in dark. */
+  .portrait :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(1) contrast(1.1);
+    mix-blend-mode: multiply;
+  }
+  @media (prefers-color-scheme: dark) {
+    .portrait :global(img) {
+      mix-blend-mode: luminosity;
+    }
+  }
+  .about :global(p) {
+    margin: 0 0 1em;
+    max-width: 38rem;
+  }
+  .about :global(p:first-child) {
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+  .facts dl {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+  .facts dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .facts dd {
+    margin: 0 0 1.1rem;
+  }
+
+  section {
+    margin-top: clamp(4rem, 9vw, 7rem);
+  }
+  h2 {
+    margin: 0 0 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 2px solid var(--ink);
+    font-family: var(--display);
+    font-stretch: 62%;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .route {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .route li {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.1rem 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 48rem) {
+    .route li {
+      grid-template-columns: 6rem minmax(0, 18rem) minmax(0, 1fr);
+      align-items: baseline;
+    }
+  }
+  .yr {
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    grid-row: span 2;
+  }
+  @media (min-width: 48rem) {
+    .yr {
+      grid-row: auto;
+    }
+  }
+  .what {
+    font-weight: 600;
+  }
+  .where {
+    color: var(--muted);
+  }
+  .route .next {
+    border-bottom: 0;
+  }
+  .route .next .yr,
+  .route .next .what {
+    color: var(--accent);
+  }
+
+  .themes {
+    list-style: none;
+    margin: 0 0 3rem;
+    padding: 0;
+    display: grid;
+    gap: 1.75rem 3rem;
+  }
+  @media (min-width: 48rem) {
+    .themes {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .themes h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.125rem;
+  }
+  .themes p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .roles {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+  }
+  .roles > li {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .role-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+    margin: 0 0 0.4rem;
+  }
+  .dates {
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+  .bullets :global(ul) {
+    margin: 0;
+    padding-left: 1.1rem;
+    max-width: 48rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .big {
+    margin: 0;
+    max-width: 46rem;
+    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+    line-height: 1.4;
+  }
+  .small {
+    font-size: 0.875rem;
+  }
+  .muted {
+    color: var(--muted);
+  }
+  .foot {
+    margin-top: 5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+</style>

@@ -1,0 +1,315 @@
+---
+// Exploration B — "Sentence". Paul Lloyd's name-runs-into-sentence hero, Paco's single italic serif phrase,
+// rsms's air and single dot of colour, Andy Bell's portrait in the gutter, mrmrs's career rows.
+import { Picture } from 'astro:assets';
+import '@fontsource-variable/geist';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import Lab from '../../lab/Lab.astro';
+import Email from '../../lab/Email.astro';
+import { loadSite, route, next } from '../../lab/data';
+import portrait from '../../assets/profile.jpeg';
+
+const { p, About, experience, work, writing } = await loadSite();
+const year = (d: string) => (d === 'Present' ? 'now' : d.split(' ')[1]);
+---
+
+<Lab title="Sentence">
+  <div class="page">
+    <header class="hero">
+      <div class="gutter">
+        <Picture src={portrait} alt={`Portrait of ${p.name}`} width={160} height={160} widths={[160, 320]} sizes="10rem" formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" class="face" />
+      </div>
+      <div class="body">
+        <h1>
+          <span class="dot" aria-hidden="true"></span>Hi, I’m Alec<span class="rest">— a staff software engineer at ServiceTitan
+          who likes <em>building things</em>: software for a living, woodworking and 3D prints for the fun of it.</span>
+        </h1>
+        <p class="links">
+          <a href={p.resume}>Résumé</a>
+          <a href={p.links.linkedin} rel="me">LinkedIn</a>
+          <a href={p.links.github} rel="me">GitHub</a>
+          <Email email={p.email}>Email</Email>
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="about-h">
+        <h2 id="about-h" class="gutter">About</h2>
+        <div class="body prose"><About /></div>
+      </section>
+
+      <section aria-labelledby="route-h">
+        <h2 id="route-h" class="gutter">Route</h2>
+        <ol class="body route">
+          {route.map((r) => (
+            <li>
+              <span class="what">{r.title}</span>
+              <span class="where">{r.where}</span>
+              <span class="yr">{r.year}</span>
+            </li>
+          ))}
+          <li class="next">
+            <span class="what"><em>{next.title}</em></span>
+            <span class="where">{next.where}</span>
+            <span class="yr">{next.year}–????</span>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="work-h">
+        <h2 id="work-h" class="gutter">Work</h2>
+        <div class="body">
+          <ul class="themes">
+            {work.map((w) => (
+              <li><strong>{w.title}.</strong> {w.summary}</li>
+            ))}
+          </ul>
+          <ol class="roles">
+            {experience.map((r) => (
+              <li>
+                <details>
+                  <summary>
+                    <span class="what">{r.company}</span>
+                    <span class="where">{r.title}</span>
+                    <span class="yr">{year(r.start)}–{year(r.end)}</span>
+                  </summary>
+                  <div class="bullets"><r.Content /></div>
+                </details>
+              </li>
+            ))}
+          </ol>
+          <p class="note">Talks: {writing.map((w, i) => <>{i > 0 && '; '}{w.title} ({w.venue})</>)}.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="now-h">
+        <h2 id="now-h" class="gutter">Outside work</h2>
+        <p class="body lead">{p.beyond}</p>
+      </section>
+
+      <section aria-labelledby="contact-h">
+        <h2 id="contact-h" class="gutter">Say hi</h2>
+        <p class="body lead">
+          Happy to talk shop, BBQ or skiing. <Email email={p.email}>Email</Email> is the easiest way to reach me.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p class="gutter"></p>
+      <p class="body note">© 2026 {p.name} · <em>Measure twice, cut once.</em></p>
+    </footer>
+  </div>
+</Lab>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    --bg: light-dark(#ffffff, #111210);
+    --fg: light-dark(#141414, #ecece8);
+    --muted: light-dark(#6b6b6b, #9a9a94);
+    --line: light-dark(#ececec, #26272a);
+    --accent: light-dark(#2f6b4f, #7cc4a0);
+    --sans: 'Geist Variable', system-ui, sans-serif;
+    --serif: 'Newsreader Variable', Georgia, serif;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 1rem/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    text-decoration-color: var(--accent);
+  }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+
+<style>
+  .page {
+    max-width: 58rem;
+    margin-inline: auto;
+    padding: clamp(4rem, 16vh, 11rem) 1.5rem 4rem;
+  }
+  /* Two columns: a narrow gutter for labels and the portrait, a text column for everything else. */
+  .hero,
+  section,
+  footer {
+    display: grid;
+    gap: 0.75rem 3rem;
+  }
+  @media (min-width: 48rem) {
+    .hero,
+    section,
+    footer {
+      grid-template-columns: 10rem minmax(0, 1fr);
+    }
+  }
+  section {
+    margin-top: clamp(3.5rem, 8vw, 5.5rem);
+  }
+  .gutter {
+    margin: 0;
+  }
+  h2.gutter {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    padding-top: 0.2rem;
+  }
+  .face :global(img),
+  :global(.face) {
+    display: block;
+    width: 5.5rem;
+    height: auto;
+    border-radius: 4px;
+  }
+  @media (min-width: 48rem) {
+    :global(.face) {
+      width: 10rem;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    line-height: 1.12;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
+  }
+  .rest {
+    color: var(--muted);
+    font-weight: 500;
+  }
+  em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+  .dot {
+    display: inline-block;
+    width: 0.3em;
+    height: 0.3em;
+    margin-right: 0.35em;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: 0.3em;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 2rem 0 0;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1em;
+    max-width: 38rem;
+  }
+  .lead {
+    margin: 0;
+    max-width: 38rem;
+    font-size: 1.1875rem;
+    line-height: 1.55;
+  }
+  .note {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .route,
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .route li,
+  .roles summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 40rem) {
+    .route li,
+    .roles summary {
+      grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto;
+    }
+  }
+  .what {
+    font-weight: 550;
+  }
+  .where {
+    color: var(--muted);
+    grid-row: 2;
+  }
+  .yr {
+    grid-column: -2;
+    grid-row: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+  @media (min-width: 40rem) {
+    .where {
+      grid-row: auto;
+    }
+  }
+  .route .next {
+    border-bottom: 0;
+  }
+  .route .next em {
+    font-size: 1.1em;
+  }
+
+  .themes {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    max-width: 38rem;
+  }
+  .themes strong {
+    font-weight: 600;
+  }
+  .roles {
+    margin-bottom: 1.25rem;
+  }
+  .roles summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  .roles summary::-webkit-details-marker {
+    display: none;
+  }
+  .roles summary:hover .what {
+    color: var(--accent);
+  }
+  .bullets :global(ul) {
+    margin: 0.75rem 0 1rem;
+    padding-left: 1.1rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 6rem;
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+// Obfuscated mailto link for the lab pages; same encoding as components/Contact.astro.
+// The visible text comes from the slot, so the address itself never has to be shown.
+interface Props {
+  email: string;
+  class?: string;
+}
+const { email, class: className } = Astro.props;
+const [user, domain] = email.split('@');
+const u = btoa(user.split('').reverse().join(''));
+const d = btoa(domain);
+---
+
+<a class:list={['lab-email', className]} data-u={u} data-d={d} href="#contact"><slot /></a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.lab-email').forEach((link) => {
+    const { u = '', d = '' } = link.dataset;
+    link.href = `mailto:${atob(u).split('').reverse().join('')}@${atob(d)}`;
+  });
+</script>

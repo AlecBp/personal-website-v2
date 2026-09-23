@@ -1,0 +1,275 @@
+---
+// Exploration C — "Chronology". Kevin Kelly's year-by-year biography as the spine of the page,
+// Bastian Allgeier's plainness, Frank Chimero's metadata lines, swyx's captioned photo, Cassidy's hobby sentence.
+import { Picture } from 'astro:assets';
+import '@fontsource-variable/instrument-sans';
+import '@fontsource-variable/fraunces';
+import Lab from '../../lab/Lab.astro';
+import Email from '../../lab/Email.astro';
+import { loadSite, chronology, next } from '../../lab/data';
+import portrait from '../../assets/profile.jpeg';
+
+const { p, experience, work, writing } = await loadSite();
+const year = (d: string) => (d === 'Present' ? 'now' : d.split(' ')[1]);
+---
+
+<Lab title="Chronology">
+  <div class="page">
+    <header class="hero">
+      <div>
+        <h1>Alec Pagliarussi</h1>
+        <p class="lede">
+          I like building things. I’m a Staff Software Engineer at ServiceTitan, where I lead one of the teams behind
+          Contact Center Pro. Outside work it’s skiing, camping, woodworking, 3D printing and a smoker for low-and-slow BBQ.
+        </p>
+        <p class="links">
+          <a href={p.resume}>Résumé</a>{' · '}<a href={p.links.linkedin} rel="me">LinkedIn</a>{' · '}<a
+            href={p.links.github}
+            rel="me">GitHub</a
+          >{' · '}<Email email={p.email}>Email</Email>
+        </p>
+      </div>
+      <figure>
+        <Picture src={portrait} alt={`Portrait of ${p.name}`} width={240} height={240} widths={[240, 480]} sizes="(min-width: 48rem) 15rem, 60vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" />
+        <figcaption>Out of office, usually somewhere with snow.</figcaption>
+      </figure>
+    </header>
+
+    <main>
+      <section aria-labelledby="so-far">
+        <h2 id="so-far">So far</h2>
+        <ol class="years">
+          {chronology.map((y) => (
+            <li>
+              <span class="yr">{y.year}</span>
+              <ul>{y.lines.map((l) => <li>{l}</li>)}</ul>
+            </li>
+          ))}
+          <li class="next">
+            <span class="yr">{next.year}<span aria-hidden="true">→</span></span>
+            <ul><li>Next: new challenges and bigger projects, at work and outside it. The line keeps going.</li></ul>
+          </li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="work-h" class="two">
+        <h2 id="work-h">What I work on</h2>
+        <div>
+          <dl class="themes">
+            {work.map((w) => (
+              <>
+                <dt>{w.title}</dt>
+                <dd>{w.summary}</dd>
+              </>
+            ))}
+          </dl>
+          <details class="cv">
+            <summary>Roles, in résumé form</summary>
+            {experience.map((r) => (
+              <div class="role">
+                <p><strong>{r.title}</strong>, {r.company} <span class="meta">{year(r.start)}–{year(r.end)} · {r.team}</span></p>
+                <r.Content />
+              </div>
+            ))}
+            <p class="meta">Talks: {writing.map((w, i) => <>{i > 0 && '; '}{w.title} ({w.venue})</>)}.</p>
+          </details>
+        </div>
+      </section>
+
+      <section aria-labelledby="contact-h" class="two">
+        <h2 id="contact-h">Get in touch</h2>
+        <p class="lede">
+          Happy to talk shop, BBQ or skiing. <Email email={p.email}>Email</Email> is the easiest way to reach me.
+        </p>
+      </section>
+    </main>
+
+    <footer class="meta">Last updated September 2026 · Ontario, Canada</footer>
+  </div>
+</Lab>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+    --bg: light-dark(#fbfaf7, #121417);
+    --fg: light-dark(#1a1a1a, #e7e5e0);
+    --muted: light-dark(#666359, #9d9a92);
+    --line: light-dark(#e6e2d8, #2a2d31);
+    --accent: light-dark(#1d5fad, #7fb1ec);
+    --sans: 'Instrument Sans Variable', system-ui, sans-serif;
+    --serif: 'Fraunces Variable', Georgia, serif;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 1.0625rem/1.6 var(--sans);
+  }
+  a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+
+<style>
+  .page {
+    max-width: 52rem;
+    margin-inline: auto;
+    padding: clamp(3rem, 10vw, 6rem) 1.5rem 3rem;
+  }
+  .hero {
+    display: grid;
+    gap: 2rem;
+    align-items: end;
+  }
+  @media (min-width: 48rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr) 15rem;
+      gap: 3.5rem;
+    }
+  }
+  h1 {
+    margin: 0 0 1.25rem;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.6rem, 7vw, 4.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  }
+  .lede {
+    margin: 0;
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    max-width: 36rem;
+  }
+  .links {
+    margin: 1.25rem 0 0;
+  }
+  figure {
+    margin: 0;
+    max-width: 15rem;
+  }
+  figure :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  figcaption,
+  .meta {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  figcaption {
+    margin-top: 0.5rem;
+  }
+
+  section {
+    margin-top: clamp(4rem, 9vw, 6rem);
+  }
+  h2 {
+    margin: 0 0 1.5rem;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 48rem) {
+    .two {
+      display: grid;
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .two h2 {
+      font-size: 1.125rem;
+      padding-top: 0.15rem;
+    }
+  }
+
+  /* The spine: big years down the left, what happened on the right. */
+  .years {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .years > li {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 48rem) {
+    .years > li {
+      grid-template-columns: 11rem minmax(0, 1fr);
+      gap: 2rem;
+    }
+  }
+  .yr {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3.5vw, 2.25rem);
+    line-height: 1;
+    font-weight: 400;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+  }
+  .years ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .years .next .yr {
+    color: var(--accent);
+  }
+  .years .next {
+    border-bottom: 1px solid var(--line);
+  }
+  .years .next li {
+    font-style: italic;
+  }
+
+  .themes {
+    margin: 0;
+  }
+  .themes dt {
+    font-weight: 600;
+  }
+  .themes dd {
+    margin: 0.15rem 0 1.25rem;
+    color: var(--muted);
+  }
+  .cv {
+    border-top: 1px solid var(--line);
+    padding-top: 0.9rem;
+  }
+  .cv summary {
+    cursor: pointer;
+    color: var(--accent);
+  }
+  .role {
+    margin-top: 1.25rem;
+  }
+  .role p {
+    margin: 0;
+  }
+  .role :global(ul) {
+    margin: 0.4rem 0 0;
+    padding-left: 1.1rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  footer {
+    margin-top: 5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+</style>
