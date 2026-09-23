@@ -10,7 +10,7 @@ Status: draft for Alec's review, 2026-09-23. Items marked **[?]** need an answer
 ## 1. Purpose and audience
 
 **What the site is for:** a personal home on the web. Someone who looks Alec up should come away
-knowing who he is as a person *and* that he is a serious, senior engineer. It is not a résumé
+knowing who Alec is as a person *and* that Alec is a serious, senior engineer. It is not a résumé
 replacement; the résumé PDF carries the detail.
 
 **Who reads it**
@@ -18,8 +18,8 @@ replacement; the résumé PDF carries the detail.
 | Reader | What they want | What they should leave with |
 | --- | --- | --- |
 | Recruiters, hiring managers | Level, current role, résumé | Staff engineer, backend-focused, tech lead; résumé one click away |
-| Engineers (peers, future teammates) | What he works on, how he thinks | Builds reliable backend systems; likes teaching and growing people |
-| People who met him / friends | Who he is | A builder and tinkerer who skis, camps, smokes BBQ, 3D prints |
+| Engineers (peers, future teammates) | What Alec works on, how Alec thinks | Builds reliable backend systems; likes teaching and growing people |
+| People who've met Alec / friends | Who Alec is | A builder and tinkerer who skis, camps, smokes BBQ, 3D prints |
 
 **The one idea to remember:** *Alec likes building things* — software at work, and physical,
 hands-on things outside it. Curiosity and learning are the thread through all of it.
@@ -71,14 +71,14 @@ cutting-edge, ninja/rockstar.*
 ### Must say
 
 1. **Who:** Alec Pagliarussi, Staff Software Engineer at ServiceTitan, Ontario, Canada.
-2. **What he's like:** likes building things; curious; always learning something new.
+2. **What Alec is like:** likes building things; curious; always learning something new.
 3. **The story:** robotics teacher in Brazil and a small 3D-printing shop → George Brown College in
    Toronto → HomeX (Schedule Engine) → ServiceTitan via acquisition → Staff. *The line keeps going.*
-4. **What he works on (themes only):** keeping services up when dependencies fail; shared libraries
+4. **What Alec works on (themes only):** keeping services up when dependencies fail; shared libraries
    other teams use; big migrations and messaging (Kubernetes, Kafka); growing engineers.
 5. **Experience:** ServiceTitan (Staff, Senior), HomeX, then a one-line "Earlier".
 6. **Outside work:** hobbies (§4).
-7. **How to reach him:** email, LinkedIn, GitHub, résumé.
+7. **How to get in touch:** email, LinkedIn, GitHub, résumé.
 
 ### Nice to have
 
