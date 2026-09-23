@@ -17,6 +17,8 @@ Last updated 2026-09-23. Read together with [`content-brief.md`](content-brief.m
 
 A new design round against the brief: **between "simple and clean, with photos" and "bold and minimal"** — type-led, lots of space, one portrait, the route timeline kept (line continues past 2025 into "growing the career: new challenges, bigger projects, at work and personally"). Show options on `design/explorations` first; port the winner into `redesign/astro`; rerun the quality gate.
 
+Research for this round (reference sites, borrowable patterns): [`inspiration.md`](inspiration.md).
+
 Rejected so far (don't repeat): Blueprint (busy, costume, impersonal), Swiss poster, Literary, parts-list hobbies, the interactive outage simulator, and the original clean design as "too generic".
 
 ## Original requirements (still binding)
