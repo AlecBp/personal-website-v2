@@ -10,4 +10,4 @@ order: 3
 ---
 
 - Full-stack engineer on Schedule Engine, an online scheduling platform for home-services contractors, working in TypeScript, Node.js, GraphQL and React.
-- Worked the production support rotation and added metrics and dashboards to critical services.
+- Set up the platform's first end-to-end metrics, dashboards and alerting, and resolved critical customer-facing issues on the production support rotation.
