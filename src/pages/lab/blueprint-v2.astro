@@ -87,30 +87,12 @@ const bom = [
       <h2 class="section-title"><span>02</span> Selected work</h2>
       <ul class="components">
         {work.map((w, i) => (
-          <li class:list={['component', { demo: i === 0 }]} data-upstream="up">
+          <li class="component">
             <span class="tag">C-{pad(i + 1)}</span>
             <div class="copy">
               <h3>{w.title}</h3>
               <p>{w.summary}</p>
             </div>
-            {i === 0 && (
-              <div class="sim">
-                <svg class="diagram" viewBox="0 0 300 120" aria-hidden="true">
-                  <rect x="4" y="10" width="84" height="32" />
-                  <text x="46" y="30">service</text>
-                  <rect x="212" y="10" width="84" height="32" />
-                  <text x="254" y="30">upstream</text>
-                  <line class="link" x1="88" y1="26" x2="212" y2="26" />
-                  <path class="cut" d="M143 12 l14 28 M157 12 l-14 28" />
-                  <line class="cache-link" x1="46" y1="42" x2="46" y2="72" />
-                  <path class="cache" d="M26 76 a20 6 0 0 0 40 0 a20 6 0 0 0 -40 0 v26 a20 6 0 0 0 40 0 v-26" />
-                  <text x="98" y="96" class="cache-label">cache</text>
-                </svg>
-                <p class="status label" aria-live="polite">Upstream <b data-up>OK</b> · Serving <b data-serve>fresh data</b></p>
-                <button class="switch" type="button" aria-pressed="false" hidden>Cut the upstream</button>
-                <p class="pen pen-try" aria-hidden="true">go on, try it</p>
-              </div>
-            )}
           </li>
         ))}
       </ul>
@@ -183,35 +165,6 @@ const bom = [
 </Lab>
 
 <script>
-  // Outage simulator on the resilience card.
-  const card = document.querySelector<HTMLElement>('.component.demo');
-  const button = card?.querySelector<HTMLButtonElement>('.switch');
-  if (card && button) {
-    const up = card.querySelector<HTMLElement>('[data-up]')!;
-    const serve = card.querySelector<HTMLElement>('[data-serve]')!;
-    let since = 0;
-    let timer: number | undefined;
-    const render = () => {
-      const down = card.dataset.upstream === 'down';
-      up.textContent = down ? 'DOWN' : 'OK';
-      serve.textContent = down ? `cached data, ${Math.floor((Date.now() - since) / 1000)}s stale` : 'fresh data';
-      button.textContent = down ? 'Restore the upstream' : 'Cut the upstream';
-      button.setAttribute('aria-pressed', String(down));
-    };
-    button.addEventListener('click', () => {
-      const down = card.dataset.upstream !== 'down';
-      card.dataset.upstream = down ? 'down' : 'up';
-      card.classList.add('tried');
-      window.clearInterval(timer);
-      if (down) {
-        since = Date.now();
-        timer = window.setInterval(render, 1000);
-      }
-      render();
-    });
-    button.hidden = false;
-  }
-
   // Live cursor coordinates in the ruler, for fine pointers only.
   const coords = document.querySelector<HTMLElement>('.coords');
   if (coords && matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -252,6 +205,7 @@ const bom = [
   }
   a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
   a:hover { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
   .label { font: 500 0.75rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -334,40 +288,12 @@ const bom = [
   .prose p + p { margin-top: 1em; }
 
   .components { list-style: none; padding: 0; display: grid; gap: 1.25rem; }
-  @media (min-width: 44rem) { .components { grid-template-columns: 1fr 1fr; } .component.demo { grid-column: 1 / -1; } }
-  @media (min-width: 60rem) {
-    .components { grid-template-columns: repeat(3, 1fr); }
-    .component.demo { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; align-items: start; }
-    .component.demo .sim { margin-top: 0; padding-top: 0; border-top: 0; padding-left: 2.5rem; border-left: 1px dashed var(--rule); }
-  }
+  @media (min-width: 44rem) { .components { grid-template-columns: 1fr 1fr; } }
   .component { position: relative; border: 1px solid var(--ink); background: var(--paper); padding: 2.25rem 1.5rem 1.5rem; }
   .component .tag { position: absolute; top: -1px; left: -1px; background: var(--ink); color: var(--paper); font: 500 0.75rem var(--mono); padding: 0.25rem 0.6rem; letter-spacing: 0.06em; }
   .component h3 { font-weight: 650; font-stretch: 112%; font-size: 1.3rem; line-height: 1.2; }
   .component .copy p { margin-top: 0.6rem; color: var(--muted); }
 
-  .sim { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed var(--rule); position: relative; }
-  .diagram { width: 100%; max-width: 20rem; height: auto; overflow: visible; }
-  .diagram rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
-  .diagram text { font: 500 11px var(--mono); fill: var(--ink); text-anchor: middle; text-transform: uppercase; }
-  .diagram .link { stroke: var(--ink); stroke-width: 2; transition: stroke 200ms; }
-  .diagram .cut { stroke: var(--pen); stroke-width: 3; stroke-linecap: round; fill: none; opacity: 0; transition: opacity 200ms; }
-  .diagram .cache { fill: var(--paper); stroke: var(--muted); stroke-width: 1.5; transition: fill 200ms, stroke 200ms; }
-  .diagram .cache-link { stroke: var(--rule); stroke-width: 1.5; }
-  .diagram .cache-label { fill: var(--muted); text-anchor: start; }
-  [data-upstream='down'] .diagram .link { stroke: var(--rule); stroke-dasharray: 4 4; }
-  [data-upstream='down'] .diagram .cut { opacity: 1; }
-  [data-upstream='down'] .diagram .cache { fill: rgb(194 65 12 / 0.15); stroke: var(--accent); }
-  [data-upstream='down'] .diagram .cache-link { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 3; }
-  [data-upstream='down'] .diagram .cache-label { fill: var(--accent); }
-  .status { margin-top: 0.75rem; }
-  .status b { color: var(--ink); font-weight: 500; }
-  [data-upstream='down'] [data-up] { color: var(--pen); }
-  [data-upstream='down'] [data-serve] { color: var(--accent); }
-  .switch { margin-top: 1rem; font: 500 0.8125rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink); padding: 0.6rem 0.9rem; cursor: pointer; }
-  .switch:hover, .switch[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
-  .switch:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .pen-try { position: absolute; right: 0; bottom: 0.4rem; transform: rotate(-6deg); transition: opacity 300ms; }
-  .tried .pen-try { opacity: 0; }
 
   .log { list-style: none; padding: 0; display: grid; gap: 2.5rem; }
   .log > li { display: grid; gap: 0.75rem; }
