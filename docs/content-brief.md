@@ -3,7 +3,7 @@
 The single reference for **what the site says and how it sounds**. Settle this before any design
 work; the design serves it, not the other way round. Copy in `src/content/` should follow it.
 
-Status: draft for Alec's review, 2026-09-23. Items marked **[?]** need an answer.
+Status: reviewed with Alec, 2026-09-23. Open questions answered (see §8).
 
 ---
 
@@ -23,6 +23,13 @@ replacement; the résumé PDF carries the detail.
 
 **The one idea to remember:** *Alec likes building things* — software at work, and physical,
 hands-on things outside it. Curiosity and learning are the thread through all of it.
+
+**Second thread — teaching:** robotics teacher in Brazil → tutor and TA at George Brown → growing
+engineers as a tech lead today. Use it to connect the past to the present ("the teacher in me never
+really left"), not as a separate section.
+
+**Personal life: light touch.** Convey personality and what Alec likes to do, without much detail
+about private life. Hobbies are short mentions, not stories.
 
 ---
 
@@ -73,7 +80,8 @@ cutting-edge, ninja/rockstar.*
 1. **Who:** Alec Pagliarussi, Staff Software Engineer at ServiceTitan, Ontario, Canada.
 2. **What Alec is like:** likes building things; curious; always learning something new.
 3. **The story:** robotics teacher in Brazil and a small 3D-printing shop → George Brown College in
-   Toronto → HomeX (Schedule Engine) → ServiceTitan via acquisition → Staff. *The line keeps going.*
+   Toronto → HomeX (Schedule Engine) → ServiceTitan via acquisition → Staff. *The line keeps going:*
+   next is growing the career — new challenges and bigger projects, at work and personally.
 4. **What Alec works on (themes only):** keeping services up when dependencies fail; shared libraries
    other teams use; big migrations and messaging (Kubernetes, Kafka); growing engineers.
 5. **Experience:** ServiceTitan (Staff, Senior), HomeX, then a one-line "Earlier".
@@ -98,8 +106,8 @@ cutting-edge, ninja/rockstar.*
 
 ## 4. Hobbies
 
-Mention them — they are a big part of the personality. Present them simply, not as a gimmick
-(the "bill of materials" treatment was rejected).
+Mention them — they are a big part of the personality. Present them simply and briefly, not as a
+gimmick (the "bill of materials" treatment was rejected), and without personal-life detail.
 
 | Hobby | Weight | Notes |
 | --- | --- | --- |
@@ -107,7 +115,7 @@ Mention them — they are a big part of the personality. Present them simply, no
 | Camping | Big | "Up there" with skiing. |
 | 3D printing | Ongoing | Ran a 3D-printing shop in Brazil, 2016–2018. |
 | Woodworking | Ongoing | |
-| Electronics / robotics | Ongoing | Where it started (robotics teacher). **[?]** still active, or past? |
+| Electronics / robotics | Origin story | Where it started (robotics teacher). Not a current hobby — mention only in the story. |
 | Home lab | Ongoing | |
 | Smoking BBQ | Ongoing | Low and slow. |
 | Competitive programming | Occasional | IEEEXtreme: 11th in Canada, top 12% worldwide (2020); 20th in Canada (2019). |
@@ -134,8 +142,9 @@ answers in conversation. Don't invent anything beyond these.
   end-to-end metrics, dashboards and alerting for the platform.
 - **Earlier:** software engineer (contract), George Brown College Research & Innovation, 2020–2021;
   volunteer software engineer, Working Women Community Center, 2020–2022; robotics teacher, Jean Piaget
-  College (Santos, Brazil), 2015–2018; founder of a 3D-printing shop, 2016–2018. **[?]** Tutor/TA at
-  George Brown 2019–2021 — the new résumé drops it; keep on the site?
+  College (Santos, Brazil), 2015–2018; founder of a 3D-printing shop, 2016–2018; tutor and teaching
+  assistant, George Brown College, 2019–2021 (keep on the site even though the new résumé drops it:
+  it is part of the teaching thread).
 - **Education:** Advanced Diploma, Computer Programmer Analyst, George Brown College, 2018–2021;
   Computer Technology Departmental Award.
 - **Stack (for context, not a keyword wall):** C#/.NET, TypeScript/Node.js, React, Kafka, MongoDB,
@@ -148,7 +157,7 @@ answers in conversation. Don't invent anything beyond these.
 
 | Slot | Text |
 | --- | --- |
-| Hero line | I like building things — software for a living, and electronics, woodworking and 3D prints for the fun of it. |
+| Hero line | I like building things — software for a living, and woodworking and 3D prints for the fun of it. |
 | About ¶1 | I'm a Staff Software Engineer at ServiceTitan, where I lead one of the teams behind Contact Center Pro… Most of what I build is backend: shared libraries, caching and billing pieces that other teams rely on, and the plumbing that keeps things running when something upstream breaks… |
 | About ¶2 | I took the long way here. Robotics teaching and a 3D-printing shop in Brazil → George Brown in Toronto → HomeX → ServiceTitan. |
 | About ¶3 | At heart I like building things. I enjoy tinkering with technology, the challenge of learning something new, and the curiosity of figuring out how different things work… |
@@ -164,9 +173,10 @@ Full text: `src/content/profile.md`, `src/content/work.yaml`, `src/content/exper
 Direction chosen: **between "simple and clean, with photos" and "bold and minimal"**.
 
 - From *bold and minimal*: type-led, a strong statement up top, generous space, very little decoration.
-- From *simple and clean, with photos*: real personal photos (skiing, camping, builds, prints) carry
-  the personality instead of visual gimmicks.
-- Net effect: a calm, confident page where the words and a few real photos do the work.
+- From *simple and clean, with photos*: a real photo carries personality instead of visual gimmicks.
+  **Constraint:** Alec has few shareable photos. Plan for **one** portrait — possibly a new one taken
+  skiing or camping — not a gallery. Personality comes mainly from the words and the type.
+- Net effect: a calm, confident page where the words and one good photo do the work.
 
 **Keep**
 - The **route timeline** (Brazil → Toronto → HomeX → ServiceTitan → Staff), with the line
@@ -186,12 +196,23 @@ strict CSP, deploys to Netlify unchanged.
 
 ---
 
-## 8. Open questions
+## 8. Decisions log
 
-1. **[?]** Electronics/robotics: current hobby or origin story only?
-2. **[?]** Keep the tutor/TA line under "Earlier"?
-3. **[?]** Photos: which personal photos can we use (skiing, camping, woodworking/3D-printing builds,
-   BBQ)? The chosen direction depends on them — ideally 4–8, landscape or square, any quality.
-4. **[?]** Route timeline's future stop — "Still building…", "To be continued", or something specific?
-5. **[?]** Any sites whose feel you like (bold and minimal) to use as reference?
-6. **[?]** `LICENSE.md` still names the old template's author — change to you, or remove?
+Answers from Alec, 2026-09-23:
+
+| Question | Answer |
+| --- | --- |
+| Electronics/robotics | Where it started; not a current hobby. |
+| Tutor/TA line | Keep. It parallels teaching and growing engineers. |
+| Photos | Few shareable. Maybe a new profile photo in a skiing or camping setting. No gallery. |
+| Personal detail | Convey personality and interests without much personal-life detail. |
+| Route's next stop | Growing the career: new challenges, bigger projects, at work and personally. |
+| `LICENSE.md` | Removed. (With no licence file, the public repo's code defaults to all rights reserved.) |
+| Design direction | Between "simple and clean, with photos" and "bold and minimal". |
+| Experience tone | More corporate/serious is fine there. |
+| Rejected | Blueprint (busy, costume, impersonal), parts-list hobbies, outage simulator. |
+
+Still open:
+
+1. New profile photo (skiing/camping) — Alec may provide one; until then use `src/assets/profile.jpeg`.
+2. Reference sites for the bold-and-minimal feel, if Alec has any.
