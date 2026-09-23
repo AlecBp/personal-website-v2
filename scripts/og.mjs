@@ -64,7 +64,7 @@ const card = h(
     h(
       'div',
       { fontSize: 26, color: colors.muted, marginTop: 36, lineHeight: 1.4 },
-      'Builds things: backend systems at work; electronics, woodworking and 3D prints at home.',
+      'Builds things: backend systems at work; woodworking and 3D prints at home.',
     ),
   ),
   img(photoUri, { width: 320, height: 320, borderRadius: 160, border: `1px solid ${colors.line}` }),
