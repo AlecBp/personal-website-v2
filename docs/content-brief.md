@@ -159,7 +159,7 @@ answers in conversation. Don't invent anything beyond these.
 | Slot | Text |
 | --- | --- |
 | h1 | Alec Pagliarussi / Staff Software Engineer / at ServiceTitan |
-| Intro | Backend engineer at heart, tech lead at ServiceTitan these days. Five years of building services, APIs and event-driven systems. Outside work I'm still building things: personal projects, woodworking and 3D printing. |
+| Intro | Backend engineer at heart. Five years of building services, APIs and event-driven systems. Outside work I'm still building things: personal projects, woodworking and 3D printing. |
 | Photo caption | Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming. |
 | Expertise | Distributed backend systems · Event-driven architecture · Data and performance · Reliability and platform · Technical leadership ("The teacher in me never really left.") |
 | Asides | "I run a home lab too, so I'm on call there as well." · "Before software, I spent three years teaching robotics in Brazil." |
@@ -233,8 +233,9 @@ SEO pass, 2026-09-25: the structured data names George Brown College as `alumniO
 §5); the page shows it as the 2018 route stop, and it helps search engines match the LinkedIn profile. Remove
 `alumniOf` from `profile.md` to drop it. Title and description copy are unchanged.
 
-Intro wording, 2026-09-25: Alec wants the intro about ServiceTitan, not the team or product, so it now reads
-"tech lead at ServiceTitan these days" instead of naming Contact Center Pro.
+Intro wording, 2026-09-25: Alec dropped "tech lead on Contact Center Pro these days" from the intro: no team or
+product name there, and no "tech lead" either. It now opens "Backend engineer at heart." The heading already says
+Staff Software Engineer at ServiceTitan. Experience keeps its team names; the tech-lead fact stays under Expertise.
 
 Still open:
 
