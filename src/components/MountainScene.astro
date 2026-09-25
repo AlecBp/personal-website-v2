@@ -11,20 +11,22 @@
 </div>
 
 <script>
-  // SMIL ignores prefers-reduced-motion, so pause it here. Also pause while the scene is off screen.
+  // SMIL ignores prefers-reduced-motion, so pause it here. Also pause while the scene is off screen,
+  // and on narrow screens, where the lift, skiers and snow are cropped out and only the ridges show.
   // setCurrentTime(0.01) matters: without it a paused scene never draws its first frame.
   const scenes = document.querySelectorAll<SVGSVGElement>('svg[data-scene]');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const narrow = matchMedia('(max-width: 44.99rem)');
   const visible = new Map<SVGSVGElement, boolean>();
 
   const sync = () => {
     scenes.forEach((scene) => {
-      if (!reduce.matches && visible.get(scene) !== false) {
+      if (!reduce.matches && !narrow.matches && visible.get(scene) !== false) {
         scene.unpauseAnimations();
         return;
       }
       scene.pauseAnimations();
-      if (scene.getCurrentTime() < 0.01) scene.setCurrentTime(0.01);
+      if (scene.getCurrentTime() < 0.005) scene.setCurrentTime(0.01);
     });
   };
 
@@ -34,6 +36,7 @@
   });
   scenes.forEach((scene) => observer.observe(scene));
   reduce.addEventListener('change', sync);
+  narrow.addEventListener('change', sync);
   requestAnimationFrame(sync);
 </script>
 
@@ -66,6 +69,14 @@
       #000 calc(50% + 640px),
       #000 100%
     );
+  }
+
+  /* Narrow screens show only the centre ridges, all behind the content column; at 30% they'd vanish. */
+  @media (max-width: 44.99rem) {
+    .scene-wrap {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
   }
 
   .scene-fade {

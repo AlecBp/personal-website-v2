@@ -214,8 +214,8 @@ const p = Astro.props;
       flex: 1 1 auto;
     }
 
-    /* The contact section repeats these links with full URLs. */
-    .links {
+    /* The contact section repeats these links; keep only the location. */
+    .links :global(a) {
       display: none;
     }
 

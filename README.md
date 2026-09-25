@@ -79,16 +79,25 @@ and it takes precedence over the settings in the Netlify dashboard. The custom d
 | `main` | The integration branch (and the GitHub default). Finished work lands here first. |
 | Feature branches (`feat/…`, `polish/…`) | Branch from `main`; open a pull request into `main`. |
 
-To release, open a second pull request into `production` once the change is in `main`. Because
-earlier releases were squash-merged, `main` and `production` have different histories even when their
-files match, so a pull request straight from `main` shows old changes in its diff. For a clean diff, cut a
-release branch from `production` and cherry-pick the new commits:
+To release, open a second pull request into `production` once the change is in `main`. Merge release
+pull requests with **Create a merge commit**, not squash, so `production` keeps `main`'s history and the
+next release diff only shows new work.
+
+PR #12 was squash-merged, so `production` and `main` currently have separate histories even though their
+files match, and a pull request straight from `main` would show old changes. Until a merge commit joins
+them, release from a branch cut from `production` with the feature merged in:
 
 ```bash
+git fetch origin
 git switch -c release/<name> origin/production
-git cherry-pick <first-commit>^..<last-commit>
-git push -u origin release/<name>   # then open the PR into production
+git merge --no-ff -X theirs <feature-branch>   # production's files match main, so take the feature's side
+git diff <feature-branch>                     # must print nothing
+git push -u origin release/<name>             # then open the pull request into production
 ```
+
+Merging that release branch with a merge commit joins the two histories. After that, releases can come
+straight from `main`, as long as pull requests into `main` also use merge commits; a squash merge
+into `main` makes new commits that `production` never saw, and the release diff grows again.
 
 Other branches get Netlify deploy previews only if previews are enabled in the dashboard.
 

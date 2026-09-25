@@ -37,12 +37,9 @@ const year = new Date().getFullYear();
     border-top: 1px solid var(--line);
   }
 
+  /* Links sit inside muted text, so the underline carries the text colour to stand out. */
   a {
-    color: inherit;
-  }
-
-  a:hover {
-    color: var(--accent);
+    text-decoration-color: currentColor;
   }
 
   @media print {
