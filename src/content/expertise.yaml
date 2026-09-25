@@ -1,0 +1,33 @@
+# Expertise: five broad areas. Keep it high level: no internal product, feature or API names and no metrics.
+# `meta` replaces the tech line; `aside` is a small personal note (shown when profile `asides` is true).
+- id: backend
+  order: 1
+  title: Distributed backend systems
+  summary: I design and own the services, public APIs and shared platform libraries that other teams build on, from the first design doc through production.
+  tech: [C# / .NET, TypeScript, Node.js, GraphQL]
+
+- id: events
+  order: 2
+  title: Event-driven architecture
+  summary: Designing high-volume messaging, with partitioning, ordering and delivery guarantees that hold up as traffic grows.
+  tech: [Kafka, Azure Service Bus]
+
+- id: data
+  order: 3
+  title: Data and performance
+  summary: Data modelling, major datastore upgrades, and the caching strategy for services the rest of the platform depends on.
+  tech: [MongoDB, PostgreSQL, Redis]
+
+- id: reliability
+  order: 4
+  title: Reliability and platform
+  summary: Resilience against upstream failures, observability, and co-leading the migration of production services from AWS ECS to Kubernetes.
+  tech: [Kubernetes, Azure, AWS]
+  aside: I run a home lab too, so I’m on call there as well.
+
+- id: leadership
+  order: 5
+  title: Technical leadership
+  summary: I set technical direction for a product team, run planning and design reviews, and develop engineers into owners of their own initiatives. The teacher in me never really left.
+  meta: Tech lead since 2024 · Staff since 2025
+  aside: Before software, I spent three years teaching robotics in Brazil.

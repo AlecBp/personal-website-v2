@@ -1,0 +1,101 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  earlier: { summary: string; years: string };
+  talks: string;
+  resume: string;
+}
+
+const { earlier, talks, resume } = Astro.props;
+const roles = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order).map((r) => r.data);
+const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(-1));
+---
+
+<section id="experience" class="section" aria-labelledby="experience-title">
+  <h2 id="experience-title" class="section-title">Experience</h2>
+  <ol>
+    {
+      roles.map((role) => (
+        <li>
+          <div class="what">
+            <p class="company">{role.company}</p>
+            <p class="role">
+              {role.title}
+              {role.team && <span class="team"> · {role.team}</span>}
+            </p>
+          </div>
+          <p class="dates">
+            {year(role.start)} – {year(role.end)}
+          </p>
+        </li>
+      ))
+    }
+    <li>
+      <div class="what">
+        <p class="company">Earlier</p>
+        <p class="role team">{earlier.summary}</p>
+      </div>
+      <p class="dates">{earlier.years}</p>
+    </li>
+  </ol>
+  <p class="talks">{talks} The details are in the <a href={resume}>résumé</a>.</p>
+</section>
+
+<style>
+  ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 1.125rem;
+    border-top: 1px solid var(--line);
+  }
+
+  li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .what {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem 1.5rem;
+  }
+
+  .company {
+    flex: 0 0 11rem;
+    font-weight: 600;
+  }
+
+  .role {
+    flex: 1 1 16rem;
+  }
+
+  .team {
+    color: var(--muted);
+  }
+
+  .dates {
+    flex: none;
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+  }
+
+  .talks {
+    margin-top: 1.5rem;
+    max-width: 46rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .talks a {
+    text-decoration-color: currentColor;
+  }
+</style>
