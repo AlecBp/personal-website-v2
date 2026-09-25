@@ -1,0 +1,50 @@
+# The route so far, oldest first. `status: current` fills the dot; `status: next` is the open-ended last stop.
+- id: robotics
+  order: 1
+  year: '2015'
+  title: Robotics teacher
+  detail: Jean Piaget College, Santos, Brazil
+
+- id: print-shop
+  order: 2
+  year: '2016'
+  title: Opened a 3D-printing shop
+  detail: In Brazil, alongside teaching
+
+- id: toronto
+  order: 3
+  year: '2018'
+  title: Moved to Toronto to study
+  detail: George Brown College
+
+- id: tutor
+  order: 4
+  year: '2019'
+  title: Tutor and TA
+  detail: George Brown College
+
+- id: homex
+  order: 5
+  year: '2021'
+  title: Software Engineer
+  detail: HomeX, on Schedule Engine
+
+- id: servicetitan
+  order: 6
+  year: '2022'
+  title: ServiceTitan
+  detail: Senior Software Engineer, via the acquisition
+
+- id: staff
+  order: 7
+  year: '2025'
+  title: Staff Software Engineer
+  detail: Tech lead, Contact Center Pro
+  status: current
+
+- id: next
+  order: 8
+  year: 2026 onward
+  title: Next
+  detail: New challenges and bigger projects, at work and outside it
+  status: next

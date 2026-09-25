@@ -1,0 +1,148 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const nav = [
+  { href: '/#expertise', label: 'Expertise' },
+  { href: '/#route', label: 'Route' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<header class="site-header wrap">
+  <a class="mark" href="/">{name}</a>
+  <nav aria-label="Primary">
+    <ul>
+      {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+    </ul>
+  </nav>
+  <!-- Hidden until JS runs; without JS the site simply follows the system theme. -->
+  <button class="theme-toggle" type="button" aria-label="Switch to dark theme" hidden>
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"></path>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+    </svg>
+  </button>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+  if (button) {
+    const root = document.documentElement;
+    const media = matchMedia('(prefers-color-scheme: dark)');
+    const sync = () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      button.setAttribute('aria-label', `Switch to ${next} theme`);
+      // Keep the browser UI colour in step with the chosen theme, not just the system one.
+      const background = getComputedStyle(document.body).backgroundColor;
+      document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+        meta.setAttribute('content', background);
+      });
+    };
+    button.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem('theme', root.dataset.theme);
+      } catch {}
+      sync();
+    });
+    media.addEventListener('change', (event) => {
+      let stored = null;
+      try {
+        stored = localStorage.getItem('theme');
+      } catch {}
+      if (stored) return;
+      root.dataset.theme = event.matches ? 'dark' : 'light';
+      sync();
+    });
+    sync();
+    button.hidden = false;
+  }
+</script>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding-block: 1.25rem;
+  }
+
+  .mark {
+    margin-right: auto;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    padding-block: 0.35rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+
+  /* Below 45rem only the name and the theme toggle stay in the header. */
+  @media (max-width: 44.99rem) {
+    nav {
+      display: none;
+    }
+  }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding-block: 0.6rem;
+  }
+
+  nav a:hover {
+    color: var(--fg);
+  }
+
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: -0.5rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 160ms var(--ease);
+  }
+
+  .theme-toggle[hidden] {
+    display: none;
+  }
+
+  .theme-toggle:hover {
+    color: var(--fg);
+  }
+
+  .theme-toggle svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global([data-theme='dark']) .icon-moon,
+  :global([data-theme='light']) .icon-sun {
+    display: none;
+  }
+</style>

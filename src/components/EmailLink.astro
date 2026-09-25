@@ -1,0 +1,25 @@
+---
+// A mailto link whose address never appears in the HTML: it is stored reversed and base64-encoded
+// in data attributes, and a small script assembles the href (and, with showAddress, the link text).
+interface Props {
+  email: string;
+  showAddress?: boolean;
+}
+
+const { email, showAddress = false } = Astro.props;
+const [user, domain] = email.split('@');
+const encoded = { user: btoa(user.split('').reverse().join('')), domain: btoa(domain) };
+---
+
+<a class="js-email" data-u={encoded.user} data-d={encoded.domain} data-show={showAddress ? '' : undefined} href="#contact"
+  ><slot>Email</slot></a
+>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.js-email').forEach((link) => {
+    const { u = '', d = '' } = link.dataset;
+    const address = `${atob(u).split('').reverse().join('')}@${atob(d)}`;
+    link.href = `mailto:${address}`;
+    if ('show' in link.dataset) link.textContent = address;
+  });
+</script>

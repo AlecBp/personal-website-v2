@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  asides: boolean;
+}
+
+const { asides } = Astro.props;
+const areas = (await getCollection('expertise')).sort((a, b) => a.data.order - b.data.order).map((e) => e.data);
+---
+
+<section id="expertise" class="section" aria-labelledby="expertise-title">
+  <h2 id="expertise-title" class="section-title">Expertise</h2>
+  <ol>
+    {
+      areas.map((area) => (
+        <li>
+          <h3>{area.title}</h3>
+          <div class="body">
+            <p>{area.summary}</p>
+            {area.meta ? <p class="tech">{area.meta}</p> : area.tech && <p class="tech">{area.tech.join(' · ')}</p>}
+            {asides && area.aside && (
+              <p class="aside">
+                <span class="dot" aria-hidden="true" />
+                <span>{area.aside}</span>
+              </p>
+            )}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem clamp(1.5rem, 5vw, 5rem);
+    padding-block: clamp(1.375rem, 3vw, 2rem);
+    border-top: 1px solid var(--line);
+  }
+
+  li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  h3 {
+    flex: 1 1 20rem;
+    font-size: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .body {
+    flex: 1 1 24rem;
+    max-width: 34rem;
+  }
+
+  .tech {
+    margin-top: 0.625rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .aside {
+    display: flex;
+    gap: 0.625rem;
+    align-items: baseline;
+    margin-top: 0.875rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .dot {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+</style>
