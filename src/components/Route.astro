@@ -165,4 +165,18 @@ const stops = (await getCollection('route')).sort((a, b) => a.data.order - b.dat
       font-size: 0.84375rem;
     }
   }
+
+  /* Printed pages use the vertical list, in two columns to save paper. */
+  @media print {
+    .route {
+      columns: 2;
+      column-gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    li {
+      padding-bottom: 0.75rem;
+      break-inside: avoid;
+    }
+  }
 </style>
