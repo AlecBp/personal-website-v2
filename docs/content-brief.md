@@ -230,7 +230,7 @@ a faded SVG scene behind the bottom of the intro (ridgelines, chairlift, skiers,
 screen. It carries the skiing personality visually, so the copy doesn't need to say more.
 
 SEO pass, 2026-09-25: the structured data names George Brown College as `alumniOf` (an approved fact from
-§5) even though the page has no education line; it helps search engines match the LinkedIn profile. Remove
+§5); the page shows it as the 2018 route stop, and it helps search engines match the LinkedIn profile. Remove
 `alumniOf` from `profile.md` to drop it. Title and description copy are unchanged.
 
 Intro wording, 2026-09-25: Alec wants the intro about ServiceTitan, not the team or product, so it now reads

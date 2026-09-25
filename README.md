@@ -74,7 +74,8 @@ All head tags live in `src/layouts/Base.astro` and read from `src/content/profil
   `expertise.yaml`, `sameAs` LinkedIn and GitHub) and, on the homepage, `ProfilePage`. Check changes with
   Google's [Rich Results Test](https://search.google.com/test/rich-results) or the [Schema.org validator](https://validator.schema.org/).
 - `@astrojs/sitemap` writes `sitemap-index.xml` (the 404 is left out); `public/robots.txt` points to it.
-- `netlify.toml` 301-redirects `alecpagliarussi.netlify.app` to the custom domain so only one host gets indexed.
+- `netlify.toml` 301-redirects `alecpagliarussi.netlify.app` to the custom domain so only one host gets indexed,
+  and sends `X-Robots-Tag: noindex` for `resume.pdf`, which has the email in plain text.
 
 ## Deploy
 

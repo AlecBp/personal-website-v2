@@ -34,7 +34,7 @@ const [givenName, ...rest] = name.split(' ');
 const familyName = rest.join(' ');
 
 // Structured data. Search engines read the headshot, not the text-heavy OG card, as the person's photo.
-const headshot = await getImage({ src: portrait, width: 460, format: 'jpg' });
+const headshot = await getImage({ src: portrait, width: 920, format: 'jpg' });
 const expertise = (await getCollection('expertise')).sort((a, b) => a.data.order - b.data.order);
 const personId = new URL('/#person', site).href;
 const websiteId = new URL('/#website', site).href;
@@ -85,7 +85,8 @@ if (profilePage) {
   });
 }
 
-const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
+// Escape `<` so no string in the data can close the <script> element early.
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -144,7 +145,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <!--

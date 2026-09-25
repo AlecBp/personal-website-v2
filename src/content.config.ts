@@ -11,7 +11,7 @@ const profile = defineCollection({
     employer: z.string(),
     location: z.string(),
     workLocation: z.string(),
-    /** Structured data only; the page itself doesn't show an education line. */
+    /** JSON-LD `alumniOf`; the page shows it as a route stop (route.yaml), not an education line. */
     alumniOf: z.string().optional(),
     description: z.string().max(160),
     intro: z.string(),
