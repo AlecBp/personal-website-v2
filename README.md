@@ -64,6 +64,19 @@ It animates with SVG SMIL, not JavaScript. A small script pauses it when the vis
 and while it's off screen; it freezes on a mid-motion frame rather than the empty first one. It's hidden
 in print. To turn the snow off, delete the `g.snow` group.
 
+## SEO
+
+All head tags live in `src/layouts/Base.astro` and read from `src/content/profile.md`:
+
+- Title, description, canonical URL, `robots` (`max-image-preview:large`; `noindex` on the 404), Open Graph and Twitter cards.
+- The homepage passes `profilePage`, which sets `og:type` to `profile` and adds a `ProfilePage` to the structured data.
+- JSON-LD `@graph`: `WebSite`, `Person` (headshot, employer, `alumniOf`, location, `knowsAbout` built from
+  `expertise.yaml`, `sameAs` LinkedIn and GitHub) and, on the homepage, `ProfilePage`. Check changes with
+  Google's [Rich Results Test](https://search.google.com/test/rich-results) or the [Schema.org validator](https://validator.schema.org/).
+- `@astrojs/sitemap` writes `sitemap-index.xml` (the 404 is left out); `public/robots.txt` points to it.
+- `netlify.toml` 301-redirects `alecpagliarussi.netlify.app` to the custom domain so only one host gets indexed,
+  and sends `X-Robots-Tag: noindex` for `resume.pdf`, which has the email in plain text.
+
 ## Deploy
 
 The site is hosted on Netlify, which builds it from this repo. `netlify.toml` sets the build command
