@@ -18,13 +18,11 @@ const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(
     {
       roles.map((role) => (
         <li>
-          <div class="what">
-            <p class="company">{role.company}</p>
-            <p class="role">
-              {role.title}
-              {role.team && <span class="team"> · {role.team}</span>}
-            </p>
-          </div>
+          <p class="company">{role.company}</p>
+          <p class="role">
+            {role.title}
+            {role.team && <span class="team"> · {role.team}</span>}
+          </p>
           <p class="dates">
             {year(role.start)} – {year(role.end)}
           </p>
@@ -32,10 +30,8 @@ const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(
       ))
     }
     <li>
-      <div class="what">
-        <p class="company">Earlier</p>
-        <p class="role team">{earlier.summary}</p>
-      </div>
+      <p class="company">Earlier</p>
+      <p class="role team">{earlier.summary}</p>
       <p class="dates">{earlier.years}</p>
     </li>
   </ol>
@@ -48,32 +44,38 @@ const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(
     padding: 0;
   }
 
+  /* Phones: company and dates share a line, the role gets the full width below. */
   li {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'company dates'
+      'role role';
     align-items: baseline;
-    gap: 1rem;
+    gap: 0.125rem 1rem;
     padding-block: 1.125rem;
     border-top: 1px solid var(--line);
+  }
+
+  @media (min-width: 45rem) {
+    li {
+      grid-template-columns: 11rem minmax(0, 1fr) auto;
+      grid-template-areas: 'company role dates';
+      column-gap: 1.5rem;
+    }
   }
 
   li:last-child {
     border-bottom: 1px solid var(--line);
   }
 
-  .what {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.125rem 1.5rem;
-  }
-
   .company {
-    flex: 0 0 11rem;
+    grid-area: company;
     font-weight: 600;
   }
 
   .role {
-    flex: 1 1 16rem;
+    grid-area: role;
   }
 
   .team {
@@ -81,7 +83,7 @@ const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(
   }
 
   .dates {
-    flex: none;
+    grid-area: dates;
     font-size: 0.9375rem;
     font-variant-numeric: tabular-nums;
     color: var(--muted);

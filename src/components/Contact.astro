@@ -44,4 +44,14 @@ const { statement, email, linkedin, github, resume } = Astro.props;
     margin-top: 1.75rem;
     font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   }
+
+  @media print {
+    .contact {
+      padding-block: 1.5rem;
+    }
+
+    .statement {
+      font-size: 1.75rem;
+    }
+  }
 </style>
