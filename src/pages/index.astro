@@ -1,61 +1,40 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
-import Section from '../components/Section.astro';
+import Intro from '../components/Intro.astro';
+import Expertise from '../components/Expertise.astro';
+import Route from '../components/Route.astro';
 import Experience from '../components/Experience.astro';
-import Work from '../components/Work.astro';
-import Projects from '../components/Projects.astro';
-import Writing from '../components/Writing.astro';
 import Contact from '../components/Contact.astro';
 
 const profile = await getEntry('profile', 'profile');
 if (!profile) throw new Error('src/content/profile.md is missing');
 const { data } = profile;
-const { Content: About } = await render(profile);
 ---
 
 <Base>
-  <Hero
-    name={data.name}
-    jobTitle={data.jobTitle}
-    employer={data.employer}
-    tagline={data.tagline}
-    location={data.location}
-    resume={data.resume}
-    linkedin={data.links.linkedin}
-  />
-
-  <Section id="about" number="01" title="About">
-    <div class="prose"><About /></div>
-  </Section>
-
-  <Section id="work" number="02" title="Selected work">
-    <Work />
-  </Section>
-
-  <Section id="experience" number="03" title="Experience">
-    <Experience earlier={data.earlier} education={data.education} />
-  </Section>
-
-  <Section id="talks" number="04" title="Talks & writing">
-    <Writing />
-  </Section>
-
-  <Section id="side-projects" number="05" title="Side projects" quiet>
-    <Projects />
-  </Section>
-
-  <Section id="beyond" number="06" title="Beyond work">
-    <p>{data.beyond}</p>
-  </Section>
-
-  <Section id="contact" number="07" title="Contact">
-    <Contact
-      intro={data.contact}
+  <div class="wrap">
+    <Intro
+      name={data.name}
+      jobTitle={data.jobTitle}
+      employer={data.employer}
+      intro={data.intro}
+      workLocation={data.workLocation}
+      portrait={data.portrait}
+      resume={data.resume}
       email={data.email}
       linkedin={data.links.linkedin}
       github={data.links.github}
     />
-  </Section>
+    <Expertise asides={data.asides} />
+    <Route summary={data.routeSummary} />
+    <Experience earlier={data.earlier} talks={data.talks} resume={data.resume} />
+    <Contact
+      statement={data.contact}
+      email={data.email}
+      linkedin={data.links.linkedin}
+      github={data.links.github}
+      resume={data.resume}
+    />
+  </div>
 </Base>

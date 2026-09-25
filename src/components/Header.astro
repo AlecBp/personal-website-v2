@@ -1,13 +1,19 @@
 ---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
 const nav = [
-  { href: '/#work', label: 'Work' },
+  { href: '/#expertise', label: 'Expertise' },
+  { href: '/#route', label: 'Route' },
   { href: '/#experience', label: 'Experience' },
   { href: '/#contact', label: 'Contact' },
 ];
 ---
 
 <header class="site-header wrap">
-  <a class="mark" href="/"><span aria-hidden="true">AP</span><span class="visually-hidden">Alec Pagliarussi, home</span></a>
+  <a class="mark" href="/">{name}</a>
   <nav aria-label="Primary">
     <ul>
       {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
@@ -64,29 +70,32 @@ const nav = [
   .site-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.75rem;
     padding-block: 1.25rem;
-    font-family: var(--font-display);
-    font-size: var(--step--1);
   }
 
   .mark {
-    font-weight: 650;
+    margin-right: auto;
     font-size: 0.9375rem;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     text-decoration: none;
-    padding: 0.35rem 0;
-  }
-
-  nav {
-    margin-left: auto;
+    padding-block: 0.35rem;
   }
 
   nav ul {
     display: flex;
-    gap: clamp(0.9rem, 3vw, 1.75rem);
+    gap: 1.75rem;
     list-style: none;
     padding: 0;
+    font-size: 0.875rem;
+  }
+
+  /* Below 45rem only the name and the theme toggle stay in the header. */
+  @media (max-width: 44.99rem) {
+    nav {
+      display: none;
+    }
   }
 
   nav a {

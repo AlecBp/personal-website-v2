@@ -22,11 +22,10 @@ All copy lives in `src/content/`, so you can edit it without touching components
 
 | File | What it controls |
 | --- | --- |
-| `profile.md` | Hero, meta description, contact, "Earlier", education, "Beyond work". The Markdown body is the About section. |
-| `experience/*.md` | One file per role. Frontmatter holds the dates and title; the body is the bullet list. `order` sets position. |
-| `work.yaml` | Selected work: broad areas of focus. Keep it high level, with no internal names or metrics. |
-| `writing.yaml` | Talks, and later posts (`kind: post`, `href`, `date`). |
-| `projects.yaml` | Side projects. Only list links that are live. |
+| `profile.md` | Name, role, intro, photo alt text and caption, route summary, the "Earlier" row, talks line, contact statement, links. `asides: false` hides the small personal notes under Expertise. |
+| `expertise.yaml` | The five Expertise rows: title, description, and a tech list (or a `meta` line), plus an optional personal `aside`. Keep it high level, with no internal names or metrics. |
+| `route.yaml` | The "route so far" timeline, oldest first. `status: current` fills the dot; `status: next` is the dashed, open-ended last stop. |
+| `experience/*.md` | One file per role. The homepage shows the frontmatter (company, title, team, dates); the body keeps résumé-style highlights. `order` sets position. |
 
 Schemas are in `src/content.config.ts`. `npm run build` fails if a field is missing or mistyped.
 
@@ -52,9 +51,9 @@ CSP only takes effect in `npm run build` + `npm run preview`, not in `npm run de
 
 ## Images, Open Graph card and favicons
 
-- The hero photo is `src/assets/profile.jpeg`. Astro generates AVIF, WebP and JPEG variants at build time.
+- The portrait is `src/assets/portrait.jpg` (1080×1440). Astro generates AVIF, WebP and JPEG variants at build time.
 - `npm run og` regenerates `public/og.png` (1200×630) and the favicon set (`favicon.svg`, `favicon.ico`,
-  `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) from the photo and the Geist font.
+  `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) from the portrait (a square crop around the face, set in `scripts/og.mjs`) and the Geist font.
   Run it after changing the photo, name or role, and commit the output.
 
 ## Deploy

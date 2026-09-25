@@ -118,6 +118,7 @@ gimmick (the "bill of materials" treatment was rejected), and without personal-l
 | Electronics / robotics | Origin story | Where it started (robotics teacher). Not a current hobby — mention only in the story. |
 | Home lab | Ongoing | |
 | Smoking BBQ | Ongoing | Low and slow. |
+| Gaming | Mention | Added by Alec in the 2a handoff (photo caption). |
 | Competitive programming | Occasional | IEEEXtreme: 11th in Canada, top 12% worldwide (2020); 20th in Canada (2019). |
 
 ---
@@ -153,18 +154,19 @@ answers in conversation. Don't invent anything beyond these.
 
 ---
 
-## 6. Current copy (live on `redesign/astro`)
+## 6. Current copy (live on `redesign/astro`, design 2a "Statement + portrait")
 
 | Slot | Text |
 | --- | --- |
-| Hero line | I like building things — software for a living, and woodworking and 3D prints for the fun of it. |
-| About ¶1 | I'm a Staff Software Engineer at ServiceTitan, where I lead one of the teams behind Contact Center Pro… Most of what I build is backend: shared libraries, caching and billing pieces that other teams rely on, and the plumbing that keeps things running when something upstream breaks… |
-| About ¶2 | I took the long way here. Robotics teaching and a 3D-printing shop in Brazil → George Brown in Toronto → HomeX → ServiceTitan. |
-| About ¶3 | At heart I like building things. I enjoy tinkering with technology, the challenge of learning something new, and the curiosity of figuring out how different things work… |
-| Beyond work | Outside work, skiing is the big one, and camping is up there too. The rest of the time I'm usually tinkering: a 3D printer, a home lab, some woodworking, and a smoker for low-and-slow BBQ… |
-| Contact | Happy to talk shop, BBQ or skiing. Email is the easiest way to reach me… |
+| h1 | Alec Pagliarussi / Staff Software Engineer / at ServiceTitan |
+| Intro | Backend engineer at heart, tech lead on Contact Center Pro these days. Five years of building services, APIs and event-driven systems. Outside work I'm still building things: personal projects, woodworking and 3D printing. |
+| Photo caption | Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming. |
+| Expertise | Distributed backend systems · Event-driven architecture · Data and performance · Reliability and platform · Technical leadership ("The teacher in me never really left.") |
+| Asides | "I run a home lab too, so I'm on call there as well." · "Before software, I spent three years teaching robotics in Brazil." |
+| Route summary | From teaching robotics in Brazil to leading a team at ServiceTitan. |
+| Contact | Always up for a good engineering problem. Or a ski trip. |
 
-Full text: `src/content/profile.md`, `src/content/work.yaml`, `src/content/experience/`.
+Full text: `src/content/profile.md`, `expertise.yaml`, `route.yaml`, `experience/`.
 
 ---
 
@@ -212,7 +214,16 @@ Answers from Alec, 2026-09-23:
 | Experience tone | More corporate/serious is fine there. |
 | Rejected | Blueprint (busy, costume, impersonal), parts-list hobbies, outage simulator. |
 
+Design handoff 2a ("Statement + portrait", from `~/Downloads/design_handoff_homepage`), 2026-09-25:
+
+| Change | Detail |
+| --- | --- |
+| Layout | Big statement h1 + intro + tall ski portrait; Expertise (5 rows); horizontal Route timeline; compact Experience; contact statement. Geist only (Charter dropped). |
+| Removed | About section, Selected work, side projects, "Beyond work", education line, IEEEXtreme mention. Hobbies now live in the photo caption and two asides. |
+| Photo | New ski portrait (`src/assets/portrait.jpg`); the old headshot is retired. |
+| Stack names | A tech line per Expertise row is fine (C#/.NET, TypeScript, Node.js, GraphQL, Kafka, Azure Service Bus, MongoDB, PostgreSQL, Redis, Kubernetes, Azure, AWS). |
+| Implementation note | Route switches to horizontal at 60rem (not 720px) because eight columns overlap on tablets. |
+
 Still open:
 
-1. New profile photo (skiing/camping) — Alec may provide one; until then use `src/assets/profile.jpeg`.
-2. Reference sites for the bold-and-minimal feel, if Alec has any.
+1. Reference sites for the bold-and-minimal feel, if Alec has any.

@@ -1,84 +1,47 @@
 ---
+import EmailLink from './EmailLink.astro';
+
 interface Props {
-  intro: string;
+  statement: string;
   email: string;
   linkedin: string;
   github: string;
+  resume: string;
 }
 
-const { intro, email, linkedin, github } = Astro.props;
-
-// The address never appears in the HTML as text; a small script assembles the mailto link.
-const [user, domain] = email.split('@');
-const encoded = { user: btoa(user.split('').reverse().join('')), domain: btoa(domain) };
-const handle = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const { statement, email, linkedin, github, resume } = Astro.props;
 ---
 
-<p class="intro">{intro}</p>
-<ul class="channels">
-  <li>
-    <span class="eyebrow">Email</span>
-    <a class="value js-email" data-u={encoded.user} data-d={encoded.domain} href="#contact" hidden>
-      Email me
-    </a>
-    <noscript><span class="value">alec.paglia [at] gmail [dot] com</span></noscript>
-  </li>
-  <li>
-    <span class="eyebrow">LinkedIn</span>
-    <a class="value" href={linkedin} rel="me">{handle(linkedin)}</a>
-  </li>
-  <li>
-    <span class="eyebrow">GitHub</span>
-    <a class="value" href={github} rel="me">{handle(github)}</a>
-  </li>
-</ul>
-
-<script>
-  document.querySelectorAll<HTMLAnchorElement>('.js-email').forEach((link) => {
-    const { u = '', d = '' } = link.dataset;
-    const user = atob(u).split('').reverse().join('');
-    const address = `${user}@${atob(d)}`;
-    link.href = `mailto:${address}`;
-    link.textContent = address;
-    link.hidden = false;
-  });
-</script>
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <h2 id="contact-title" class="visually-hidden">Contact</h2>
+  <p class="statement">{statement}</p>
+  <p class="links">
+    <EmailLink email={email} showAddress />
+    <a href={linkedin} rel="me">LinkedIn</a>
+    <a href={github} rel="me">GitHub</a>
+    <a href={resume}>Résumé</a>
+  </p>
+</section>
 
 <style>
-  .intro {
-    margin-bottom: 1.75rem;
+  .contact {
+    padding-block: clamp(4rem, 10vw, 8.5rem) var(--section-pad);
   }
 
-  .channels {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    border-top: 1px solid var(--line);
+  .statement {
+    max-width: 14em;
+    font-size: clamp(2rem, 1rem + 3.2vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
   }
 
-  .channels li {
-    display: grid;
-    gap: 0.2rem;
-    padding-block: 1rem;
-    border-bottom: 1px solid var(--line);
-  }
-
-  @media (min-width: 36rem) {
-    .channels li {
-      grid-template-columns: 7rem minmax(0, 1fr);
-      align-items: baseline;
-    }
-  }
-
-  .value {
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    overflow-wrap: anywhere;
-  }
-
-  .value[hidden] {
-    display: none;
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem 1.5rem;
+    margin-top: 1.75rem;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   }
 </style>

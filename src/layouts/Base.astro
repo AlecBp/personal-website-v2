@@ -13,7 +13,7 @@ interface Props {
 
 const profile = await getEntry('profile', 'profile');
 if (!profile) throw new Error('src/content/profile.md is missing');
-const { name, jobTitle, employer, description: defaultDescription, links } = profile.data;
+const { name, jobTitle, employer, location, description: defaultDescription, links } = profile.data;
 
 const {
   title = `${name} — ${jobTitle}`,
@@ -83,10 +83,10 @@ const person = {
     -->
     <script is:inline set:html={themeInit} />
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
+    <Header name={name} />
     <main id="main" tabindex="-1">
       <slot />
     </main>
-    <Footer name={name} source={links.source} />
+    <Footer name={name} location={location} />
   </body>
 </html>

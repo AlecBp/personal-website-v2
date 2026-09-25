@@ -20,19 +20,16 @@
   --accent-ink: light-dark(#ffffff, #0b1213);
   --accent-hover: light-dark(#075a5e, #7ad8d9);
 
-  --font-display: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body: Charter, 'Bitstream Charter', 'Iowan Old Style', 'Sitka Text', Cambria, Georgia,
-    'Noto Serif', serif;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --step--1: 0.875rem;
-  --step-0: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-0: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
   --step-1: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);
   --step-2: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
   --step-4: clamp(2.5rem, 1.5rem + 5vw, 4.5rem);
 
-  --gutter: clamp(1.25rem, 5vw, 2.5rem);
-  --label-col: 10.5rem;
-  --measure: 40rem;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --section-pad: clamp(3.5rem, 8vw, 6.5rem);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -62,9 +59,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: var(--step-0);
-  line-height: 1.65;
+  line-height: 1.6;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -74,7 +71,6 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -146,7 +142,6 @@ a:hover {
   padding: 0.6rem 1rem;
   background: var(--accent);
   color: var(--accent-ink);
-  font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--step--1);
   text-decoration: none;
@@ -166,55 +161,24 @@ a:hover {
 
 .wrap {
   width: 100%;
-  max-width: calc(var(--label-col) + 3rem + var(--measure) + 2 * var(--gutter));
+  max-width: 1240px;
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
-/* Two-column "marginalia" grid: a label column and a reading column. Stacks below 60rem. */
-.grid {
-  display: grid;
-  gap: 1.5rem;
+/* Every section after the intro: a hairline on top and generous vertical space. */
+.section {
+  padding-block: var(--section-pad);
+  border-top: 1px solid var(--line);
 }
 
-@media (min-width: 60rem) {
-  .grid {
-    grid-template-columns: var(--label-col) minmax(0, var(--measure));
-    column-gap: 3rem;
-  }
+.section-title {
+  margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+  font-size: 0.9375rem;
+  letter-spacing: -0.005em;
 }
 
 /* ---------- Shared bits ---------- */
-
-.eyebrow {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.prose > * + * {
-  margin-top: 1.1em;
-}
-
-.prose a {
-  color: var(--accent);
-  text-decoration-color: currentColor;
-}
-
-.prose a:hover {
-  color: var(--accent-hover);
-}
-
-.meta {
-  font-family: var(--font-display);
-  font-size: var(--step--1);
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.5;
-}
 
 .btn {
   display: inline-flex;
@@ -222,7 +186,6 @@ a:hover {
   gap: 0.5rem;
   min-height: 2.75rem;
   padding: 0.6rem 1.15rem;
-  font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1;
@@ -233,11 +196,6 @@ a:hover {
     background-color 160ms var(--ease),
     border-color 160ms var(--ease),
     color 160ms var(--ease);
-}
-
-.btn:hover {
-  border-color: var(--fg);
-  color: var(--fg);
 }
 
 .btn--primary {
@@ -252,27 +210,7 @@ a:hover {
   color: var(--accent-ink);
 }
 
-.btn svg {
-  width: 1em;
-  height: 1em;
-  flex: none;
-}
-
 /* ---------- Motion ---------- */
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-  }
-
-  .rise {
-    animation: rise 700ms var(--ease) both;
-    animation-delay: calc(var(--i, 0) * 80ms);
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -310,29 +248,12 @@ main:focus {
     font-size: 11pt;
   }
 
-  .rise {
-    animation: none !important;
-  }
-
   .section {
     padding-block: 1.5rem;
   }
 
-  /* Grid containers fragment poorly across pages in Chromium; plain flow prints cleanly. */
-  .grid {
-    display: block;
-  }
-
-  .grid > * + * {
-    margin-top: 1rem;
-  }
-
   li {
     break-inside: avoid-page;
-  }
-
-  .section-head {
-    position: static !important;
   }
 
   a[href^='http']::after {

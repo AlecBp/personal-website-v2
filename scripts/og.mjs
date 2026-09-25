@@ -30,7 +30,12 @@ const toPng = (svg, width) => new Resvg(svg, { fitTo: { mode: 'width', value: wi
 
 // ---------- Open Graph card, 1200x630 ----------
 
-const photo = await sharp(`${root}src/assets/profile.jpeg`).resize(640, 640).jpeg({ quality: 82 }).toBuffer();
+// Square crop around the face from the 1080x1440 portrait.
+const photo = await sharp(`${root}src/assets/portrait.jpg`)
+  .extract({ left: 150, top: 480, width: 720, height: 720 })
+  .resize(640, 640)
+  .jpeg({ quality: 82 })
+  .toBuffer();
 const photoUri = `data:image/jpeg;base64,${photo.toString('base64')}`;
 
 const card = h(

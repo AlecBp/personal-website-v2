@@ -1,169 +1,101 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 interface Props {
-  earlier: string;
-  education: string;
+  earlier: { summary: string; years: string };
+  talks: string;
+  resume: string;
 }
 
-const { earlier, education } = Astro.props;
-
-const roles = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
-
-// Group consecutive roles at the same company so promotions read as one timeline.
-const companies: { name: string; roles: typeof roles }[] = [];
-for (const role of roles) {
-  const last = companies.at(-1);
-  if (last && last.name === role.data.company) last.roles.push(role);
-  else companies.push({ name: role.data.company, roles: [role] });
-}
-
-const rendered = await Promise.all(roles.map(async (role) => [role.id, (await render(role)).Content] as const));
-const contentFor = new Map(rendered);
-const earlierItems = earlier.split('·').map((item) => item.trim());
+const { earlier, talks, resume } = Astro.props;
+const roles = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order).map((r) => r.data);
+const year = (date: string) => (date === 'Present' ? 'now' : date.split(' ').at(-1));
 ---
 
-<div class="experience">
-  {
-    companies.map((company) => (
-      <article class="company">
-        <h3 class="company-name">{company.name}</h3>
-        <ol class="timeline">
-          {company.roles.map((role, index) => {
-            const Content = contentFor.get(role.id)!;
-            return (
-              <li class:list={['role', { current: index === 0 && role.data.end === 'Present' }]}>
-                <p class="meta dates">
-                  {role.data.start} – {role.data.end}
-                </p>
-                <h4>{role.data.title}</h4>
-                <p class="meta">
-                  {[role.data.team, role.data.location].filter(Boolean).join(' · ')}
-                </p>
-                <div class="highlights">
-                  <Content />
-                </div>
-                {role.data.note && <p class="meta note">{role.data.note}</p>}
-              </li>
-            );
-          })}
-        </ol>
-      </article>
-    ))
-  }
-
-  <div class="earlier">
-    <h3 class="eyebrow">Earlier</h3>
-    <ul>
-      {earlierItems.map((item) => <li>{item}</li>)}
-    </ul>
-  </div>
-
-  <div class="earlier">
-    <h3 class="eyebrow">Education</h3>
-    <p>{education}</p>
-  </div>
-</div>
+<section id="experience" class="section" aria-labelledby="experience-title">
+  <h2 id="experience-title" class="section-title">Experience</h2>
+  <ol>
+    {
+      roles.map((role) => (
+        <li>
+          <div class="what">
+            <p class="company">{role.company}</p>
+            <p class="role">
+              {role.title}
+              {role.team && <span class="team"> · {role.team}</span>}
+            </p>
+          </div>
+          <p class="dates">
+            {year(role.start)} – {year(role.end)}
+          </p>
+        </li>
+      ))
+    }
+    <li>
+      <div class="what">
+        <p class="company">Earlier</p>
+        <p class="role team">{earlier.summary}</p>
+      </div>
+      <p class="dates">{earlier.years}</p>
+    </li>
+  </ol>
+  <p class="talks">{talks} The details are in the <a href={resume}>résumé</a>.</p>
+</section>
 
 <style>
-  .experience {
-    display: grid;
-    gap: clamp(2.5rem, 6vw, 3.5rem);
-  }
-
-  .company-name {
-    font-size: var(--step-2);
-    letter-spacing: -0.025em;
-  }
-
-  .timeline {
+  ol {
     list-style: none;
-    margin-top: 1.5rem;
-    padding: 0 0 0 1.5rem;
-    border-left: 1px solid var(--line);
-    display: grid;
-    gap: 2.25rem;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 1.125rem;
+    border-top: 1px solid var(--line);
+  }
+
+  li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .what {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem 1.5rem;
+  }
+
+  .company {
+    flex: 0 0 11rem;
+    font-weight: 600;
   }
 
   .role {
-    position: relative;
+    flex: 1 1 16rem;
   }
 
-  /* Timeline node. The current role gets a filled accent dot. */
-  .role::before {
-    content: '';
-    position: absolute;
-    left: calc(-1.5rem - 5px);
-    top: 0.45em;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 1.5px solid var(--muted);
-  }
-
-  .role.current::before {
-    background: var(--accent);
-    border-color: var(--accent);
+  .team {
+    color: var(--muted);
   }
 
   .dates {
-    margin-bottom: 0.3rem;
-  }
-
-  h4 {
-    font-size: var(--step-1);
-    letter-spacing: -0.015em;
-  }
-
-  .highlights {
-    margin-top: 1rem;
-  }
-
-  .highlights :global(ul) {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 0.7rem;
-  }
-
-  .highlights :global(li) {
-    position: relative;
-    padding-left: 1.25rem;
-  }
-
-  .highlights :global(li)::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
-
-  .note {
-    margin-top: 1rem;
-    font-style: normal;
-  }
-
-  .earlier {
-    padding-top: 1.75rem;
-    border-top: 1px solid var(--line);
+    flex: none;
     font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
     color: var(--muted);
   }
 
-  .earlier h3 {
-    margin-bottom: 0.75rem;
+  .talks {
+    margin-top: 1.5rem;
+    max-width: 46rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--muted);
   }
 
-  .earlier + .earlier {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .earlier ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: 0.35rem;
+  .talks a {
+    text-decoration-color: currentColor;
   }
 </style>

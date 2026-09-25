@@ -1,0 +1,149 @@
+---
+import { Picture } from 'astro:assets';
+import EmailLink from './EmailLink.astro';
+import portrait from '../assets/portrait.jpg';
+
+interface Props {
+  name: string;
+  jobTitle: string;
+  employer: string;
+  intro: string;
+  workLocation: string;
+  portrait: { alt: string; caption: string };
+  resume: string;
+  email: string;
+  linkedin: string;
+  github: string;
+}
+
+const p = Astro.props;
+---
+
+<section class="intro" aria-label="Intro">
+  <h1>
+    <span class="name">{p.name}</span>
+    <span class="title">{p.jobTitle}</span>
+    <span class="employer">at {p.employer}</span>
+  </h1>
+  <div class="row">
+    <div class="text">
+      <p class="lede">{p.intro}</p>
+      <p class="links">
+        <a href={p.resume}>Résumé (PDF)</a>
+        <a href={p.linkedin} rel="me">LinkedIn</a>
+        <a href={p.github} rel="me">GitHub</a>
+        <EmailLink email={p.email} />
+        <span class="where">{p.workLocation}</span>
+      </p>
+    </div>
+    <figure class="portrait">
+      <Picture
+        src={portrait}
+        alt={p.portrait.alt}
+        width={460}
+        height={613}
+        widths={[460, 920]}
+        sizes="(min-width: 45rem) 460px, 100vw"
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption>{p.portrait.caption}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .intro {
+    padding-block: clamp(3.5rem, 11vw, 9.25rem) clamp(3.5rem, 8vw, 7rem);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 0.9rem + 5.6vw, 5.25rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  h1 > span {
+    display: block;
+  }
+
+  .title,
+  .employer {
+    color: var(--muted);
+  }
+
+  /* The emphasis belongs on the name and title, not the company. */
+  .employer {
+    margin-top: 0.35em;
+    font-size: 0.42em;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2.5rem clamp(2.5rem, 6vw, 6rem);
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  /* A column that pins the intro to the top and the links to the bottom of the photo. */
+  .text {
+    flex: 1 1 26rem;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .lede {
+    font-size: clamp(1.1875rem, 1rem + 0.7vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: -0.012em;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.375rem;
+    font-size: 0.9375rem;
+  }
+
+  .where {
+    color: var(--muted);
+  }
+
+  .portrait {
+    flex: 0 1 460px;
+    min-width: 260px;
+    margin: 0;
+  }
+
+  @media (max-width: 44.99rem) {
+    .portrait {
+      margin-inline: auto;
+    }
+  }
+
+  .portrait :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 45%;
+    border-radius: 4px;
+    background: var(--bg-soft);
+  }
+
+  figcaption {
+    margin-top: 0.625rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+</style>

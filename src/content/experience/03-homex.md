@@ -1,11 +1,10 @@
 ---
 company: HomeX
-team: Schedule Engine
+team: Schedule Engine, acquired by ServiceTitan
 title: Software Engineer I / II
 start: Apr 2021
 end: Aug 2022
 location: Toronto
-note: Acquired by ServiceTitan, August 2022.
 order: 3
 ---
 
