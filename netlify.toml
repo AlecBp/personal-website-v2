@@ -3,6 +3,14 @@
   command = "npm run build"
   publish = "dist"
 
+# The default Netlify hostname serves the same site. Send it to the real domain so search engines
+# only see one copy. Deploy previews and branch deploys use other hostnames, so they're unaffected.
+[[redirects]]
+  from = "https://alecpagliarussi.netlify.app/*"
+  to = "https://alecpagliarussi.me/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -20,6 +28,12 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# The résumé carries the email in plain text. Keep it out of search results; the homepage links to it.
+[[headers]]
+  for = "/resume.pdf"
+  [headers.values]
+    X-Robots-Tag = "noindex"
 
 # Retires the gatsby-plugin-offline service worker; must never be cached.
 [[headers]]

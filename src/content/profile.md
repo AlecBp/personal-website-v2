@@ -4,8 +4,10 @@ jobTitle: Staff Software Engineer
 employer: ServiceTitan
 location: Ontario, Canada
 workLocation: Remote, Ontario, Canada
+# JSON-LD `alumniOf`. The page shows it as the 2018 route stop, not as an education line.
+alumniOf: George Brown College
 description: "Staff Software Engineer at ServiceTitan who likes building things: backend systems at work, and woodworking and 3D prints at home."
-intro: "Backend engineer at heart, tech lead on Contact Center Pro these days. Five years of building services, APIs and event-driven systems. Outside work I’m still building things: personal projects, woodworking and 3D printing."
+intro: "Backend engineer at heart, tech lead at ServiceTitan these days. Five years of building services, APIs and event-driven systems. Outside work I’m still building things: personal projects, woodworking and 3D printing."
 portrait:
   alt: Alec in a blue ski jacket and a brown toque, a snowy mountain behind him
   caption: Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming.

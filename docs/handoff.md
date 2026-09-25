@@ -18,7 +18,7 @@ Last updated 2026-09-25. Read together with [`content-brief.md`](content-brief.m
 
 ### Next step
 
-`feat/mountain-scenery` (built on `polish/small-touches`): small polish plus the animated mountain horizon behind the intro (design handoff 4a, `~/Downloads/design_handoff_scenery`). PRs into `main` and `production`. Bigger ideas offered and not picked yet: a dated Now block or /now page, a builds page (3D prints, woodworking, home lab; needs photos), a writing/notes section with RSS, a /uses page.
+`feat/mountain-scenery` (built on `polish/small-touches`): small polish plus the animated mountain horizon behind the intro (design handoff 4a, `~/Downloads/design_handoff_scenery`). Merged into `main` (#13) and `production` (#14, squash) on 2026-09-25. Then `feat/seo`: richer structured data and head tags, plus the netlify.app redirect. Bigger ideas offered and not picked yet: a dated Now block or /now page, a builds page (3D prints, woodworking, home lab; needs photos), a writing/notes section with RSS, a /uses page.
 
 Research behind the design rounds: [`inspiration.md`](inspiration.md). Rejected earlier (don't repeat): Blueprint (busy, costume, impersonal), Swiss poster, Literary, parts-list hobbies, the interactive outage simulator, and the original clean design as "too generic".
 
@@ -31,7 +31,7 @@ From Alec's initial brief:
 - **Design:** light and dark mode (respect `prefers-color-scheme`, small toggle); one accent colour; no gradients-everywhere, glassmorphism or template look; self-hosted fonts only; ~65–75 character measure; mobile-first and intentional at 360px; subtle motion, reduced under `prefers-reduced-motion`.
 - **Accessibility:** semantic landmarks, visible focus, 4.5:1 contrast in both themes, alt text, skip link.
 - **Performance:** Lighthouse 95+ on mobile in every category; under ~500 KB first load.
-- **SEO:** title "Alec Pagliarussi — Staff Software Engineer"; meta description under 160 characters; Open Graph and Twitter cards with a 1200×630 image (no Twitter handle; none existed); JSON-LD `Person` (name, jobTitle, worksFor ServiceTitan, sameAs LinkedIn/GitHub, url); canonical `https://alecpagliarussi.me/`; `robots.txt`; sitemap.
+- **SEO:** title "Alec Pagliarussi — Staff Software Engineer"; meta description under 160 characters; Open Graph and Twitter cards with a 1200×630 image (no Twitter handle; none existed); JSON-LD `@graph` with `WebSite`, `Person` (headshot, worksFor ServiceTitan, alumniOf George Brown College, location, knowsAbout, sameAs LinkedIn/GitHub) and a homepage `ProfilePage`; `og:type` profile on the homepage; `max-image-preview:large`; canonical `https://alecpagliarussi.me/`; `alecpagliarussi.netlify.app` 301s to the custom domain; `robots.txt`; sitemap. See README, "SEO".
 - **Content rules:** no phone number anywhere; résumé served at `/resume.pdf`; email obfuscated; no invented facts. See the brief.
 - **Quality gate before hand-back:** `astro check` + build clean; Lighthouse mobile scores; crawl every link for 200s; screenshots at 360/768/1280 in both themes; redirects for old routes (none needed: old site only had `/` and `/404`).
 - **Git:** conventional commits on a branch; never push to `main` or deploy without confirmation; README explains run and deploy.
