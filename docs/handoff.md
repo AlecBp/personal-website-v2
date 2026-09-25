@@ -8,15 +8,15 @@ Last updated 2026-09-25. Read together with [`content-brief.md`](content-brief.m
 | Branch | What's on it | State |
 | --- | --- | --- |
 | `main` | Old Gatsby 2 site (2021). Netlify deploys production from here. | Untouched. |
-| `redesign/astro` | The new Astro site, now on design **2a "Statement + portrait"** (from Alec's design handoff), new ski portrait, new résumé, content brief. **This is the real work.** | Committed, **not pushed**. |
+| `redesign/astro` | The new Astro site, now on design **2a "Statement + portrait"** (from Alec's design handoff), new ski portrait, new résumé, content brief. **This is the real work.** | **Pushed**; open as [PR #11](https://github.com/AlecBp/personal-website-v2/pull/11) into `main`. |
 | `design/explorations` | Older `redesign/astro` + lab pages at `/lab/{blueprint,swiss,literary,blueprint-v2,headline,sentence,chronology}` (noindex, not linked). | Committed, not pushed. Merge `redesign/astro` into it before new explorations. |
 | `design/inspiration-labs` | Snapshot of `design/explorations` with the headline/sentence/chronology labs. | **Pushed** to origin on 2026-09-25 at Alec's request. |
 
-**Only `design/inspiration-labs` has been pushed; nothing is deployed.** Pushing a branch may create a Netlify deploy preview; merging to `main` deploys production. Both need Alec's explicit OK.
+**`redesign/astro` (PR #11) and `design/inspiration-labs` are pushed; nothing is deployed.** Pushing a branch may create a Netlify deploy preview; merging to `main` deploys production. Both need Alec's explicit OK.
 
 ### Next step
 
-Design 2a is built on `redesign/astro` and passed the quality gate (see below). Next: Alec reviews it; then push `redesign/astro` / open a PR, check the Netlify deploy preview, and merge to `main` only with Alec's OK.
+Design 2a is built on `redesign/astro` and passed the quality gate (see below). Next: Alec reviews PR #11 (and a Netlify deploy preview, if previews are enabled); merge to `main` only with Alec's OK — that deploys production.
 
 Research behind the design rounds: [`inspiration.md`](inspiration.md). Rejected earlier (don't repeat): Blueprint (busy, costume, impersonal), Swiss poster, Literary, parts-list hobbies, the interactive outage simulator, and the original clean design as "too generic".
 
