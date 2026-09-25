@@ -159,7 +159,7 @@ answers in conversation. Don't invent anything beyond these.
 | Slot | Text |
 | --- | --- |
 | h1 | Alec Pagliarussi / Staff Software Engineer / at ServiceTitan |
-| Intro | Backend engineer at heart, tech lead on Contact Center Pro these days. Five years of building services, APIs and event-driven systems. Outside work I'm still building things: personal projects, woodworking and 3D printing. |
+| Intro | Backend engineer at heart, tech lead at ServiceTitan these days. Five years of building services, APIs and event-driven systems. Outside work I'm still building things: personal projects, woodworking and 3D printing. |
 | Photo caption | Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming. |
 | Expertise | Distributed backend systems · Event-driven architecture · Data and performance · Reliability and platform · Technical leadership ("The teacher in me never really left.") |
 | Asides | "I run a home lab too, so I'm on call there as well." · "Before software, I spent three years teaching robotics in Brazil." |
@@ -232,6 +232,9 @@ screen. It carries the skiing personality visually, so the copy doesn't need to 
 SEO pass, 2026-09-25: the structured data names George Brown College as `alumniOf` (an approved fact from
 §5) even though the page has no education line; it helps search engines match the LinkedIn profile. Remove
 `alumniOf` from `profile.md` to drop it. Title and description copy are unchanged.
+
+Intro wording, 2026-09-25: Alec wants the intro about ServiceTitan, not the team or product, so it now reads
+"tech lead at ServiceTitan these days" instead of naming Contact Center Pro.
 
 Still open:
 
