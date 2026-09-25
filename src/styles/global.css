@@ -229,6 +229,12 @@ main:focus {
   outline: none;
 }
 
+/* The intro's mountain scene is 100vw wide, which includes any classic scrollbar. Clipping here,
+   not on body (whose overflow propagates to the viewport), keeps the page from scrolling sideways. */
+main {
+  overflow-x: clip;
+}
+
 /* ---------- Print ---------- */
 
 @media print {

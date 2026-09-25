@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import EmailLink from './EmailLink.astro';
+import MountainScene from './MountainScene.astro';
 import portrait from '../assets/portrait.jpg';
 
 interface Props {
@@ -20,6 +21,7 @@ const p = Astro.props;
 ---
 
 <section class="intro" aria-label="Intro">
+  <MountainScene />
   <h1>
     <span class="name">{p.name}</span>
     <span class="title">{p.jobTitle}</span>
@@ -52,11 +54,24 @@ const p = Astro.props;
       <figcaption>{p.portrait.caption}</figcaption>
     </figure>
   </div>
+  <!-- Room for the peaks below the photo caption. -->
+  <div class="scene-spacer" aria-hidden="true"></div>
 </section>
 
 <style>
   .intro {
+    position: relative;
     padding-block: clamp(3.5rem, 11vw, 9.25rem) clamp(3.5rem, 8vw, 7rem);
+  }
+
+  /* Paint the content above the mountain scene, which is the section's first child. */
+  h1,
+  .row {
+    position: relative;
+  }
+
+  .scene-spacer {
+    height: clamp(64px, 11vw, 190px);
   }
 
   h1 {
@@ -145,5 +160,68 @@ const p = Astro.props;
     font-size: 0.8125rem;
     line-height: 1.45;
     color: var(--muted);
+  }
+
+  /* A short, one-time rise on load. Delays stay small so the photo still paints early. */
+  @media (prefers-reduced-motion: no-preference) {
+    h1,
+    .text,
+    .portrait {
+      animation: intro-rise 700ms var(--ease) both;
+    }
+
+    .text {
+      animation-delay: 80ms;
+    }
+
+    .portrait {
+      animation-delay: 140ms;
+    }
+  }
+
+  @keyframes intro-rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  @media print {
+    h1,
+    .text,
+    .portrait {
+      animation: none;
+    }
+
+    .intro {
+      padding-block: 1rem 1.5rem;
+    }
+
+    .scene-spacer {
+      display: none;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    .row {
+      flex-wrap: nowrap;
+      margin-top: 1.25rem;
+    }
+
+    .text {
+      flex: 1 1 auto;
+    }
+
+    /* The contact section repeats these links; keep only the location. */
+    .links :global(a) {
+      display: none;
+    }
+
+    .portrait {
+      flex: 0 0 11rem;
+      min-width: 0;
+    }
   }
 </style>
