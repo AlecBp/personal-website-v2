@@ -57,6 +57,8 @@ html {
 
 body {
   margin: 0;
+  /* The intro's mountain scene is 100vw wide; don't let it (or a scrollbar) cause sideways scroll. */
+  overflow-x: clip;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);

@@ -7,17 +7,18 @@ Last updated 2026-09-25. Read together with [`content-brief.md`](content-brief.m
 
 | Branch | What's on it | State |
 | --- | --- | --- |
-| `main` | The Astro site, design **2a "Statement + portrait"**. Merged from `redesign/astro` via [PR #11](https://github.com/AlecBp/personal-website-v2/pull/11) (squash) on 2026-09-25. Netlify deploys production from here. | **Live** at alecpagliarussi.me. |
+| `production` | What Netlify publishes. Same files as `main` after PR #12 (squash). Release by PR into `production` (see README, "Branches and releases"). | **Live** at alecpagliarussi.me. |
+| `main` | Integration branch and GitHub default: the Astro site, design **2a "Statement + portrait"**, merged via [PR #11](https://github.com/AlecBp/personal-website-v2/pull/11) (squash) on 2026-09-25. | Feature PRs land here first. |
 | `polish/*` and other feature branches | Follow-up work, branched from `main`. | Open a PR into `main`. |
 | `redesign/astro` | The pre-merge history of the rebuild (23 commits). | Pushed; merged. Keep for history or delete. |
 | `design/explorations` | Lab pages at `/lab/{blueprint,swiss,literary,blueprint-v2,headline,sentence,chronology}` (noindex, not linked). Based on an older `redesign/astro`. | Local only. Merge `main` into it before new explorations. |
 | `design/inspiration-labs` | Snapshot of `design/explorations` with the headline/sentence/chronology labs. | Pushed (2026-09-25). |
 
-**Production is live from `main`.** Merging to `main` deploys; that needs Alec's explicit OK. Feature branches get Netlify deploy previews only if previews are enabled in the dashboard (none showed up on PR #11).
+**Production is live from the `production` branch.** Work goes feature branch → PR into `main` → PR into `production`; merging into `production` deploys, and needs Alec's explicit OK. Feature branches get Netlify deploy previews only if previews are enabled in the dashboard (none showed up on PR #11).
 
 ### Next step
 
-Small polish on top of the live site (branch `polish/small-touches`). Bigger ideas that were offered and not picked yet: a dated Now block or /now page, a builds page (3D prints, woodworking, home lab; needs photos), a writing/notes section with RSS, a /uses page.
+`feat/mountain-scenery` (built on `polish/small-touches`): small polish plus the animated mountain horizon behind the intro (design handoff 4a, `~/Downloads/design_handoff_scenery`). PRs into `main` and `production`. Bigger ideas offered and not picked yet: a dated Now block or /now page, a builds page (3D prints, woodworking, home lab; needs photos), a writing/notes section with RSS, a /uses page.
 
 Research behind the design rounds: [`inspiration.md`](inspiration.md). Rejected earlier (don't repeat): Blueprint (busy, costume, impersonal), Swiss poster, Literary, parts-list hobbies, the interactive outage simulator, and the original clean design as "too generic".
 

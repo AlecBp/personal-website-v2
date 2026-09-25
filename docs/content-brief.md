@@ -224,6 +224,11 @@ Design handoff 2a ("Statement + portrait", from `~/Downloads/design_handoff_home
 | Stack names | A tech line per Expertise row is fine (C#/.NET, TypeScript, Node.js, GraphQL, Kafka, Azure Service Bus, MongoDB, PostgreSQL, Redis, Kubernetes, Azure, AWS). |
 | Implementation note | Route switches to horizontal at 60rem (not 720px) because eight columns overlap on tablets. |
 
+Design handoff 4a (animated mountain horizon, from `~/Downloads/design_handoff_scenery`), 2026-09-25:
+a faded SVG scene behind the bottom of the intro (ridgelines, chairlift, skiers, snow in the gutters),
+~30% strength behind the content column. Ambient, not interactive; paused for reduced motion and off
+screen. It carries the skiing personality visually, so the copy doesn't need to say more.
+
 Still open:
 
 1. Reference sites for the bold-and-minimal feel, if Alec has any.

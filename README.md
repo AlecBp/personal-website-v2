@@ -1,8 +1,8 @@
 # alecpagliarussi.me
 
 Personal site of Alec Pagliarussi. A single static page built with [Astro](https://astro.build/),
-hand-written CSS and no client-side framework. The only scripts are the theme toggle and the
-email-link decoder.
+hand-written CSS and no client-side framework. The only scripts are the theme toggle, the
+email-link decoder and a few lines that pause the intro's mountain animation.
 
 ## Run locally
 
@@ -56,6 +56,14 @@ CSP only takes effect in `npm run build` + `npm run preview`, not in `npm run de
   `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) from the portrait (a square crop around the face, set in `scripts/og.mjs`) and the Geist font.
   Run it after changing the photo, name or role, and commit the output.
 
+## Mountain scene
+
+The faded mountain horizon behind the bottom of the intro lives in `src/components/MountainScene.astro`:
+one inline SVG (ridgelines, a chairlift, skiers and snow) drawn in `currentColor`, so it follows the theme.
+It animates with SVG SMIL, not JavaScript. A small script pauses it when the visitor prefers reduced motion
+and while it's off screen; it freezes on a mid-motion frame rather than the empty first one. It's hidden
+in print. To turn the snow off, delete the `g.snow` group.
+
 ## Deploy
 
 The site is hosted on Netlify, which builds it from this repo. `netlify.toml` sets the build command
@@ -63,8 +71,26 @@ The site is hosted on Netlify, which builds it from this repo. `netlify.toml` se
 and it takes precedence over the settings in the Netlify dashboard. The custom domain and the
 `www` → apex redirect are configured in the Netlify dashboard, so DNS doesn't change.
 
-A push to `main` triggers a production deploy. Other branches get deploy previews if they're enabled
-in Netlify.
+### Branches and releases
+
+| Branch | Role |
+| --- | --- |
+| `production` | What Netlify publishes to alecpagliarussi.me. Merging into it deploys the live site. |
+| `main` | The integration branch (and the GitHub default). Finished work lands here first. |
+| Feature branches (`feat/…`, `polish/…`) | Branch from `main`; open a pull request into `main`. |
+
+To release, open a second pull request into `production` once the change is in `main`. Because
+earlier releases were squash-merged, `main` and `production` have different histories even when their
+files match, so a pull request straight from `main` shows old changes in its diff. For a clean diff, cut a
+release branch from `production` and cherry-pick the new commits:
+
+```bash
+git switch -c release/<name> origin/production
+git cherry-pick <first-commit>^..<last-commit>
+git push -u origin release/<name>   # then open the PR into production
+```
+
+Other branches get Netlify deploy previews only if previews are enabled in the dashboard.
 
 `public/sw.js` replaces the service worker the old Gatsby site installed. It clears the old caches and
 unregisters itself so returning visitors get the current site. It can be removed once old installs
