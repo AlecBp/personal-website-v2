@@ -2,16 +2,26 @@
 interface Props {
   name: string;
   location: string;
+  source?: string;
 }
 
-const { name, location } = Astro.props;
+const { name, location, source } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="wrap">
   <div class="site-footer">
     <p>© {year} {name}</p>
-    <p>{location} · Built with Astro</p>
+    <p>
+      {location} · Built with <a href="https://astro.build/">Astro</a>, no trackers{
+        source && (
+          <>
+            {' · '}
+            <a href={source}>Source</a>
+          </>
+        )
+      }
+    </p>
   </div>
 </footer>
 
@@ -25,5 +35,19 @@ const year = new Date().getFullYear();
     font-size: 0.8125rem;
     color: var(--muted);
     border-top: 1px solid var(--line);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  @media print {
+    a::after {
+      content: none !important;
+    }
   }
 </style>

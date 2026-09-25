@@ -86,4 +86,14 @@ const areas = (await getCollection('expertise')).sort((a, b) => a.data.order - b
     background: var(--accent);
     transform: translateY(-1px);
   }
+
+  @media print {
+    li {
+      padding-block: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+    }
+  }
 </style>

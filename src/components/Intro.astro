@@ -146,4 +146,63 @@ const p = Astro.props;
     line-height: 1.45;
     color: var(--muted);
   }
+
+  /* A short, one-time rise on load. Delays stay small so the photo still paints early. */
+  @media (prefers-reduced-motion: no-preference) {
+    h1,
+    .text,
+    .portrait {
+      animation: intro-rise 700ms var(--ease) both;
+    }
+
+    .text {
+      animation-delay: 80ms;
+    }
+
+    .portrait {
+      animation-delay: 140ms;
+    }
+  }
+
+  @keyframes intro-rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  @media print {
+    h1,
+    .text,
+    .portrait {
+      animation: none;
+    }
+
+    .intro {
+      padding-block: 1rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    .row {
+      flex-wrap: nowrap;
+      margin-top: 1.25rem;
+    }
+
+    .text {
+      flex: 1 1 auto;
+    }
+
+    /* The contact section repeats these links with full URLs. */
+    .links {
+      display: none;
+    }
+
+    .portrait {
+      flex: 0 0 11rem;
+      min-width: 0;
+    }
+  }
 </style>

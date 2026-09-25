@@ -7,16 +7,17 @@ Last updated 2026-09-25. Read together with [`content-brief.md`](content-brief.m
 
 | Branch | What's on it | State |
 | --- | --- | --- |
-| `main` | Old Gatsby 2 site (2021). Netlify deploys production from here. | Untouched. |
-| `redesign/astro` | The new Astro site, now on design **2a "Statement + portrait"** (from Alec's design handoff), new ski portrait, new résumé, content brief. **This is the real work.** | Committed, **not pushed**. |
-| `design/explorations` | Older `redesign/astro` + lab pages at `/lab/{blueprint,swiss,literary,blueprint-v2,headline,sentence,chronology}` (noindex, not linked). | Committed, not pushed. Merge `redesign/astro` into it before new explorations. |
-| `design/inspiration-labs` | Snapshot of `design/explorations` with the headline/sentence/chronology labs. | **Pushed** to origin on 2026-09-25 at Alec's request. |
+| `main` | The Astro site, design **2a "Statement + portrait"**. Merged from `redesign/astro` via [PR #11](https://github.com/AlecBp/personal-website-v2/pull/11) (squash) on 2026-09-25. Netlify deploys production from here. | **Live** at alecpagliarussi.me. |
+| `polish/*` and other feature branches | Follow-up work, branched from `main`. | Open a PR into `main`. |
+| `redesign/astro` | The pre-merge history of the rebuild (23 commits). | Pushed; merged. Keep for history or delete. |
+| `design/explorations` | Lab pages at `/lab/{blueprint,swiss,literary,blueprint-v2,headline,sentence,chronology}` (noindex, not linked). Based on an older `redesign/astro`. | Local only. Merge `main` into it before new explorations. |
+| `design/inspiration-labs` | Snapshot of `design/explorations` with the headline/sentence/chronology labs. | Pushed (2026-09-25). |
 
-**Only `design/inspiration-labs` has been pushed; nothing is deployed.** Pushing a branch may create a Netlify deploy preview; merging to `main` deploys production. Both need Alec's explicit OK.
+**Production is live from `main`.** Merging to `main` deploys; that needs Alec's explicit OK. Feature branches get Netlify deploy previews only if previews are enabled in the dashboard (none showed up on PR #11).
 
 ### Next step
 
-Design 2a is built on `redesign/astro` and passed the quality gate (see below). Next: Alec reviews it; then push `redesign/astro` / open a PR, check the Netlify deploy preview, and merge to `main` only with Alec's OK.
+Small polish on top of the live site (branch `polish/small-touches`). Bigger ideas that were offered and not picked yet: a dated Now block or /now page, a builds page (3D prints, woodworking, home lab; needs photos), a writing/notes section with RSS, a /uses page.
 
 Research behind the design rounds: [`inspiration.md`](inspiration.md). Rejected earlier (don't repeat): Blueprint (busy, costume, impersonal), Swiss poster, Literary, parts-list hobbies, the interactive outage simulator, and the original clean design as "too generic".
 
@@ -44,7 +45,7 @@ From Alec's initial brief:
 - `content/legacy/` — archive of the old Gatsby site's copy, data and images.
 - `docs/content-brief.md` — content and voice source of truth.
 
-Last full quality gate (design 2a, 2026-09-25): `astro check` 0/0/0; Lighthouse mobile 100/100/100/100, 66 KiB, LCP 1.2 s, CLS 0; links all 200 except LinkedIn (999 = bot wall); no CSP violations; no horizontal overflow at 360/768/1280 in both themes; email absent from the HTML.
+Last full quality gate (design 2a, 2026-09-25, also rerun on production after the merge: Lighthouse 100×4, 65 KiB): `astro check` 0/0/0; Lighthouse mobile 100/100/100/100, 66 KiB, LCP 1.2 s, CLS 0; links all 200 except LinkedIn (999 = bot wall); no CSP violations; no horizontal overflow at 360/768/1280 in both themes; email absent from the HTML.
 
 ## Technical decisions worth knowing
 
