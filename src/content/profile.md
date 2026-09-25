@@ -4,6 +4,8 @@ jobTitle: Staff Software Engineer
 employer: ServiceTitan
 location: Ontario, Canada
 workLocation: Remote, Ontario, Canada
+# Search engines only (JSON-LD `alumniOf`); not shown on the page.
+alumniOf: George Brown College
 description: "Staff Software Engineer at ServiceTitan who likes building things: backend systems at work, and woodworking and 3D prints at home."
 intro: "Backend engineer at heart, tech lead on Contact Center Pro these days. Five years of building services, APIs and event-driven systems. Outside work I’m still building things: personal projects, woodworking and 3D printing."
 portrait:

@@ -229,6 +229,10 @@ a faded SVG scene behind the bottom of the intro (ridgelines, chairlift, skiers,
 ~30% strength behind the content column. Ambient, not interactive; paused for reduced motion and off
 screen. It carries the skiing personality visually, so the copy doesn't need to say more.
 
+SEO pass, 2026-09-25: the structured data names George Brown College as `alumniOf` (an approved fact from
+§5) even though the page has no education line; it helps search engines match the LinkedIn profile. Remove
+`alumniOf` from `profile.md` to drop it. Title and description copy are unchanged.
+
 Still open:
 
 1. Reference sites for the bold-and-minimal feel, if Alec has any.

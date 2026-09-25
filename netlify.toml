@@ -3,6 +3,14 @@
   command = "npm run build"
   publish = "dist"
 
+# The default Netlify hostname serves the same site. Send it to the real domain so search engines
+# only see one copy. Deploy previews and branch deploys use other hostnames, so they're unaffected.
+[[redirects]]
+  from = "https://alecpagliarussi.netlify.app/*"
+  to = "https://alecpagliarussi.me/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
