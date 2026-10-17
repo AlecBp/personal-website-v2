@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-/** Hero, route summary, experience extras and contact copy. Everything lives in the frontmatter. */
+/** Hero, experience extras and contact copy. Everything lives in the frontmatter. */
 const profile = defineCollection({
   loader: glob({ pattern: 'profile.md', base: './src/content' }),
   schema: z.object({
@@ -17,7 +17,6 @@ const profile = defineCollection({
     intro: z.string(),
     portrait: z.object({ alt: z.string(), caption: z.string() }),
     asides: z.boolean().default(true),
-    routeSummary: z.string(),
     earlier: z.object({ summary: z.string(), years: z.string() }),
     talks: z.string(),
     contact: z.string(),

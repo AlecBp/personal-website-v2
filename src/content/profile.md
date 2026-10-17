@@ -13,7 +13,6 @@ portrait:
   caption: Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming.
 # Show the small personal notes under Expertise (see expertise.yaml `aside`).
 asides: true
-routeSummary: From teaching robotics in Brazil to leading a team at ServiceTitan.
 earlier:
   summary: Research & Innovation contract and TA work at George Brown College, volunteer engineering at Working Women Community Center, robotics teaching in Brazil
   years: 2015 – 2022
