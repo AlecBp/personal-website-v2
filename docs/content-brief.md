@@ -237,6 +237,9 @@ Intro wording, 2026-09-25: Alec dropped "tech lead on Contact Center Pro these d
 product name there, and no "tech lead" either. It now opens "Backend engineer at heart." The heading already says
 Staff Software Engineer at ServiceTitan. Experience keeps its team names; the tech-lead fact stays under Expertise.
 
+Route wording, 2026-10-17: the 2022 ServiceTitan stop reads "Senior Software Engineer", without ", via the
+acquisition". Experience still notes Schedule Engine was acquired by ServiceTitan.
+
 Still open:
 
 1. Reference sites for the bold-and-minimal feel, if Alec has any.
