@@ -1,19 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
-interface Props {
-  summary: string;
-}
-
-const { summary } = Astro.props;
 const stops = (await getCollection('route')).sort((a, b) => a.data.order - b.data.order).map((r) => r.data);
 ---
 
 <section id="route" class="section" aria-labelledby="route-title">
-  <div class="head">
-    <h2 id="route-title" class="section-title">The route so far</h2>
-    <p class="summary">{summary}</p>
-  </div>
+  <h2 id="route-title" class="section-title">The route so far</h2>
   <!-- Horizontal line on wide screens, vertical below 60rem (eight columns get cramped on tablets); pure CSS, no JS. -->
   <ol class="route">
     {
@@ -35,21 +27,9 @@ const stops = (await getCollection('route')).sort((a, b) => a.data.order - b.dat
 </section>
 
 <style>
-  .head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.375rem 1.5rem;
-  }
-
-  .head .section-title {
+  /* The dots sit above each stop, so the list brings its own space below the heading. */
+  .section-title {
     margin-bottom: 0;
-  }
-
-  .summary {
-    font-size: 0.9375rem;
-    color: var(--muted);
   }
 
   .route {

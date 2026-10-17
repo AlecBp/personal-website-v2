@@ -163,7 +163,6 @@ answers in conversation. Don't invent anything beyond these.
 | Photo caption | Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming. |
 | Expertise | Distributed backend systems · Event-driven architecture · Data and performance · Reliability and platform · Technical leadership ("The teacher in me never really left.") |
 | Asides | "I run a home lab too, so I'm on call there as well." · "Before software, I spent three years teaching robotics in Brazil." |
-| Route summary | From teaching robotics in Brazil to leading a team at ServiceTitan. |
 | Contact | Always up for a good engineering problem. Or a ski trip. |
 
 Full text: `src/content/profile.md`, `expertise.yaml`, `route.yaml`, `experience/`.
@@ -239,6 +238,8 @@ Staff Software Engineer at ServiceTitan. Experience keeps its team names; the te
 
 Route wording, 2026-10-17: the 2022 ServiceTitan stop reads "Senior Software Engineer", without ", via the
 acquisition". Experience still notes Schedule Engine was acquired by ServiceTitan.
+The route summary line ("From teaching robotics in Brazil to leading a team at ServiceTitan.") is removed;
+the section is just the heading and the timeline.
 
 Still open:
 
