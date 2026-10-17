@@ -22,7 +22,7 @@ All copy lives in `src/content/`, so you can edit it without touching components
 
 | File | What it controls |
 | --- | --- |
-| `profile.md` | Name, role, intro, photo alt text and caption, route summary, the "Earlier" row, talks line, contact statement, links. `asides: false` hides the small personal notes under Expertise. |
+| `profile.md` | Name, role, intro, photo alt text and caption, the "Earlier" row, talks line, contact statement, links. `asides: false` hides the small personal notes under Expertise. |
 | `expertise.yaml` | The five Expertise rows: title, description, and a tech list (or a `meta` line), plus an optional personal `aside`. Keep it high level, with no internal names or metrics. |
 | `route.yaml` | The "route so far" timeline, oldest first. `status: current` fills the dot; `status: next` is the dashed, open-ended last stop. |
 | `experience/*.md` | One file per role. The homepage shows the frontmatter (company, title, team, dates); the body keeps résumé-style highlights. `order` sets position. |
