@@ -38,7 +38,7 @@ From Alec's initial brief:
 
 ## What's built (`redesign/astro`)
 
-- `src/content/` — all copy. `profile.md` (h1, intro, portrait alt/caption, route summary, Earlier row, talks, contact, `asides` flag), `expertise.yaml`, `route.yaml`, `experience/*.md`. Schemas in `src/content.config.ts`.
+- `src/content/` — all copy. `profile.md` (h1, intro, portrait alt/caption, Earlier row, talks, contact, `asides` flag), `expertise.yaml`, `route.yaml`, `experience/*.md`. Schemas in `src/content.config.ts`.
 - `src/components/`, `src/layouts/Base.astro`, `src/pages/{index,404}.astro`, `src/styles/global.css` — the current design.
 - `public/resume.pdf` — `Alec_Pagliarussi_Resume_2026_1.pdf` (checked: no phone number).
 - `public/sw.js` — self-unregistering replacement for the old Gatsby service worker. Keep until old installs have aged out.

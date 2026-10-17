@@ -163,7 +163,6 @@ answers in conversation. Don't invent anything beyond these.
 | Photo caption | Out of office. Skiing is the big one. Then camping, woodworking, 3D printing, BBQ smoking and gaming. |
 | Expertise | Distributed backend systems · Event-driven architecture · Data and performance · Reliability and platform · Technical leadership ("The teacher in me never really left.") |
 | Asides | "I run a home lab too, so I'm on call there as well." · "Before software, I spent three years teaching robotics in Brazil." |
-| Route summary | From teaching robotics in Brazil to leading a team at ServiceTitan. |
 | Contact | Always up for a good engineering problem. Or a ski trip. |
 
 Full text: `src/content/profile.md`, `expertise.yaml`, `route.yaml`, `experience/`.
@@ -236,6 +235,11 @@ SEO pass, 2026-09-25: the structured data names George Brown College as `alumniO
 Intro wording, 2026-09-25: Alec dropped "tech lead on Contact Center Pro these days" from the intro: no team or
 product name there, and no "tech lead" either. It now opens "Backend engineer at heart." The heading already says
 Staff Software Engineer at ServiceTitan. Experience keeps its team names; the tech-lead fact stays under Expertise.
+
+Route wording, 2026-10-17: the 2022 ServiceTitan stop reads "Senior Software Engineer", without ", via the
+acquisition". Experience still notes Schedule Engine was acquired by ServiceTitan.
+The route summary line ("From teaching robotics in Brazil to leading a team at ServiceTitan.") is removed;
+the section is just the heading and the timeline.
 
 Still open:
 
